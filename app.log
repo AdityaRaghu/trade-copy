@@ -1,0 +1,37 @@
+nohup: ignoring input
+
+> zerodha-trade-copier@0.1.0 start
+> node src/server.js
+
+[2026-04-02T03:42:49.238Z] leader token appears expired (age: 191h 19m). Please re-authenticate. { account: 'leader', userId: 'FEK088', tokenAge: '191h 19m' }
+[2026-04-02T03:42:49.239Z] follower token appears expired (age: 191h 33m). Please re-authenticate. { account: 'follower', userId: 'QKR315', tokenAge: '191h 33m' }
+[2026-04-02T03:42:49.241Z] Leader token is expired – re-authenticate the leader account before market opens 
+Trade copier listening on http://0.0.0.0:8787 (dry_run=false)
+[2026-04-02T03:43:30.877Z] follower account authenticated {
+  account: 'follower',
+  userId: 'QKR315',
+  loginTime: '2026-04-02 09:02:37'
+}
+[2026-04-02T03:54:15.369Z] leader account authenticated {
+  account: 'leader',
+  userId: 'FEK088',
+  loginTime: '2026-04-02 09:20:03'
+}
+[2026-04-02T03:54:15.370Z] Connecting to leader order stream { userId: 'FEK088' }
+[2026-04-02T03:54:15.415Z] Leader order stream connected { userId: 'FEK088' }
+[2026-04-02T03:55:59.495Z] Failed to process source order {
+  orderId: '260402150213608',
+  message: 'No IPs configured for this app. Add allowed IPs on the Kite developer console (https://developers.kite.trade).'
+}
+[2026-04-02T03:55:59.500Z] Failed to process source order {
+  orderId: '260402150213608',
+  message: 'No IPs configured for this app. Add allowed IPs on the Kite developer console (https://developers.kite.trade).'
+}
+[2026-04-02T04:00:53.817Z] Failed to process source order {
+  orderId: '260402150261680',
+  message: 'Market orders without market protection are not allowed via API. Please set market protection or use a Limit order.'
+}
+[2026-04-02T04:00:53.827Z] Failed to process source order {
+  orderId: '260402150261680',
+  message: 'Market orders without market protection are not allowed via API. Please set market protection or use a Limit order.'
+}

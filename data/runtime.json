@@ -1,0 +1,609 @@
+{
+  "mirroredOrders": {
+    "SIM-1001": {
+      "sourceOrderId": "SIM-1001",
+      "mirrorStatus": "blocked",
+      "blockedReasons": [
+        "Quantity 75 exceeds MAX_QUANTITY_PER_ORDER=10."
+      ],
+      "updatedAt": "2026-03-23T06:19:25.772Z"
+    },
+    "SIM-1002": {
+      "sourceOrderId": "SIM-1002",
+      "mirrorStatus": "dry_run",
+      "followerPreview": {
+        "variety": "regular",
+        "exchange": "NFO",
+        "tradingsymbol": "NIFTY2530620000PE",
+        "transaction_type": "SELL",
+        "order_type": "LIMIT",
+        "quantity": 10,
+        "product": "NRML",
+        "validity": "DAY",
+        "disclosed_quantity": 0,
+        "price": 150,
+        "trigger_price": 0,
+        "tag": "CPYSIM1002"
+      },
+      "updatedAt": "2026-03-23T06:21:10.709Z"
+    },
+    "260324151526489": {
+      "sourceOrderId": "260324151526489",
+      "mirrorStatus": "blocked",
+      "blockedReasons": [
+        "Quantity 65 exceeds MAX_QUANTITY_PER_ORDER=10."
+      ],
+      "updatedAt": "2026-03-24T07:43:04.825Z"
+    },
+    "260324151540814": {
+      "sourceOrderId": "260324151540814",
+      "mirrorStatus": "blocked",
+      "blockedReasons": [
+        "Quantity 65 exceeds MAX_QUANTITY_PER_ORDER=10."
+      ],
+      "updatedAt": "2026-03-24T07:45:46.328Z"
+    },
+    "260324151828538": {
+      "sourceOrderId": "260324151828538",
+      "mirrorStatus": "blocked",
+      "blockedReasons": [
+        "Quantity 845 exceeds MAX_QUANTITY_PER_ORDER=10."
+      ],
+      "updatedAt": "2026-03-24T08:46:44.287Z"
+    },
+    "260324151831015": {
+      "sourceOrderId": "260324151831015",
+      "mirrorStatus": "blocked",
+      "blockedReasons": [
+        "Quantity 845 exceeds MAX_QUANTITY_PER_ORDER=10."
+      ],
+      "updatedAt": "2026-03-24T08:46:58.751Z"
+    },
+    "260325150439170": {
+      "sourceOrderId": "260325150439170",
+      "mirrorStatus": "dry_run",
+      "followerPreview": {
+        "variety": "regular",
+        "exchange": "NFO",
+        "tradingsymbol": "NIFTY26MAR23900CE",
+        "transaction_type": "SELL",
+        "order_type": "MARKET",
+        "quantity": 65,
+        "product": "NRML",
+        "validity": "DAY",
+        "disclosed_quantity": 0,
+        "price": 0,
+        "trigger_price": 0,
+        "market_protection": "0",
+        "tag": "CPY50439170"
+      },
+      "updatedAt": "2026-03-25T04:28:33.520Z"
+    },
+    "260325150480250": {
+      "sourceOrderId": "260325150480250",
+      "mirrorStatus": "dry_run",
+      "followerPreview": {
+        "variety": "regular",
+        "exchange": "NFO",
+        "tradingsymbol": "NIFTY26MAR23900CE",
+        "transaction_type": "BUY",
+        "order_type": "MARKET",
+        "quantity": 65,
+        "product": "NRML",
+        "validity": "DAY",
+        "disclosed_quantity": 0,
+        "price": 0,
+        "trigger_price": 0,
+        "market_protection": "0",
+        "tag": "CPY50480250"
+      },
+      "updatedAt": "2026-03-25T04:36:14.312Z"
+    },
+    "260325150495126": {
+      "sourceOrderId": "260325150495126",
+      "mirrorStatus": "blocked",
+      "blockedReasons": [
+        "Quantity 1040 exceeds MAX_QUANTITY_PER_ORDER=1000."
+      ],
+      "updatedAt": "2026-03-25T04:38:31.718Z"
+    },
+    "260325150512209": {
+      "sourceOrderId": "260325150512209",
+      "mirrorStatus": "error",
+      "updatedAt": "2026-03-25T04:41:34.244Z",
+      "errors": {
+        "name": "KiteApiError",
+        "message": "NFO is disabled for your account. You can activate the segment on [Console.](https://console.zerodha.com/account/segment-activation)",
+        "status": 400,
+        "errorType": "InputException",
+        "body": {
+          "status": "error",
+          "message": "NFO is disabled for your account. You can activate the segment on [Console.](https://console.zerodha.com/account/segment-activation)",
+          "data": null,
+          "error_type": "InputException"
+        }
+      }
+    },
+    "260402150213608": {
+      "sourceOrderId": "260402150213608",
+      "mirrorStatus": "error",
+      "updatedAt": "2026-04-02T03:55:59.499Z",
+      "errors": {
+        "name": "KiteApiError",
+        "message": "No IPs configured for this app. Add allowed IPs on the Kite developer console (https://developers.kite.trade).",
+        "status": 403,
+        "errorType": "PermissionException",
+        "body": {
+          "status": "error",
+          "message": "No IPs configured for this app. Add allowed IPs on the Kite developer console (https://developers.kite.trade).",
+          "data": null,
+          "error_type": "PermissionException"
+        }
+      }
+    },
+    "260402150261680": {
+      "sourceOrderId": "260402150261680",
+      "mirrorStatus": "error",
+      "updatedAt": "2026-04-02T04:00:53.827Z",
+      "errors": {
+        "name": "KiteApiError",
+        "message": "Market orders without market protection are not allowed via API. Please set market protection or use a Limit order.",
+        "status": 400,
+        "errorType": "InputException",
+        "body": {
+          "status": "error",
+          "message": "Market orders without market protection are not allowed via API. Please set market protection or use a Limit order.",
+          "data": null,
+          "error_type": "InputException"
+        }
+      }
+    }
+  },
+  "recentEvents": [
+    {
+      "at": "2026-04-02T04:00:53.827Z",
+      "type": "mirror.error",
+      "summary": "Failed to process source order",
+      "detail": {
+        "orderId": "260402150261680",
+        "message": "Market orders without market protection are not allowed via API. Please set market protection or use a Limit order."
+      }
+    },
+    {
+      "at": "2026-04-02T04:00:53.817Z",
+      "type": "mirror.error",
+      "summary": "Failed to process source order",
+      "detail": {
+        "orderId": "260402150261680",
+        "message": "Market orders without market protection are not allowed via API. Please set market protection or use a Limit order."
+      }
+    },
+    {
+      "at": "2026-04-02T03:55:59.500Z",
+      "type": "mirror.error",
+      "summary": "Failed to process source order",
+      "detail": {
+        "orderId": "260402150213608",
+        "message": "No IPs configured for this app. Add allowed IPs on the Kite developer console (https://developers.kite.trade)."
+      }
+    },
+    {
+      "at": "2026-04-02T03:55:59.495Z",
+      "type": "mirror.error",
+      "summary": "Failed to process source order",
+      "detail": {
+        "orderId": "260402150213608",
+        "message": "No IPs configured for this app. Add allowed IPs on the Kite developer console (https://developers.kite.trade)."
+      }
+    },
+    {
+      "at": "2026-04-02T03:54:15.415Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T03:54:15.370Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T03:54:15.369Z",
+      "type": "auth.success",
+      "summary": "leader account authenticated",
+      "detail": {
+        "account": "leader",
+        "userId": "FEK088",
+        "loginTime": "2026-04-02 09:20:03"
+      }
+    },
+    {
+      "at": "2026-04-02T03:43:30.877Z",
+      "type": "auth.success",
+      "summary": "follower account authenticated",
+      "detail": {
+        "account": "follower",
+        "userId": "QKR315",
+        "loginTime": "2026-04-02 09:02:37"
+      }
+    },
+    {
+      "at": "2026-04-02T03:42:49.241Z",
+      "type": "stream.skip",
+      "summary": "Leader token is expired – re-authenticate the leader account before market opens"
+    },
+    {
+      "at": "2026-04-02T03:42:49.239Z",
+      "type": "auth.expired",
+      "summary": "follower token appears expired (age: 191h 33m). Please re-authenticate.",
+      "detail": {
+        "account": "follower",
+        "userId": "QKR315",
+        "tokenAge": "191h 33m"
+      }
+    },
+    {
+      "at": "2026-04-02T03:42:49.238Z",
+      "type": "auth.expired",
+      "summary": "leader token appears expired (age: 191h 19m). Please re-authenticate.",
+      "detail": {
+        "account": "leader",
+        "userId": "FEK088",
+        "tokenAge": "191h 19m"
+      }
+    },
+    {
+      "at": "2026-03-25T05:07:25.571Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-03-25T04:58:53.762Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-03-25T04:58:53.688Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-03-25T04:44:38.579Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-03-25T04:41:34.244Z",
+      "type": "mirror.error",
+      "summary": "Failed to process source order",
+      "detail": {
+        "orderId": "260325150512209",
+        "message": "NFO is disabled for your account. You can activate the segment on [Console.](https://console.zerodha.com/account/segment-activation)"
+      }
+    },
+    {
+      "at": "2026-03-25T04:41:34.242Z",
+      "type": "mirror.error",
+      "summary": "Failed to process source order",
+      "detail": {
+        "orderId": "260325150512209",
+        "message": "NFO is disabled for your account. You can activate the segment on [Console.](https://console.zerodha.com/account/segment-activation)"
+      }
+    },
+    {
+      "at": "2026-03-25T04:40:22.145Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-03-25T04:40:22.079Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-03-25T04:38:31.719Z",
+      "type": "mirror.blocked",
+      "summary": "Follower order blocked by policy",
+      "detail": {
+        "orderId": "260325150495126",
+        "reasons": [
+          "Quantity 1040 exceeds MAX_QUANTITY_PER_ORDER=1000."
+        ]
+      }
+    },
+    {
+      "at": "2026-03-25T04:38:04.841Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-03-25T04:38:04.731Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-03-25T04:36:14.312Z",
+      "type": "mirror.dry_run",
+      "summary": "Dry-run follower order prepared",
+      "detail": {
+        "orderId": "260325150480250",
+        "followerOrder": {
+          "variety": "regular",
+          "exchange": "NFO",
+          "tradingsymbol": "NIFTY26MAR23900CE",
+          "transaction_type": "BUY",
+          "order_type": "MARKET",
+          "quantity": 65,
+          "product": "NRML",
+          "validity": "DAY",
+          "disclosed_quantity": 0,
+          "price": 0,
+          "trigger_price": 0,
+          "market_protection": "0",
+          "tag": "CPY50480250"
+        }
+      }
+    },
+    {
+      "at": "2026-03-25T04:28:33.521Z",
+      "type": "mirror.dry_run",
+      "summary": "Dry-run follower order prepared",
+      "detail": {
+        "orderId": "260325150439170",
+        "followerOrder": {
+          "variety": "regular",
+          "exchange": "NFO",
+          "tradingsymbol": "NIFTY26MAR23900CE",
+          "transaction_type": "SELL",
+          "order_type": "MARKET",
+          "quantity": 65,
+          "product": "NRML",
+          "validity": "DAY",
+          "disclosed_quantity": 0,
+          "price": 0,
+          "trigger_price": 0,
+          "market_protection": "0",
+          "tag": "CPY50439170"
+        }
+      }
+    },
+    {
+      "at": "2026-03-25T04:22:52.957Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-03-25T04:22:52.887Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-03-25T04:22:52.886Z",
+      "type": "auth.success",
+      "summary": "leader account authenticated",
+      "detail": {
+        "account": "leader",
+        "userId": "FEK088",
+        "loginTime": "2026-03-25 09:29:29"
+      }
+    },
+    {
+      "at": "2026-03-25T04:09:21.202Z",
+      "type": "auth.success",
+      "summary": "follower account authenticated",
+      "detail": {
+        "account": "follower",
+        "userId": "QKR315",
+        "loginTime": "2026-03-25 09:06:59"
+      }
+    },
+    {
+      "at": "2026-03-25T04:08:39.257Z",
+      "type": "stream.skip",
+      "summary": "Leader token is expired – re-authenticate the leader account before market opens"
+    },
+    {
+      "at": "2026-03-25T04:08:39.256Z",
+      "type": "auth.expired",
+      "summary": "leader token appears expired (age: 20h 31m). Please re-authenticate.",
+      "detail": {
+        "account": "leader",
+        "userId": "FEK088",
+        "tokenAge": "20h 31m"
+      }
+    },
+    {
+      "at": "2026-03-25T03:36:59.830Z",
+      "type": "auth.success",
+      "summary": "follower account authenticated",
+      "detail": {
+        "account": "follower",
+        "userId": "QKR315",
+        "loginTime": "2026-03-25 09:06:59"
+      }
+    },
+    {
+      "at": "2026-03-25T01:36:20.385Z",
+      "type": "stream.token_expired",
+      "summary": "Leader token expired (age: 17h 58m). Re-authenticate to resume.",
+      "detail": {
+        "userId": "FEK088",
+        "tokenAge": "17h 58m"
+      }
+    },
+    {
+      "at": "2026-03-25T01:36:18.383Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-03-25T01:36:18.382Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1006,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-03-24T08:46:58.751Z",
+      "type": "mirror.blocked",
+      "summary": "Follower order blocked by policy",
+      "detail": {
+        "orderId": "260324151831015",
+        "reasons": [
+          "Quantity 845 exceeds MAX_QUANTITY_PER_ORDER=10."
+        ]
+      }
+    },
+    {
+      "at": "2026-03-24T08:46:44.287Z",
+      "type": "mirror.blocked",
+      "summary": "Follower order blocked by policy",
+      "detail": {
+        "orderId": "260324151828538",
+        "reasons": [
+          "Quantity 845 exceeds MAX_QUANTITY_PER_ORDER=10."
+        ]
+      }
+    },
+    {
+      "at": "2026-03-24T07:45:46.328Z",
+      "type": "mirror.blocked",
+      "summary": "Follower order blocked by policy",
+      "detail": {
+        "orderId": "260324151540814",
+        "reasons": [
+          "Quantity 65 exceeds MAX_QUANTITY_PER_ORDER=10."
+        ]
+      }
+    },
+    {
+      "at": "2026-03-24T07:43:04.825Z",
+      "type": "mirror.blocked",
+      "summary": "Follower order blocked by policy",
+      "detail": {
+        "orderId": "260324151526489",
+        "reasons": [
+          "Quantity 65 exceeds MAX_QUANTITY_PER_ORDER=10."
+        ]
+      }
+    },
+    {
+      "at": "2026-03-24T07:37:29.209Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-03-24T07:37:29.142Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-03-24T07:37:29.141Z",
+      "type": "auth.success",
+      "summary": "leader account authenticated",
+      "detail": {
+        "account": "leader",
+        "userId": "FEK088",
+        "loginTime": "2026-03-24 09:12:31"
+      }
+    },
+    {
+      "at": "2026-03-24T03:43:52.314Z",
+      "type": "auth.success",
+      "summary": "follower account authenticated",
+      "detail": {
+        "account": "follower",
+        "userId": "QKR315",
+        "loginTime": "2026-03-24 09:13:51"
+      }
+    },
+    {
+      "at": "2026-03-23T13:55:53.328Z",
+      "type": "auth.success",
+      "summary": "follower account authenticated",
+      "detail": {
+        "account": "follower",
+        "userId": "QKR315",
+        "loginTime": "2026-03-23 19:25:47"
+      }
+    },
+    {
+      "at": "2026-03-23T06:21:10.710Z",
+      "type": "mirror.dry_run",
+      "summary": "Dry-run follower order prepared",
+      "detail": {
+        "orderId": "SIM-1002",
+        "followerOrder": {
+          "variety": "regular",
+          "exchange": "NFO",
+          "tradingsymbol": "NIFTY2530620000PE",
+          "transaction_type": "SELL",
+          "order_type": "LIMIT",
+          "quantity": 10,
+          "product": "NRML",
+          "validity": "DAY",
+          "disclosed_quantity": 0,
+          "price": 150,
+          "trigger_price": 0,
+          "tag": "CPYSIM1002"
+        }
+      }
+    },
+    {
+      "at": "2026-03-23T06:19:25.773Z",
+      "type": "mirror.blocked",
+      "summary": "Follower order blocked by policy",
+      "detail": {
+        "orderId": "SIM-1001",
+        "reasons": [
+          "Quantity 75 exceeds MAX_QUANTITY_PER_ORDER=10."
+        ]
+      }
+    }
+  ]
+}

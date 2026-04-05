@@ -182,7 +182,7 @@ export function isActionableSourceOrder(order, config = {}) {
   // For leader MARKET orders, wait until leader fill is known so we can
   // place follower as LIMIT near the leader fill price.
   if (shouldMirrorMarketAsLimit(orderType, config)) {
-    return status === 'COMPLETE' && getReferencePrice(order) > 0;
+    return status === 'COMPLETE';
   }
 
   if (TERMINAL_STATUSES.has(status) && status !== 'COMPLETE') {
@@ -800,7 +800,7 @@ export class TradeCopier {
         try {
           await this.getClient(FOLLOWER_ACCOUNT).cancelOrder(followerSession.accessToken, {
             variety: mapping.followerVariety,
-            order_id: mapping.followerOrderId,
+            orderId: mapping.followerOrderId,
           });
           mapping.mirrorStatus = 'cancelled';
           mapping.updatedAt = nowIso();
@@ -820,6 +820,18 @@ export class TradeCopier {
     
       async replicateModification(sourceOrder, mapping) {
         const followerSession = this.requireSession(FOLLOWER_ACCOUNT);
+        if (isTokenExpired(followerSession)) {
+          this.recordEvent(
+            'modify.error',
+            'Follower token expired — cannot modify order. Re-authenticate.',
+            {
+              sourceOrderId: sourceOrder.order_id,
+              followerOrderId: mapping.followerOrderId,
+              tokenAge: tokenAgeLabel(followerSession),
+            },
+          );
+          return;
+        }
         const followerPatch = {
           variety: mapping.followerVariety,
           order_id: mapping.followerOrderId,

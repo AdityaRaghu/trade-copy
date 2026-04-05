@@ -195,6 +195,7 @@ export class KiteClient {
           method,
           headers,
           body: requestBody,
+          signal: AbortSignal.timeout(15_000),
         });
     
         const parsed = await parseResponse(response);

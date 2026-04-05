@@ -296,7 +296,7 @@ export class TradeCopier {
     this.reconnectTimer = null;
     this.reconnectAttempt = 0;
     this.isShuttingDown = false;
-    this.processingSourceOrder = new Set();
+    this.processingSourceOrders = new Set();
   }
 
   getStatus() {
@@ -401,11 +401,14 @@ export class TradeCopier {
     const leaderOrder = normalizeOrderInput(rawOrder);
     leaderOrder.tag = makeOrderTag(`${this.config.tagPrefix}L`, traceId);
     if (
-      ['MARKET', 'SL-M'].includes(leaderOrder.order_type) &&
-      leaderOrder.market_protection == null
-    ) {
-      leaderOrder.market_protection = this.config.marketProtection;
-    }
+      ['MARKET', 'SL-M'].includes(leaderOrder.order_type)) {
+        const leaderMarketProtection = String(
+          leaderOrder.market_protection ?? '',
+        ).trim();
+        if (!leaderMarketProtection || leaderMarketProtection === '0') {
+          leaderOrder.market_protection = String(this.config.marketProtection ?? '-1');
+        }
+      }
 
     const followerOrder = buildFollowerOrder(leaderOrder, this.config, { traceId });
 

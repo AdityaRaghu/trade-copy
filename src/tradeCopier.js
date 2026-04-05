@@ -116,8 +116,75 @@ export function normalizeOrderInput(order = {}) {
   };
 }
 
-export function isActionableSourceOrder(order) {
+function needsMarketProtection(orderType) {
+  return ['MARKET', 'SL-M'].includes(upper(orderType));
+}
+
+function shouldMirrorMarketAsLimit(orderType, config = {}) {
+  return config.followMarketOrdersAsLimit && upper(orderType) === 'MARKET';
+}
+
+function roundToTick(price, tickSize = 0.05, mode = 'nearest') {
+  const tick = numeric(tickSize, 0.05);
+  if (!Number.isFinite(price) || price <= 0 || tick <= 0) {
+    return 0;
+  }
+
+  const scaled = price / tick;
+  const rounded =
+    mode === 'floor'
+      ? Math.floor(scaled)
+      : mode === 'ceil'
+      ? Math.ceil(scaled)
+      : Math.round(scaled);
+
+  return Number((rounded * tick).toFixed(2));
+}
+
+function getReferencePrice(order) {
+  const averagePrice = numeric(order.average_price);
+  if (averagePrice > 0) {
+    return averagePrice;
+  }
+
+  const limitPrice = numeric(order.price);
+  if (limitPrice > 0) {
+    return limitPrice;
+  }
+
+  return 0;
+}
+
+function toFollowerLimitPrice(sourceOrder, config) {
+  const referencePrice = getReferencePrice(sourceOrder);
+  if (referencePrice <= 0) {
+    return 0;
+  }
+
+  const deviationPercent = Math.max(
+    0,
+    numeric(config.maxPriceDeviationPercent, 0.30),
+  );
+
+  if (upper(sourceOrder.transaction_type) === 'BUY') {
+    const maxBuyPrice = referencePrice * (1 + deviationPercent / 100);
+    return roundToTick(maxBuyPrice, config.priceTickSize, 'floor');
+  }
+
+  const minSellPrice = referencePrice * (1 - deviationPercent / 100);
+  return roundToTick(minSellPrice, config.priceTickSize, 'ceil');
+}
+
+export function isActionableSourceOrder(order, config = {}) {
   const status = normalizeOrderStatus(order.status);
+  const orderType = upper(order.order_type);
+
+  // For leader MARKET orders, wait until leader fill is known so we can
+  // place follower as LIMIT near the leader fill price.
+  if (shouldMirrorMarketAsLimit(orderType, config)) {
+    return status === 'COMPLETE' && getReferencePrice(order) > 0;
+  }
+
   if (TERMINAL_STATUSES.has(status) && status !== 'COMPLETE') {
     return false;
   }
@@ -187,11 +254,26 @@ export function buildFollowerOrder(sourceOrder, config, { traceId } = {}) {
     ),
   };
 
-  if (
-    ['MARKET', 'SL-M'].includes(followerOrder.order_type) &&
-    followerOrder.market_protection == null
-  ) {
-    followerOrder.market_protection = config.marketProtection;
+  if (shouldMirrorMarketAsLimit(followerOrder.order_type, config)) {
+    const boundedLimitPrice = toFollowerLimitPrice(sourceOrder, config);
+
+    if (boundedLimitPrice > 0) {
+      followerOrder.order_type = 'LIMIT';
+      followerOrder.price = boundedLimitPrice;
+      followerOrder.trigger_price = 0;
+      followerOrder.market_protection = undefined;
+      return followerOrder;
+    }
+  }
+
+  if (needsMarketProtection(followerOrder.order_type)) {
+    const sourceMarketProtection = String(
+      followerOrder.market_protection ?? '',
+    ).trim();
+
+    if (!sourceMarketProtection || sourceMarketProtection === '0') {
+      followerOrder.market_protection = String(config.marketProtection ?? '-1');
+    }
   }
 
   return followerOrder;
@@ -214,6 +296,7 @@ export class TradeCopier {
     this.reconnectTimer = null;
     this.reconnectAttempt = 0;
     this.isShuttingDown = false;
+    this.processingSourceOrder = new Set();
   }
 
   getStatus() {
@@ -268,7 +351,7 @@ export class TradeCopier {
     });
 
     if (account === SOURCE_ACCOUNT) {
-      this.startSourceStream();
+      this.startSourceStream(true);
     }
 
     return storedSession;
@@ -375,7 +458,7 @@ export class TradeCopier {
     });
   }
 
-  startSourceStream() {
+  startSourceStream(force = false) {
     const sourceSession = this.tokens[SOURCE_ACCOUNT];
     if (!sourceSession?.accessToken) {
       this.recordEvent(
@@ -384,7 +467,7 @@ export class TradeCopier {
       );
       return;
     }
-
+  
     if (isTokenExpired(sourceSession)) {
       this.sourceSocketState = 'token_expired';
       this.recordEvent(
@@ -394,34 +477,64 @@ export class TradeCopier {
       );
       return;
     }
-
-    if (this.sourceSocket && this.sourceSocket.readyState < WebSocket.CLOSING) {
-      this.sourceSocket.close();
+  
+    if (
+      !force &&
+      this.sourceSocket &&
+      (this.sourceSocket.readyState === WebSocket.OPEN ||
+        this.sourceSocket.readyState === WebSocket.CONNECTING)
+    ) {
+      return;
     }
-
+  
+    const previousSocket = this.sourceSocket;
+    if (force && previousSocket && previousSocket.readyState < WebSocket.CLOSING) {
+      previousSocket.close();
+    }
+  
     this.sourceSocketState = 'connecting';
     this.recordEvent('stream.connecting', 'Connecting to leader order stream', {
       userId: sourceSession.userId,
     });
-
-    this.sourceSocket = this.getClient(SOURCE_ACCOUNT).connectOrderStream({
+  
+    const socket = this.getClient(SOURCE_ACCOUNT).connectOrderStream({
       accessToken: sourceSession.accessToken,
       onOpen: () => {
+        if (socket !== this.sourceSocket) {
+          return;
+        }
+  
         this.sourceSocketState = 'connected';
-        this.reconnectAttempt = 0; // Reset backoff on successful connection
+        this.reconnectAttempt = 0;
+  
+        if (this.reconnectTimer) {
+          clearTimeout(this.reconnectTimer);
+          this.reconnectTimer = null;
+        }
         this.recordEvent('stream.connected', 'Leader order stream connected', {
           userId: sourceSession.userId,
         });
       },
       onClose: (event) => {
+        if (socket !== this.sourceSocket) {
+          return;
+        }
+  
         this.sourceSocketState = 'disconnected';
+        this.sourceSocket = null;
+  
         this.recordEvent('stream.closed', 'Leader order stream closed', {
           code: event.code,
           reason: event.reason || 'No reason provided',
         });
+  
         this.scheduleReconnect();
       },
       onError: (error) => {
+        if (socket !== this.sourceSocket) {
+          return;
+        }
+  
         this.recordEvent('stream.error', 'Leader order stream error', {
           message: error?.message ?? String(error),
         });
@@ -435,6 +548,10 @@ export class TradeCopier {
         });
       },
       onMessage: (message) => {
+        if (socket !== this.sourceSocket) {
+          return;
+        }
+  
         if (message?.type === 'error') {
           this.recordEvent('stream.error_message', 'Leader stream error message', {
             message: message.data,
@@ -442,7 +559,10 @@ export class TradeCopier {
         }
       },
     });
+  
+    this.sourceSocket = socket;
   }
+      
 
   scheduleReconnect() {
     if (this.isShuttingDown || this.reconnectTimer) {
@@ -508,20 +628,35 @@ export class TradeCopier {
     }
 
     if (mapping?.mirrorStatus) {
-        return;
-      }
-  
-      if (!isActionableSourceOrder(order)) {
-        this.recordEvent('mirror.waiting', 'Source order update not actionable yet', {
+      return;
+    }
+
+    if (this.processingSourceOrders.has(order.order_id)) {
+      this.recordEvent(
+        'mirror.ignored',
+        'Skipped duplicate source order while processing is already in progress',
+        {
           orderId: order.order_id,
           status: normalizedStatus,
-        });
-        return;
-      }
-  
+        },
+      );
+      return;
+    }
+
+    if (!isActionableSourceOrder(order, this.config)) {
+      this.recordEvent('mirror.waiting', 'Source order update not actionable yet', {
+        orderId: order.order_id,
+        status: normalizedStatus,
+      });
+      return;
+    }
+
+    this.processingSourceOrders.add(order.order_id);
+
+    try {
       const followerOrder = buildFollowerOrder(order, this.config);
       const policy = validateOrderAgainstPolicy(followerOrder, this.config);
-  
+
       if (!policy.ok) {
         this.runtime.mirroredOrders[order.order_id] = {
           sourceOrderId: order.order_id,
@@ -536,7 +671,7 @@ export class TradeCopier {
         });
         return;
       }
-  
+
       if (followerOrder.quantity <= 0) {
         this.runtime.mirroredOrders[order.order_id] = {
           sourceOrderId: order.order_id,
@@ -567,40 +702,48 @@ export class TradeCopier {
         });
         return;
       }
-  
+
       const followerSession = this.requireSession(FOLLOWER_ACCOUNT);
-  
-      // Check if follower token is expired before placing
+
       if (isTokenExpired(followerSession)) {
         this.runtime.mirroredOrders[order.order_id] = {
           sourceOrderId: order.order_id,
           mirrorStatus: 'error',
           updatedAt: nowIso(),
-          errors: { name: 'TokenExpired', message: `Follower token expired (age: ${tokenAgeLabel(followerSession)}). Re-authenticate.` },
+          errors: {
+            name: 'TokenExpired',
+            message: `Follower token expired (age: ${tokenAgeLabel(followerSession)}). Re-authenticate.`,
+          },
         };
         this.persistRuntime();
-        this.recordEvent('mirror.token_expired', 'Follower token expired — cannot place order. Re-authenticate.', {
-          orderId: order.order_id,
-          tokenAge: tokenAgeLabel(followerSession),
-        });
+        this.recordEvent(
+          'mirror.token_expired',
+          'Follower token expired — cannot place order. Re-authenticate.',
+          {
+            orderId: order.order_id,
+            tokenAge: tokenAgeLabel(followerSession),
+          },
+        );
         return;
       }
-  
+
       let lastError;
       for (let attempt = 0; attempt <= MAX_PLACE_RETRIES; attempt++) {
         try {
           if (attempt > 0) {
-            this.recordEvent('mirror.retry', `Retrying follower order (attempt ${attempt + 1}/${MAX_PLACE_RETRIES + 1})`, {
-              orderId: order.order_id,
-            });
+            this.recordEvent(
+              'mirror.retry',
+              `Retrying follower order (attempt ${attempt + 1}/${MAX_PLACE_RETRIES + 1})`,
+              { orderId: order.order_id },
+            );
             await sleep(RETRY_DELAY_MS * attempt);
           }
-  
+
           const placed = await this.getClient(FOLLOWER_ACCOUNT).placeOrder(
             followerSession.accessToken,
             followerOrder,
           );
-  
+
           this.runtime.mirroredOrders[order.order_id] = {
             sourceOrderId: order.order_id,
             sourceStatus: normalizedStatus,
@@ -610,23 +753,23 @@ export class TradeCopier {
             updatedAt: nowIso(),
           };
           this.persistRuntime();
-  
+
           this.recordEvent('mirror.placed', 'Follower order placed', {
             sourceOrderId: order.order_id,
             followerOrderId: placed.order_id,
             attempt: attempt + 1,
+            followerOrder,
           });
           return;
         } catch (error) {
           lastError = error;
-  
-          // Don't retry on client errors (4xx) — only on transient/network errors
+
           if (error instanceof KiteApiError && error.status >= 400 && error.status < 500) {
             break;
           }
         }
       }
-  
+
       this.runtime.mirroredOrders[order.order_id] = {
         sourceOrderId: order.order_id,
         mirrorStatus: 'error',
@@ -634,9 +777,12 @@ export class TradeCopier {
         errors: serializeError(lastError),
       };
       this.persistRuntime();
-  
+
       throw lastError;
+    } finally {
+      this.processingSourceOrders.delete(order.order_id);
     }
+  }
   
     async replicateCancellation(sourceOrder, mapping) {
         if (this.config.dryRun) {

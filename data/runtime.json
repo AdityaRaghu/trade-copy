@@ -157,47 +157,27 @@
           "error_type": "InputException"
         }
       }
+    },
+    "260402150631955": {
+      "sourceOrderId": "260402150631955",
+      "sourceStatus": "COMPLETE",
+      "followerOrderId": "260402170573185",
+      "followerVariety": "regular",
+      "mirrorStatus": "placed",
+      "updatedAt": "2026-04-02T05:02:07.166Z"
+    },
+    "260402150632983": {
+      "sourceOrderId": "260402150632983",
+      "sourceStatus": "OPEN",
+      "followerOrderId": "260402170574251",
+      "followerVariety": "regular",
+      "mirrorStatus": "placed",
+      "updatedAt": "2026-04-02T05:02:21.247Z"
     }
   },
   "recentEvents": [
     {
-      "at": "2026-04-02T04:00:53.827Z",
-      "type": "mirror.error",
-      "summary": "Failed to process source order",
-      "detail": {
-        "orderId": "260402150261680",
-        "message": "Market orders without market protection are not allowed via API. Please set market protection or use a Limit order."
-      }
-    },
-    {
-      "at": "2026-04-02T04:00:53.817Z",
-      "type": "mirror.error",
-      "summary": "Failed to process source order",
-      "detail": {
-        "orderId": "260402150261680",
-        "message": "Market orders without market protection are not allowed via API. Please set market protection or use a Limit order."
-      }
-    },
-    {
-      "at": "2026-04-02T03:55:59.500Z",
-      "type": "mirror.error",
-      "summary": "Failed to process source order",
-      "detail": {
-        "orderId": "260402150213608",
-        "message": "No IPs configured for this app. Add allowed IPs on the Kite developer console (https://developers.kite.trade)."
-      }
-    },
-    {
-      "at": "2026-04-02T03:55:59.495Z",
-      "type": "mirror.error",
-      "summary": "Failed to process source order",
-      "detail": {
-        "orderId": "260402150213608",
-        "message": "No IPs configured for this app. Add allowed IPs on the Kite developer console (https://developers.kite.trade)."
-      }
-    },
-    {
-      "at": "2026-04-02T03:54:15.415Z",
+      "at": "2026-04-02T05:04:40.830Z",
       "type": "stream.connected",
       "summary": "Leader order stream connected",
       "detail": {
@@ -205,337 +185,21 @@
       }
     },
     {
-      "at": "2026-04-02T03:54:15.370Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T03:54:15.369Z",
-      "type": "auth.success",
-      "summary": "leader account authenticated",
-      "detail": {
-        "account": "leader",
-        "userId": "FEK088",
-        "loginTime": "2026-04-02 09:20:03"
-      }
-    },
-    {
-      "at": "2026-04-02T03:43:30.877Z",
-      "type": "auth.success",
-      "summary": "follower account authenticated",
-      "detail": {
-        "account": "follower",
-        "userId": "QKR315",
-        "loginTime": "2026-04-02 09:02:37"
-      }
-    },
-    {
-      "at": "2026-04-02T03:42:49.241Z",
-      "type": "stream.skip",
-      "summary": "Leader token is expired – re-authenticate the leader account before market opens"
-    },
-    {
-      "at": "2026-04-02T03:42:49.239Z",
-      "type": "auth.expired",
-      "summary": "follower token appears expired (age: 191h 33m). Please re-authenticate.",
-      "detail": {
-        "account": "follower",
-        "userId": "QKR315",
-        "tokenAge": "191h 33m"
-      }
-    },
-    {
-      "at": "2026-04-02T03:42:49.238Z",
-      "type": "auth.expired",
-      "summary": "leader token appears expired (age: 191h 19m). Please re-authenticate.",
-      "detail": {
-        "account": "leader",
-        "userId": "FEK088",
-        "tokenAge": "191h 19m"
-      }
-    },
-    {
-      "at": "2026-03-25T05:07:25.571Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-03-25T04:58:53.762Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-03-25T04:58:53.688Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-03-25T04:44:38.579Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-03-25T04:41:34.244Z",
-      "type": "mirror.error",
-      "summary": "Failed to process source order",
-      "detail": {
-        "orderId": "260325150512209",
-        "message": "NFO is disabled for your account. You can activate the segment on [Console.](https://console.zerodha.com/account/segment-activation)"
-      }
-    },
-    {
-      "at": "2026-03-25T04:41:34.242Z",
-      "type": "mirror.error",
-      "summary": "Failed to process source order",
-      "detail": {
-        "orderId": "260325150512209",
-        "message": "NFO is disabled for your account. You can activate the segment on [Console.](https://console.zerodha.com/account/segment-activation)"
-      }
-    },
-    {
-      "at": "2026-03-25T04:40:22.145Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-03-25T04:40:22.079Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-03-25T04:38:31.719Z",
-      "type": "mirror.blocked",
-      "summary": "Follower order blocked by policy",
-      "detail": {
-        "orderId": "260325150495126",
-        "reasons": [
-          "Quantity 1040 exceeds MAX_QUANTITY_PER_ORDER=1000."
-        ]
-      }
-    },
-    {
-      "at": "2026-03-25T04:38:04.841Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-03-25T04:38:04.731Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-03-25T04:36:14.312Z",
-      "type": "mirror.dry_run",
-      "summary": "Dry-run follower order prepared",
-      "detail": {
-        "orderId": "260325150480250",
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY26MAR23900CE",
-          "transaction_type": "BUY",
-          "order_type": "MARKET",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 0,
-          "trigger_price": 0,
-          "market_protection": "0",
-          "tag": "CPY50480250"
-        }
-      }
-    },
-    {
-      "at": "2026-03-25T04:28:33.521Z",
-      "type": "mirror.dry_run",
-      "summary": "Dry-run follower order prepared",
-      "detail": {
-        "orderId": "260325150439170",
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY26MAR23900CE",
-          "transaction_type": "SELL",
-          "order_type": "MARKET",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 0,
-          "trigger_price": 0,
-          "market_protection": "0",
-          "tag": "CPY50439170"
-        }
-      }
-    },
-    {
-      "at": "2026-03-25T04:22:52.957Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-03-25T04:22:52.887Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-03-25T04:22:52.886Z",
-      "type": "auth.success",
-      "summary": "leader account authenticated",
-      "detail": {
-        "account": "leader",
-        "userId": "FEK088",
-        "loginTime": "2026-03-25 09:29:29"
-      }
-    },
-    {
-      "at": "2026-03-25T04:09:21.202Z",
-      "type": "auth.success",
-      "summary": "follower account authenticated",
-      "detail": {
-        "account": "follower",
-        "userId": "QKR315",
-        "loginTime": "2026-03-25 09:06:59"
-      }
-    },
-    {
-      "at": "2026-03-25T04:08:39.257Z",
-      "type": "stream.skip",
-      "summary": "Leader token is expired – re-authenticate the leader account before market opens"
-    },
-    {
-      "at": "2026-03-25T04:08:39.256Z",
-      "type": "auth.expired",
-      "summary": "leader token appears expired (age: 20h 31m). Please re-authenticate.",
-      "detail": {
-        "account": "leader",
-        "userId": "FEK088",
-        "tokenAge": "20h 31m"
-      }
-    },
-    {
-      "at": "2026-03-25T03:36:59.830Z",
-      "type": "auth.success",
-      "summary": "follower account authenticated",
-      "detail": {
-        "account": "follower",
-        "userId": "QKR315",
-        "loginTime": "2026-03-25 09:06:59"
-      }
-    },
-    {
-      "at": "2026-03-25T01:36:20.385Z",
-      "type": "stream.token_expired",
-      "summary": "Leader token expired (age: 17h 58m). Re-authenticate to resume.",
-      "detail": {
-        "userId": "FEK088",
-        "tokenAge": "17h 58m"
-      }
-    },
-    {
-      "at": "2026-03-25T01:36:18.383Z",
+      "at": "2026-04-02T05:04:40.811Z",
       "type": "stream.reconnect_scheduled",
       "summary": "Reconnecting in 2s (attempt 1)"
     },
     {
-      "at": "2026-03-25T01:36:18.382Z",
+      "at": "2026-04-02T05:04:40.811Z",
       "type": "stream.closed",
       "summary": "Leader order stream closed",
       "detail": {
-        "code": 1006,
+        "code": 1005,
         "reason": "No reason provided"
       }
     },
     {
-      "at": "2026-03-24T08:46:58.751Z",
-      "type": "mirror.blocked",
-      "summary": "Follower order blocked by policy",
-      "detail": {
-        "orderId": "260324151831015",
-        "reasons": [
-          "Quantity 845 exceeds MAX_QUANTITY_PER_ORDER=10."
-        ]
-      }
-    },
-    {
-      "at": "2026-03-24T08:46:44.287Z",
-      "type": "mirror.blocked",
-      "summary": "Follower order blocked by policy",
-      "detail": {
-        "orderId": "260324151828538",
-        "reasons": [
-          "Quantity 845 exceeds MAX_QUANTITY_PER_ORDER=10."
-        ]
-      }
-    },
-    {
-      "at": "2026-03-24T07:45:46.328Z",
-      "type": "mirror.blocked",
-      "summary": "Follower order blocked by policy",
-      "detail": {
-        "orderId": "260324151540814",
-        "reasons": [
-          "Quantity 65 exceeds MAX_QUANTITY_PER_ORDER=10."
-        ]
-      }
-    },
-    {
-      "at": "2026-03-24T07:43:04.825Z",
-      "type": "mirror.blocked",
-      "summary": "Follower order blocked by policy",
-      "detail": {
-        "orderId": "260324151526489",
-        "reasons": [
-          "Quantity 65 exceeds MAX_QUANTITY_PER_ORDER=10."
-        ]
-      }
-    },
-    {
-      "at": "2026-03-24T07:37:29.209Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-03-24T07:37:29.142Z",
+      "at": "2026-04-02T05:04:40.806Z",
       "type": "stream.connecting",
       "summary": "Connecting to leader order stream",
       "detail": {
@@ -543,66 +207,1473 @@
       }
     },
     {
-      "at": "2026-03-24T07:37:29.141Z",
-      "type": "auth.success",
-      "summary": "leader account authenticated",
+      "at": "2026-04-02T05:04:38.830Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
       "detail": {
-        "account": "leader",
-        "userId": "FEK088",
-        "loginTime": "2026-03-24 09:12:31"
+        "userId": "FEK088"
       }
     },
     {
-      "at": "2026-03-24T03:43:52.314Z",
-      "type": "auth.success",
-      "summary": "follower account authenticated",
+      "at": "2026-04-02T05:04:38.804Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:38.804Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
       "detail": {
-        "account": "follower",
-        "userId": "QKR315",
-        "loginTime": "2026-03-24 09:13:51"
+        "code": 1005,
+        "reason": "No reason provided"
       }
     },
     {
-      "at": "2026-03-23T13:55:53.328Z",
-      "type": "auth.success",
-      "summary": "follower account authenticated",
+      "at": "2026-04-02T05:04:38.800Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
       "detail": {
-        "account": "follower",
-        "userId": "QKR315",
-        "loginTime": "2026-03-23 19:25:47"
+        "userId": "FEK088"
       }
     },
     {
-      "at": "2026-03-23T06:21:10.710Z",
-      "type": "mirror.dry_run",
-      "summary": "Dry-run follower order prepared",
+      "at": "2026-04-02T05:04:36.814Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
       "detail": {
-        "orderId": "SIM-1002",
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2530620000PE",
-          "transaction_type": "SELL",
-          "order_type": "LIMIT",
-          "quantity": 10,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 150,
-          "trigger_price": 0,
-          "tag": "CPYSIM1002"
-        }
+        "userId": "FEK088"
       }
     },
     {
-      "at": "2026-03-23T06:19:25.773Z",
-      "type": "mirror.blocked",
-      "summary": "Follower order blocked by policy",
+      "at": "2026-04-02T05:04:36.797Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:36.797Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
       "detail": {
-        "orderId": "SIM-1001",
-        "reasons": [
-          "Quantity 75 exceeds MAX_QUANTITY_PER_ORDER=10."
-        ]
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:36.792Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:34.808Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:34.792Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:34.791Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:34.786Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:32.805Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:32.784Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:32.783Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:32.778Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:30.793Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:30.776Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:30.775Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:30.771Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:28.785Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:28.768Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:28.767Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:28.762Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:26.782Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:26.760Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:26.760Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:26.755Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:24.769Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:24.753Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:24.752Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:24.748Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:22.784Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:22.746Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:22.746Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:22.741Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:20.754Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:20.740Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:20.739Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:20.735Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:18.747Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:18.732Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:18.732Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:18.727Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:16.739Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:16.725Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:16.725Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:16.720Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:14.741Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:14.718Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:14.718Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:14.713Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:12.748Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:12.711Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:12.711Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:12.706Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:10.742Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:10.705Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:10.704Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:10.699Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:08.712Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:08.697Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:08.697Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:08.692Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:06.728Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:06.690Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:06.689Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:06.685Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:04.704Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:04.683Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:04.682Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:04.678Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:02.689Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:02.677Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:02.676Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:02.671Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:00.686Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:00.669Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:04:00.669Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:04:00.664Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:58.678Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:58.662Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:58.662Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:58.657Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:56.678Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:56.656Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:56.656Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:56.650Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:54.677Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:54.649Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:54.648Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:54.643Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:52.664Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:52.641Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:52.639Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:52.635Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:50.654Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:50.634Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:50.634Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:50.629Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:48.649Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:48.628Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:48.628Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:48.623Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:46.636Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:46.622Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:46.621Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:46.617Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:44.628Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:44.616Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:44.615Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:44.611Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:42.631Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:42.609Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:42.608Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:42.604Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:40.624Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:40.602Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:40.602Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:40.597Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:38.616Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:38.596Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:38.595Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:38.591Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:36.608Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:36.590Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:36.589Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:36.584Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:34.597Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:34.583Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:34.582Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:34.577Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:32.597Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:32.574Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:32.574Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:32.569Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:30.603Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:30.567Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:30.567Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:30.560Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:28.582Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:28.559Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:28.559Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:28.555Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:26.579Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:26.554Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:26.554Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:26.549Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:24.562Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:24.548Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:24.548Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:24.542Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:22.580Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:22.541Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:22.541Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:22.535Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:20.549Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:20.534Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:20.534Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:20.529Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:18.548Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:18.529Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:18.528Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:18.523Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:16.538Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:16.522Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:16.521Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:16.516Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:14.546Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:14.515Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:14.514Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:14.509Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:12.529Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:12.508Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:12.508Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:12.503Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:10.542Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:10.502Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:10.501Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:10.497Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:08.538Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:08.495Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:08.495Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:08.490Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:06.503Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:06.488Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:06.488Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:06.483Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:04.501Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:04.481Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:04.481Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:04.475Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:02.488Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:02.473Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-02T05:03:02.473Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-02T05:03:02.468Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
       }
     }
   ]

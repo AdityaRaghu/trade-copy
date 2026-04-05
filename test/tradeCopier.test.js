@@ -36,6 +36,7 @@ test('buildFollowerOrder applies multiplier and market protection', () => {
       validity: 'DAY',
       price: 0,
       trigger_price: 0,
+      market_protection: '0',
     },
     config,
     { traceId: 'ABCD1234' },

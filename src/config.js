@@ -112,6 +112,15 @@ function parseNumber(value, defaultValue) {
     maxQuantityPerOrder: parseNumber(process.env.MAX_QUANTITY_PER_ORDER, 0),
     allowMarketOrders: parseBoolean(process.env.ALLOW_MARKET_ORDERS, true),
     marketProtection: process.env.MARKET_PROTECTION ?? '-1',
+    followMarketOrdersAsLimit: parseBoolean(
+      process.env.FOLLOW_MARKET_ORDERS_AS_LIMIT,
+      true,
+    ),
+    maxPriceDeviationPercent: parseNumber(
+      process.env.MAX_PRICE_DEVIATION_PERCENT,
+      0.30,
+    ),
+    priceTickSize: parseNumber(process.env.PRICE_TICK_SIZE, 0.05),
     allowedVarieties: parseCsv(process.env.ALLOWED_VARIETIES, ['regular', 'amo']),
     allowedExchanges: parseCsv(process.env.ALLOWED_EXCHANGES, [
       'NSE',

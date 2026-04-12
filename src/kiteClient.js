@@ -87,7 +87,9 @@ export class KiteClient {
     async getProfile(accessToken) {
       return this.request('GET', '/user/profile', { accessToken });
     }
-
+    async getPositions(accessToken) {
+      return this.request('GET', '/portfolio/positions', { accessToken });
+    }
     async placeOrder(accessToken, order) {
         const variety = order.variety ?? 'regular';
         const payload = { ...order };

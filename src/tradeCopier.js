@@ -108,7 +108,6 @@ export function buildFollowerOrder(sourceOrder, cfg, { traceId } = {}) {
     qty = Math.floor(qty / cfg.lotSize) * cfg.lotSize;
   if (cfg.maxLots > 0 && cfg.lotSize > 0)
     qty = Math.min(qty, cfg.maxLots * cfg.lotSize);
-    qty = cfg.maxLots;
   const tag = makeTag(cfg.tagPrefix, traceId ?? String(sourceOrder.order_id ?? makeId()).slice(-8));
   const order = { ...norm, quantity: qty, tag };
 
@@ -190,6 +189,7 @@ export class TradeCopier {
     };
     this._setSession(account, session);
     this._persistTokens();
+    await this._snapshotPositions(account, session.accessToken);
     this._log('auth.success', `${account} account authenticated`, { account, userId: session.userId });
     if (account === LEADER) this.startSourceStream(true);
     return session;
@@ -373,11 +373,25 @@ export class TradeCopier {
       this._log('mirror.skipped', 'Follower order skipped after multiplier', { orderId: order.order_id, followerId: id });
       return;
     }
+    const leaderPre =this.runtime.preConnectedPositions?.leader ?? {};
+    const followerPre =this.runtime.preConnectedPositions?.[id] ?? {};
+    const symbol = fo.tradingsymbol;
+    const leaderPreQty = leaderPre[symbol] ?? 0;
+    if (leaderPreQty !== 0){
+      const isBuy = upper(fo.transaction_type) === 'BUY';
+      const isSquareingOff = (leaderPreQty < 0 && isBuy) || (leaderPreQty > 0 && !isBuy);
+      if (isSquareingOff && (followerPre[symbol] ?? 0) === 0) {
+        this._saveFollower(order.order_id, id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'skipped', blockedReasons: [`Square off pre connect ${symbol} position skipped - follower was not tin this trade`] });
+        this._log('mirror.skipped_preconnect', 'Skipped pre connect square off for  ${id}',{orderId: order.order_id, followerId: id, symbol, leaderPreQty });
+          return;
+        }
+      }
     if (this.cfg.dryRun) {
       this._saveFollower(order.order_id, id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'dry_run', followerPreview: fo });
       this._log('mirror.dry_run', 'Dry-run follower order prepared', { orderId: order.order_id, followerId: id, followerOrder: fo });
       return;
     }
+  
 
     const session = this._requireSession(id);
     if (tokenExpired(session)) {

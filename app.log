@@ -3,37 +3,266 @@ nohup: ignoring input
 > zerodha-trade-copier@0.1.0 start
 > node src/server.js
 
-[2026-04-02T03:42:49.238Z] leader token appears expired (age: 191h 19m). Please re-authenticate. { account: 'leader', userId: 'FEK088', tokenAge: '191h 19m' }
-[2026-04-02T03:42:49.239Z] follower token appears expired (age: 191h 33m). Please re-authenticate. { account: 'follower', userId: 'QKR315', tokenAge: '191h 33m' }
-[2026-04-02T03:42:49.241Z] Leader token is expired – re-authenticate the leader account before market opens 
+[2026-04-10T03:47:36.379Z] Connecting to leader order stream { userId: 'FEK088' }
 Trade copier listening on http://0.0.0.0:8787 (dry_run=false)
-[2026-04-02T03:43:30.877Z] follower account authenticated {
-  account: 'follower',
-  userId: 'QKR315',
-  loginTime: '2026-04-02 09:02:37'
+[2026-04-10T03:47:36.483Z] Leader order stream connected { userId: 'FEK088' }
+[2026-04-10T03:48:42.450Z] Source order update not actionable yet { orderId: '260410150112559', status: 'OPEN' }
+[2026-04-10T03:48:42.451Z] Source order update not actionable yet { orderId: '260410150112559', status: 'UPDATE' }
+[2026-04-10T03:48:42.452Z] Source order update not actionable yet { orderId: '260410150112559', status: 'UPDATE' }
+[2026-04-10T03:48:42.534Z] Follower order placed {
+  sourceOrderId: '260410150112559',
+  followerOrderId: '260410170096414',
+  attempt: 1,
+  followerOrder: {
+    variety: 'regular',
+    exchange: 'NFO',
+    tradingsymbol: 'NIFTY2641324150CE',
+    transaction_type: 'SELL',
+    order_type: 'LIMIT',
+    quantity: 65,
+    product: 'NRML',
+    validity: 'DAY',
+    disclosed_quantity: 0,
+    price: 73.7,
+    trigger_price: 0,
+    market_protection: undefined,
+    tag: 'CPY50112559'
+  }
 }
-[2026-04-02T03:54:15.369Z] leader account authenticated {
-  account: 'leader',
-  userId: 'FEK088',
-  loginTime: '2026-04-02 09:20:03'
+[2026-04-10T03:48:50.351Z] Source order update not actionable yet { orderId: '260410150114444', status: 'OPEN' }
+[2026-04-10T03:48:50.352Z] Source order update not actionable yet { orderId: '260410150114444', status: 'UPDATE' }
+[2026-04-10T03:48:50.353Z] Source order update not actionable yet { orderId: '260410150114444', status: 'UPDATE' }
+[2026-04-10T03:48:50.354Z] Source order update not actionable yet { orderId: '260410150114444', status: 'UPDATE' }
+[2026-04-10T03:48:50.355Z] Source order update not actionable yet { orderId: '260410150114444', status: 'UPDATE' }
+[2026-04-10T03:48:50.355Z] Source order update not actionable yet { orderId: '260410150114444', status: 'UPDATE' }
+[2026-04-10T03:48:50.424Z] Follower order placed {
+  sourceOrderId: '260410150114444',
+  followerOrderId: '260410170098097',
+  attempt: 1,
+  followerOrder: {
+    variety: 'regular',
+    exchange: 'NFO',
+    tradingsymbol: 'NIFTY2641324150CE',
+    transaction_type: 'BUY',
+    order_type: 'LIMIT',
+    quantity: 65,
+    product: 'NRML',
+    validity: 'DAY',
+    disclosed_quantity: 0,
+    price: 72.8,
+    trigger_price: 0,
+    market_protection: undefined,
+    tag: 'CPY50114444'
+  }
 }
-[2026-04-02T03:54:15.370Z] Connecting to leader order stream { userId: 'FEK088' }
-[2026-04-02T03:54:15.415Z] Leader order stream connected { userId: 'FEK088' }
-[2026-04-02T03:55:59.495Z] Failed to process source order {
-  orderId: '260402150213608',
-  message: 'No IPs configured for this app. Add allowed IPs on the Kite developer console (https://developers.kite.trade).'
+[2026-04-10T03:51:42.121Z] Source order update not actionable yet { orderId: '260410150152472', status: 'OPEN' }
+[2026-04-10T03:51:42.177Z] Failed to process source order {
+  orderId: '260410150152472',
+  message: '`quantity` should be multiple of 65.'
 }
-[2026-04-02T03:55:59.500Z] Failed to process source order {
-  orderId: '260402150213608',
-  message: 'No IPs configured for this app. Add allowed IPs on the Kite developer console (https://developers.kite.trade).'
+[2026-04-10T03:52:04.829Z] Source order update not actionable yet { orderId: '260410150156466', status: 'OPEN' }
+[2026-04-10T03:52:04.830Z] Source order update not actionable yet { orderId: '260410150156466', status: 'UPDATE' }
+[2026-04-10T03:52:04.832Z] Skipped duplicate source order while processing is already in progress { orderId: '260410150156466', status: 'UPDATE' }
+[2026-04-10T03:52:04.833Z] Skipped duplicate source order while processing is already in progress { orderId: '260410150156466', status: 'UPDATE' }
+[2026-04-10T03:52:04.887Z] Failed to process source order {
+  orderId: '260410150156466',
+  message: '`quantity` should be multiple of 65.'
 }
-[2026-04-02T04:00:53.817Z] Failed to process source order {
-  orderId: '260402150261680',
-  message: 'Market orders without market protection are not allowed via API. Please set market protection or use a Limit order.'
+[2026-04-10T05:00:17.574Z] Source order update not actionable yet { orderId: '260410150593362', status: 'OPEN' }
+[2026-04-10T05:00:17.575Z] Source order update not actionable yet { orderId: '260410150593362', status: 'UPDATE' }
+[2026-04-10T05:00:17.576Z] Source order update not actionable yet { orderId: '260410150593362', status: 'UPDATE' }
+[2026-04-10T05:00:17.577Z] Source order update not actionable yet { orderId: '260410150593362', status: 'UPDATE' }
+[2026-04-10T05:00:17.675Z] Follower order placed {
+  sourceOrderId: '260410150593362',
+  followerOrderId: '260410170536113',
+  attempt: 1,
+  followerOrder: {
+    variety: 'regular',
+    exchange: 'NFO',
+    tradingsymbol: 'NIFTY2641324200CE',
+    transaction_type: 'SELL',
+    order_type: 'LIMIT',
+    quantity: 65,
+    product: 'NRML',
+    validity: 'DAY',
+    disclosed_quantity: 0,
+    price: 74.5,
+    trigger_price: 0,
+    market_protection: undefined,
+    tag: 'CPY50593362'
+  }
 }
-[2026-04-02T04:00:53.827Z] Failed to process source order {
-  orderId: '260402150261680',
-  message: 'Market orders without market protection are not allowed via API. Please set market protection or use a Limit order.'
+[2026-04-10T05:11:42.005Z] Source order update not actionable yet { orderId: '260410150632738', status: 'OPEN' }
+[2026-04-10T05:11:42.006Z] Source order update not actionable yet { orderId: '260410150632738', status: 'UPDATE' }
+[2026-04-10T05:11:42.007Z] Source order update not actionable yet { orderId: '260410150632738', status: 'UPDATE' }
+[2026-04-10T05:11:42.008Z] Source order update not actionable yet { orderId: '260410150632738', status: 'UPDATE' }
+[2026-04-10T05:11:42.103Z] Follower order placed {
+  sourceOrderId: '260410150632738',
+  followerOrderId: '260410170572867',
+  attempt: 1,
+  followerOrder: {
+    variety: 'regular',
+    exchange: 'NFO',
+    tradingsymbol: 'NIFTY2641324200CE',
+    transaction_type: 'BUY',
+    order_type: 'LIMIT',
+    quantity: 65,
+    product: 'NRML',
+    validity: 'DAY',
+    disclosed_quantity: 0,
+    price: 72.6,
+    trigger_price: 0,
+    market_protection: undefined,
+    tag: 'CPY50632738'
+  }
+}
+[2026-04-10T05:30:54.933Z] Source order update not actionable yet { orderId: '260410150697769', status: 'OPEN' }
+[2026-04-10T05:30:54.934Z] Source order update not actionable yet { orderId: '260410150697769', status: 'UPDATE' }
+[2026-04-10T05:30:54.935Z] Source order update not actionable yet { orderId: '260410150697769', status: 'UPDATE' }
+[2026-04-10T05:30:54.936Z] Source order update not actionable yet { orderId: '260410150697769', status: 'UPDATE' }
+[2026-04-10T05:30:55.002Z] Follower order placed {
+  sourceOrderId: '260410150697769',
+  followerOrderId: '260410170634914',
+  attempt: 1,
+  followerOrder: {
+    variety: 'regular',
+    exchange: 'NFO',
+    tradingsymbol: 'NIFTY2641323700PE',
+    transaction_type: 'SELL',
+    order_type: 'LIMIT',
+    quantity: 65,
+    product: 'NRML',
+    validity: 'DAY',
+    disclosed_quantity: 0,
+    price: 53.6,
+    trigger_price: 0,
+    market_protection: undefined,
+    tag: 'CPY50697769'
+  }
+}
+[2026-04-10T05:31:27.489Z] Source order update not actionable yet { orderId: '260410150700173', status: 'OPEN' }
+[2026-04-10T05:31:27.490Z] Source order update not actionable yet { orderId: '260410150700173', status: 'UPDATE' }
+[2026-04-10T05:31:27.491Z] Source order update not actionable yet { orderId: '260410150700173', status: 'UPDATE' }
+[2026-04-10T05:31:27.491Z] Source order update not actionable yet { orderId: '260410150700173', status: 'UPDATE' }
+[2026-04-10T05:31:27.565Z] Follower order placed {
+  sourceOrderId: '260410150700173',
+  followerOrderId: '260410170637166',
+  attempt: 1,
+  followerOrder: {
+    variety: 'regular',
+    exchange: 'NFO',
+    tradingsymbol: 'NIFTY2641323700PE',
+    transaction_type: 'BUY',
+    order_type: 'LIMIT',
+    quantity: 65,
+    product: 'NRML',
+    validity: 'DAY',
+    disclosed_quantity: 0,
+    price: 51.05,
+    trigger_price: 0,
+    market_protection: undefined,
+    tag: 'CPY50700173'
+  }
+}
+[2026-04-10T08:35:05.957Z] Source order update not actionable yet { orderId: '260410151167003', status: 'OPEN' }
+[2026-04-10T08:35:05.957Z] Source order update not actionable yet { orderId: '260410151167003', status: 'UPDATE' }
+[2026-04-10T08:35:05.958Z] Source order update not actionable yet { orderId: '260410151167003', status: 'UPDATE' }
+[2026-04-10T08:35:05.959Z] Source order update not actionable yet { orderId: '260410151167003', status: 'UPDATE' }
+[2026-04-10T08:35:05.959Z] Source order update not actionable yet { orderId: '260410151167003', status: 'UPDATE' }
+[2026-04-10T08:35:06.035Z] Follower order placed {
+  sourceOrderId: '260410151167003',
+  followerOrderId: '260410171089029',
+  attempt: 1,
+  followerOrder: {
+    variety: 'regular',
+    exchange: 'NFO',
+    tradingsymbol: 'NIFTY2641324200CE',
+    transaction_type: 'SELL',
+    order_type: 'LIMIT',
+    quantity: 65,
+    product: 'NRML',
+    validity: 'DAY',
+    disclosed_quantity: 0,
+    price: 75.7,
+    trigger_price: 0,
+    market_protection: undefined,
+    tag: 'CPY51167003'
+  }
+}
+[2026-04-10T08:38:24.823Z] Source order update not actionable yet { orderId: '260410151175151', status: 'OPEN' }
+[2026-04-10T08:38:24.824Z] Source order update not actionable yet { orderId: '260410151175151', status: 'UPDATE' }
+[2026-04-10T08:38:24.825Z] Source order update not actionable yet { orderId: '260410151175151', status: 'UPDATE' }
+[2026-04-10T08:38:24.884Z] Follower order placed {
+  sourceOrderId: '260410151175151',
+  followerOrderId: '260410171096738',
+  attempt: 1,
+  followerOrder: {
+    variety: 'regular',
+    exchange: 'NFO',
+    tradingsymbol: 'NIFTY2641324200CE',
+    transaction_type: 'BUY',
+    order_type: 'LIMIT',
+    quantity: 65,
+    product: 'NRML',
+    validity: 'DAY',
+    disclosed_quantity: 0,
+    price: 71.65,
+    trigger_price: 0,
+    market_protection: undefined,
+    tag: 'CPY51175151'
+  }
+}
+[2026-04-10T09:04:20.324Z] Follower order placed {
+  sourceOrderId: '260410151284078',
+  followerOrderId: '260410171204787',
+  attempt: 1,
+  followerOrder: {
+    variety: 'regular',
+    exchange: 'NFO',
+    tradingsymbol: 'NIFTY2641324200CE',
+    transaction_type: 'SELL',
+    order_type: 'LIMIT',
+    quantity: 65,
+    product: 'NRML',
+    validity: 'DAY',
+    disclosed_quantity: 0,
+    price: 56.5,
+    trigger_price: 0,
+    market_protection: '0',
+    tag: 'CPY51284078'
+  }
+}
+[2026-04-10T09:17:12.217Z] Source order update not actionable yet { orderId: '260410151324783', status: 'OPEN' }
+[2026-04-10T09:17:12.217Z] Source order update not actionable yet { orderId: '260410151324783', status: 'UPDATE' }
+[2026-04-10T09:17:12.286Z] Follower order placed {
+  sourceOrderId: '260410151324783',
+  followerOrderId: '260410171245500',
+  attempt: 1,
+  followerOrder: {
+    variety: 'regular',
+    exchange: 'NFO',
+    tradingsymbol: 'NIFTY2641324200CE',
+    transaction_type: 'BUY',
+    order_type: 'LIMIT',
+    quantity: 65,
+    product: 'NRML',
+    validity: 'DAY',
+    disclosed_quantity: 0,
+    price: 54.45,
+    trigger_price: 0,
+    market_protection: undefined,
+    tag: 'CPY51324783'
+  }
+}
+[2026-04-10T09:34:42.229Z] Source order update not actionable yet { orderId: '260410151389173', status: 'OPEN' }
+[2026-04-10T09:34:42.300Z] Failed to process source order {
+  orderId: '260410151389173',
+  message: '`quantity` should be multiple of 65.'
+}
+[2026-04-10T09:39:56.460Z] Source order update not actionable yet { orderId: '260410151415533', status: 'OPEN' }
+[2026-04-10T09:39:56.532Z] Failed to process source order {
+  orderId: '260410151415533',
+  message: '`quantity` should be multiple of 65.'
 }
 Killed
 npm notice

@@ -6,190 +6,111 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, '..');
 
 function loadEnvFile(envPath = path.join(projectRoot, '.env')) {
-  if (!fs.existsSync(envPath)) {
-    return;
-  }
-
-  const raw = fs.readFileSync(envPath, 'utf8');
-  for (const line of raw.split(/\r?\n/)) {
-    const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith('#')) {
-      continue;
-    }
-
-    const separatorIndex = trimmed.indexOf('=');
-    if (separatorIndex === -1) {
-      continue;
-    }
-
-    const key = trimmed.slice(0, separatorIndex).trim();
-    let value = trimmed.slice(separatorIndex + 1).trim();
-
-    if (
-      (value.startsWith("'") && value.endsWith("'")) ||
-      (value.startsWith('"') && value.endsWith('"'))
-    ) {
-      value = value.slice(1, -1);
-    }
-
-    if (!(key in process.env)) {
-      process.env[key] = value;
-    }
+  if (!fs.existsSync(envPath)) return;
+  for (const line of fs.readFileSync(envPath, 'utf8').split(/\r?\n/)) {
+    const t = line.trim();
+    if (!t || t.startsWith('#')) continue;
+    const i = t.indexOf('=');
+    if (i === -1) continue;
+    const key = t.slice(0, i).trim();
+    let val = t.slice(i + 1).trim();
+    if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'")))
+      val = val.slice(1, -1);
+    if (!(key in process.env)) process.env[key] = val;
   }
 }
 
-function parseBoolean(value, defaultValue = false) {
-  if (value == null || value === '') {
-    return defaultValue;
-  }
+const bool = (v, d = false) => {
+  if (v == null || v === '') return d;
+  const s = String(v).trim();
+  if (['1', 'true', 'yes', 'on'].includes(s)) return true;
+  if (['0', 'false', 'no', 'off'].includes(s)) return false;
+  return d;
+};
+const num = (v, d) => { if (v == null || v === '') return d; const n = Number(v); return Number.isFinite(n) ? n : d; };
+const csv = (v, d) => v ? v.split(',').map(s => s.trim()).filter(Boolean) : [...d];
 
-  const normalized = String(value).trim()
-  if (['1', 'true', 'yes', 'on'].includes(normalized)) {
-    return true;
-  }
-  if (['0', 'false', 'no', 'off'].includes(normalized)) {
-    return false;
-  }
+loadEnvFile();
+const port = num(process.env.PORT, 8787);
+const defaultRedirectUrl = `http://127.0.0.1:${port}/auth/zerodha/callback`;
 
-  return defaultValue;
-}
-
-function parseNumber(value, defaultValue) {
-    if (value == null || value === '') {
-      return defaultValue;
-    }
-  
-    const parsed = Number(value);
-    return Number.isFinite(parsed) ? parsed : defaultValue;
-  }
-  
-  function parseCsv(value, defaultValues) {
-    if (!value) {
-      return [...defaultValues];
-    }
-  
-    return value
-      .split(',')
-      .map((item) => item.trim())
-      .filter(Boolean);
-  }
-  
-  loadEnvFile();
-  
-  const port = parseNumber(process.env.PORT, 8787);
-  const defaultRedirectUrl = `http://127.0.0.1:${port}/auth/zerodha/callback`;
-  
-  function buildAccountConfig(envPrefix) {
-    return {
-      apiKey:
-        process.env[`${envPrefix}_KITE_API_KEY`] ??
-        process.env.KITE_API_KEY ??
-        '',
-      apiSecret:
-        process.env[`${envPrefix}_KITE_API_SECRET`] ??
-        process.env.KITE_API_SECRET ??
-        '',
-      redirectUrl:
-        process.env[`${envPrefix}_KITE_REDIRECT_URL`] ??
-        process.env.KITE_REDIRECT_URL ??
-        defaultRedirectUrl,
-    };
-  }
-  
-  export const config = {
-    projectRoot,
-    host: process.env.HOST ?? '127.0.0.1',
-    port,
-    accounts: {
-      leader: buildAccountConfig('LEADER'),
-      follower: buildAccountConfig('FOLLOWER'),
-    },
-    dryRun: parseBoolean(process.env.DRY_RUN, true),
-    quantityMultiplier: parseNumber(
-      process.env.FOLLOW_QUANTITY_MULTIPLIER,
-      1,
-    ),
-    maxQuantityPerOrder: parseNumber(process.env.MAX_QUANTITY_PER_ORDER, 0),
-    allowMarketOrders: parseBoolean(process.env.ALLOW_MARKET_ORDERS, true),
-    marketProtection: process.env.MARKET_PROTECTION ?? '-1',
-    followMarketOrdersAsLimit: parseBoolean(
-      process.env.FOLLOW_MARKET_ORDERS_AS_LIMIT,
-      true,
-    ),
-    maxPriceDeviationPercent: parseNumber(
-      process.env.MAX_PRICE_DEVIATION_PERCENT,
-      0.30,
-    ),
-    priceTickSize: parseNumber(process.env.PRICE_TICK_SIZE, 0.05),
-    allowedVarieties: parseCsv(process.env.ALLOWED_VARIETIES, ['regular', 'amo']),
-    allowedExchanges: parseCsv(process.env.ALLOWED_EXCHANGES, [
-      'NSE',
-      'BSE',
-      'NFO',
-      'MCX',
-    ]),
-    allowedProducts: parseCsv(process.env.ALLOWED_PRODUCTS, ['MIS', 'NRML', 'CNC']),
-    allowedOrderTypes: parseCsv(process.env.ALLOWED_ORDER_TYPES, [
-      'MARKET',
-      'LIMIT',
-      'SL',
-      'SL-M',
-    ]),
-    replicateCancellations: parseBoolean(
-      process.env.REPLICATE_CANCELLATIONS,
-      true,
-    ),
-    replicateModifications: parseBoolean(
-      process.env.REPLICATE_MODIFICATIONS,
-      false,
-    ),
-    tagPrefix: (process.env.ORDER_TAG_PREFIX ?? 'CPY').replace(/[^A-Za-z0-9]/g, '').slice(0, 4) || 'CPY',
-    logBufferSize: parseNumber(process.env.LOG_BUFFER_SIZE, 200),
-    tokenStoreFile: path.resolve(
-      projectRoot,
-      process.env.TOKEN_STORE_FILE ?? 'data/tokens.json',
-    ),
-    runtimeStoreFile: path.resolve(
-      projectRoot,
-      process.env.RUNTIME_STORE_FILE ?? 'data/runtime.json',
-    ),
+function creds(prefix) {
+  return {
+    apiKey: process.env[`${prefix}_KITE_API_KEY`] ?? process.env.KITE_API_KEY ?? '',
+    apiSecret: process.env[`${prefix}_KITE_API_SECRET`] ?? process.env.KITE_API_SECRET ?? '',
+    redirectUrl: process.env[`${prefix}_KITE_REDIRECT_URL`] ?? process.env.KITE_REDIRECT_URL ?? defaultRedirectUrl,
   };
-  
-  export function getAccountConfig(account) {
-    const accountConfig = config.accounts?.[account];
-    if (!accountConfig) {
-      throw new Error(`Unknown account "${account}". Expected leader or follower.`);
-    }
-  
-    return accountConfig;
+}
+
+const globalDefs = {
+  quantityMultiplier: num(process.env.FOLLOW_QUANTITY_MULTIPLIER ?? process.env.FOLLOWER_QUANTITY_MULTIPLIER, 1),
+  maxQuantityPerOrder: num(process.env.MAX_QUANTITY_PER_ORDER, 0),
+  maxPriceDeviationPercent: num(process.env.MAX_PRICE_DEVIATION_PERCENT, 1.0),
+  marketProtection: process.env.MARKET_PROTECTION ?? '-1',
+  followMarketOrdersAsLimit: bool(process.env.FOLLOW_MARKET_ORDERS_AS_LIMIT, true),
+  priceTickSize: num(process.env.PRICE_TICK_SIZE, 0.05),
+  lotSize: num(process.env.LOT_SIZE, 0),
+  maxLots: num(process.env.MAX_LOTS, 0),
+};
+
+function followerObj(prefix, id, label) {
+  return {
+    id, label, ...creds(prefix),
+    quantityMultiplier: num(process.env[`${prefix}_QUANTITY_MULTIPLIER`], globalDefs.quantityMultiplier),
+    maxQuantityPerOrder: num(process.env[`${prefix}_MAX_QUANTITY_PER_ORDER`], globalDefs.maxQuantityPerOrder),
+    maxPriceDeviationPercent: num(process.env[`${prefix}_MAX_PRICE_DEVIATION_PERCENT`], globalDefs.maxPriceDeviationPercent),
+    marketProtection: process.env[`${prefix}_MARKET_PROTECTION`] ?? globalDefs.marketProtection,
+    followMarketOrdersAsLimit: bool(process.env[`${prefix}_FOLLOW_MARKET_ORDERS_AS_LIMIT`], globalDefs.followMarketOrdersAsLimit),
+    priceTickSize: num(process.env[`${prefix}_PRICE_TICK_SIZE`], globalDefs.priceTickSize),
+    lotSize: num(process.env[`${prefix}_LOT_SIZE`], globalDefs.lotSize),
+    maxLots: num(process.env[`${prefix}_MAX_LOTS`], globalDefs.maxLots),
+  };
+}
+
+function buildFollowers() {
+  const list = [];
+  for (let i = 1; i <= 20; i++) {
+    const p = `FOLLOWER_${i}`;
+    if (process.env[`${p}_KITE_API_KEY`] || process.env[`${p}_KITE_API_SECRET`])
+      list.push(followerObj(p, `follower_${i}`, process.env[`${p}_LABEL`] ?? `Follower ${i}`));
   }
-  
-  export function hasKiteCredentials(account) {
-    const accountConfig = getAccountConfig(account);
-    return Boolean(
-      accountConfig.apiKey &&
-        accountConfig.apiSecret &&
-        accountConfig.redirectUrl,
-    );
-  }
-  
-  export function requireKiteCredentials(accounts) {
-    const requiredAccounts = Array.isArray(accounts) ? accounts : [accounts];
-    const missing = requiredAccounts.filter((account) => !hasKiteCredentials(account));
-  
-    if (missing.length === 0) {
-      return;
-    }
-  
-    const accountInstructions = missing
-      .map((account) => {
-        const prefix = account.toUpperCase();
-        return `${prefix}_KITE_API_KEY, ${prefix}_KITE_API_SECRET, and ${prefix}_KITE_REDIRECT_URL`;
-      })
-      .join('; ');
-  
-    throw new Error(
-      `Missing Kite credentials for ${missing.join(', ')}. Set ${accountInstructions} in .env,
-      or use shared KITE_API_KEY, KITE_API_SECRET, and KITE_REDIRECT_URL if Zerodha has approved one multi-user app.`,
-    );
-  }
+  // Legacy single-follower fallback
+  if (!list.length && (process.env.FOLLOWER_KITE_API_KEY || process.env.FOLLOWER_KITE_API_SECRET))
+    list.push(followerObj('FOLLOWER', 'follower_1', process.env.FOLLOWER_LABEL ?? 'Follower 1'));
+  return list;
+}
+
+export const config = {
+  projectRoot, host: process.env.HOST ?? '127.0.0.1', port,
+  accounts: { leader: creds('LEADER'), followers: buildFollowers() },
+  dryRun: bool(process.env.DRY_RUN, true),
+  ...globalDefs,
+  allowMarketOrders: bool(process.env.ALLOW_MARKET_ORDERS, true),
+  allowedVarieties: csv(process.env.ALLOWED_VARIETIES, ['regular', 'amo']),
+  allowedExchanges: csv(process.env.ALLOWED_EXCHANGES, ['NSE', 'BSE', 'NFO', 'MCX']),
+  allowedProducts: csv(process.env.ALLOWED_PRODUCTS, ['MIS', 'NRML', 'CNC']),
+  allowedOrderTypes: csv(process.env.ALLOWED_ORDER_TYPES, ['MARKET', 'LIMIT', 'SL', 'SL-M']),
+  replicateCancellations: bool(process.env.REPLICATE_CANCELLATIONS, true),
+  replicateModifications: bool(process.env.REPLICATE_MODIFICATIONS, false),
+  tagPrefix: (process.env.ORDER_TAG_PREFIX ?? 'CPY').replace(/[^A-Za-z0-9]/g, '').slice(0, 4) || 'CPY',
+  logBufferSize: num(process.env.LOG_BUFFER_SIZE, 200),
+  tokenStoreFile: path.resolve(projectRoot, process.env.TOKEN_STORE_FILE ?? 'data/tokens.json'),
+  runtimeStoreFile: path.resolve(projectRoot, process.env.RUNTIME_STORE_FILE ?? 'data/runtime.json'),
+};
+
+export function getAccountConfig(account) {
+  if (account === 'leader') return config.accounts.leader;
+  const f = (config.accounts.followers ?? []).find(x => x.id === account);
+  if (!f) throw new Error(`Unknown account "${account}".`);
+  return f;
+}
+
+export const hasKiteCredentials = account => {
+  const c = getAccountConfig(account);
+  return Boolean(c.apiKey && c.apiSecret && c.redirectUrl);
+};
+
+export function requireKiteCredentials(accounts) {
+  const missing = (Array.isArray(accounts) ? accounts : [accounts]).filter(a => !hasKiteCredentials(a));
+  if (missing.length) throw new Error(`Missing Kite credentials for: ${missing.join(', ')}. Check your .env.`);
+}

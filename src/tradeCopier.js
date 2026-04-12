@@ -1,1002 +1,535 @@
 import crypto from 'node:crypto';
-
 import { KiteApiError, KiteClient } from './kiteClient.js';
 import { readJsonFile, writeJsonFile } from './storage.js';
 
-const SOURCE_ACCOUNT = 'leader';
-const FOLLOWER_ACCOUNT = 'follower';
-const TERMINAL_STATUSES = new Set(['COMPLETE', 'CANCELLED', 'REJECTED']);
-const ACTIONABLE_SOURCE_STATUSES = new Set([
-  'OPEN',
-  'COMPLETE',
-  'TRIGGER PENDING',
-  'MODIFIED',
-  'UPDATE',
-]);
+const LEADER = 'leader';
+const TERMINAL = new Set(['COMPLETE', 'CANCELLED', 'REJECTED']);
+const ACTIONABLE = new Set(['OPEN', 'COMPLETE', 'TRIGGER PENDING', 'MODIFIED', 'UPDATE']);
+const TOKEN_TTL = 16 * 3_600_000;
+const MAX_RETRIES = 2;
+const RETRY_MS = 800;
 
-// Kite tokens expire at ~6 AM IST next day. Warn after 16 hours.
-const TOKEN_MAX_AGE_MS = 16 * 60 * 60 * 1000;
-// Max retries for transient follower order failures
-const MAX_PLACE_RETRIES = 2;
-const RETRY_DELAY_MS = 800;
+// ── utils ─────────────────────────────────────────────────────────────────────
+const nowIso = () => new Date().toISOString();
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const num = (v, fb = 0) => { const n = Number(v); return Number.isFinite(n) ? n : fb; };
+const upper = v => String(v ?? '').trim().toUpperCase();
+const lower = v => String(v ?? '').trim().toLowerCase();
+const makeId = () => crypto.randomBytes(4).toString('hex').toUpperCase();
+const makeTag = (pre, suf) => `${pre}${suf}`.replace(/[^A-Za-z0-9]/g, '').slice(0, 20);
 
-function defaultTokens() {
-  return {
-    [SOURCE_ACCOUNT]: null,
-    [FOLLOWER_ACCOUNT]: null,
-  };
+function tokenExpired(s) {
+  if (!s?.createdAt) return true;
+  return Date.now() - new Date(s.createdAt).getTime() > TOKEN_TTL;
 }
-
-function defaultRuntime() {
-  return {
-    mirroredOrders: {},
-    recentEvents: [],
-  };
+function tokenAge(s) {
+  if (!s?.createdAt) return 'unknown';
+  const ms = Date.now() - new Date(s.createdAt).getTime();
+  return `${Math.floor(ms / 3_600_000)}h ${Math.floor((ms % 3_600_000) / 60_000)}m`;
 }
-
-function nowIso() {
-  return new Date().toISOString();
-}
-
-function trimRecentEvents(events, maxSize) {
-  return events.slice(0, maxSize);
-}
-
-function numeric(value, fallback = 0) {
-  const parsed = Number(value);
-  return Number.isFinite(parsed) ? parsed : fallback;
-}
-
-function upper(value) {
-  return String(value ?? '').trim().toUpperCase();
-}
-
-function lower(value) {
-  return String(value ?? '').trim().toLowerCase();
-}
-
-function makeTraceId() {
-  return crypto.randomBytes(4).toString('hex').toUpperCase();
-}
-
-function makeOrderTag(prefix, suffix) {
-  return `${prefix}${suffix}`.replace(/[^A-Za-z0-9]/g, '').slice(0, 20);
-}
-
-function isTokenExpired(session) {
-  if (!session?.createdAt) {
-    return true;
-  }
-  const age = Date.now() - new Date(session.createdAt).getTime();
-  return age > TOKEN_MAX_AGE_MS;
-}
-
-function tokenAgeLabel(session) {
-  if (!session?.createdAt) {
-    return 'unknown';
-  }
-  const ageMs = Date.now() - new Date(session.createdAt).getTime();
-  const hours = Math.floor(ageMs / (60 * 60 * 1000));
-  const mins = Math.floor((ageMs % (60 * 60 * 1000)) / (60 * 1000));
-  return `${hours}h ${mins}m`;
-}
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 function isSelfTagged(order, prefix) {
-  const tags = new Set(
-    [order?.tag, ...(order?.tags ?? [])]
-      .filter(Boolean)
-      .map((item) => String(item).toUpperCase()),
-  );
-  return [...tags].some((tag) => tag.startsWith(String(prefix).toUpperCase()));
+  return [order?.tag, ...(order?.tags ?? [])].filter(Boolean)
+    .map(t => String(t).toUpperCase())
+    .some(t => t.startsWith(String(prefix).toUpperCase()));
+}
+function refPrice(order) {
+  const avg = num(order.average_price);
+  if (avg > 0) return avg;
+  const lim = num(order.price);
+  return lim > 0 ? lim : 0;
+}
+function roundTick(price, tick = 0.05, mode = 'nearest') {
+  if (!Number.isFinite(price) || price <= 0 || tick <= 0) return 0;
+  const s = price / tick;
+  const r = mode === 'floor' ? Math.floor(s) : mode === 'ceil' ? Math.ceil(s) : Math.round(s);
+  return Number((r * tick).toFixed(2));
+}
+function followerLimitPrice(order, cfg) {
+  const ref = refPrice(order);
+  if (ref <= 0) return 0;
+  const dev = Math.max(0, num(cfg.maxPriceDeviationPercent, 1.0));
+  return upper(order.transaction_type) === 'BUY'
+    ? roundTick(ref * (1 + dev / 100), cfg.priceTickSize, 'floor')
+    : roundTick(ref * (1 - dev / 100), cfg.priceTickSize, 'ceil');
+}
+function serializeError(err) {
+  if (err instanceof KiteApiError)
+    return { name: err.name, message: err.message, status: err.status, errorType: err.errorType, body: err.body };
+  return { name: err?.name ?? 'Error', message: err?.message ?? String(err) };
 }
 
-export function normalizeOrderStatus(status) {
-  return upper(status).replace(/\s+/g, ' ').trim();
-}
+// ── exported pure functions ───────────────────────────────────────────────────
+export function normalizeOrderStatus(s) { return upper(s).replace(/\s+/g, ' ').trim(); }
 
-export function normalizeOrderInput(order = {}) {
+export function normalizeOrderInput(o = {}) {
   return {
-    variety: lower(order.variety || 'regular'),
-    exchange: upper(order.exchange),
-    tradingsymbol: String(order.tradingsymbol ?? '').trim(),
-    transaction_type: upper(order.transaction_type),
-    order_type: upper(order.order_type),
-    quantity: Math.trunc(numeric(order.quantity)),
-    product: upper(order.product),
-    validity: upper(order.validity || 'DAY'),
-    disclosed_quantity: Math.max(0, Math.trunc(numeric(order.disclosed_quantity))),
-    price: numeric(order.price),
-    trigger_price: numeric(order.trigger_price),
-    market_protection:
-      order.market_protection == null ? undefined : String(order.market_protection),
+    variety: lower(o.variety || 'regular'),
+    exchange: upper(o.exchange),
+    tradingsymbol: String(o.tradingsymbol ?? '').trim(),
+    transaction_type: upper(o.transaction_type),
+    order_type: upper(o.order_type),
+    quantity: Math.trunc(num(o.quantity)),
+    product: upper(o.product),
+    validity: upper(o.validity || 'DAY'),
+    disclosed_quantity: Math.max(0, Math.trunc(num(o.disclosed_quantity))),
+    price: num(o.price),
+    trigger_price: num(o.trigger_price),
+    market_protection: o.market_protection == null ? undefined : String(o.market_protection),
   };
 }
 
-function needsMarketProtection(orderType) {
-  return ['MARKET', 'SL-M'].includes(upper(orderType));
-}
-
-function shouldMirrorMarketAsLimit(orderType, config = {}) {
-  return config.followMarketOrdersAsLimit && upper(orderType) === 'MARKET';
-}
-
-function roundToTick(price, tickSize = 0.05, mode = 'nearest') {
-  const tick = numeric(tickSize, 0.05);
-  if (!Number.isFinite(price) || price <= 0 || tick <= 0) {
-    return 0;
-  }
-
-  const scaled = price / tick;
-  const rounded =
-    mode === 'floor'
-      ? Math.floor(scaled)
-      : mode === 'ceil'
-      ? Math.ceil(scaled)
-      : Math.round(scaled);
-
-  return Number((rounded * tick).toFixed(2));
-}
-
-function getReferencePrice(order) {
-  const averagePrice = numeric(order.average_price);
-  if (averagePrice > 0) {
-    return averagePrice;
-  }
-
-  const limitPrice = numeric(order.price);
-  if (limitPrice > 0) {
-    return limitPrice;
-  }
-
-  return 0;
-}
-
-function toFollowerLimitPrice(sourceOrder, config) {
-  const referencePrice = getReferencePrice(sourceOrder);
-  if (referencePrice <= 0) {
-    return 0;
-  }
-
-  const deviationPercent = Math.max(
-    0,
-    numeric(config.maxPriceDeviationPercent, 0.30),
-  );
-
-  if (upper(sourceOrder.transaction_type) === 'BUY') {
-    const maxBuyPrice = referencePrice * (1 + deviationPercent / 100);
-    return roundToTick(maxBuyPrice, config.priceTickSize, 'floor');
-  }
-
-  const minSellPrice = referencePrice * (1 - deviationPercent / 100);
-  return roundToTick(minSellPrice, config.priceTickSize, 'ceil');
-}
-
-export function isActionableSourceOrder(order, config = {}) {
+export function isActionableSourceOrder(order, cfg = {}) {
   const status = normalizeOrderStatus(order.status);
-  const orderType = upper(order.order_type);
-
-  // For leader MARKET orders, wait until leader fill is known so we can
-  // place follower as LIMIT near the leader fill price.
-  if (shouldMirrorMarketAsLimit(orderType, config)) {
+  if (cfg.followMarketOrdersAsLimit && upper(order.order_type) === 'MARKET')
     return status === 'COMPLETE';
-  }
-
-  if (TERMINAL_STATUSES.has(status) && status !== 'COMPLETE') {
-    return false;
-  }
-
-  if (ACTIONABLE_SOURCE_STATUSES.has(status)) {
-    return true;
-  }
-
+  if (TERMINAL.has(status) && status !== 'COMPLETE') return false;
+  if (ACTIONABLE.has(status)) return true;
   return Boolean(order.exchange_order_id);
 }
 
-export function validateOrderAgainstPolicy(order, config) {
-  const reasons = [];
-
-  if (!config.allowedVarieties.includes(order.variety)) {
-    reasons.push(`Variety ${order.variety} is not allowed.`);
-  }
-
-  if (!config.allowedExchanges.includes(order.exchange)) {
-    reasons.push(`Exchange ${order.exchange} is not allowed.`);
-  }
-
-  if (!config.allowedProducts.includes(order.product)) {
-    reasons.push(`Product ${order.product} is not allowed.`);
-  }
-
-  if (!config.allowedOrderTypes.includes(order.order_type)) {
-    reasons.push(`Order type ${order.order_type} is not allowed.`);
-  }
-
-  if (!config.allowMarketOrders && order.order_type === 'MARKET') {
-    reasons.push('Market orders are disabled.');
-  }
-
-  if (!order.tradingsymbol) {
-    reasons.push('Missing trading symbol.');
-  }
-
-  if (order.quantity <= 0) {
-    reasons.push('Quantity must be greater than zero.');
-  }
-
-  if (config.maxQuantityPerOrder > 0 && order.quantity > config.maxQuantityPerOrder) {
-    reasons.push(
-      `Quantity ${order.quantity} exceeds MAX_QUANTITY_PER_ORDER=${config.maxQuantityPerOrder}.`,
-    );
-  }
-
-  return {
-    ok: reasons.length === 0,
-    reasons,
-  };
+export function validateOrderAgainstPolicy(order, cfg) {
+  const r = [];
+  if (!cfg.allowedVarieties.includes(order.variety)) r.push(`Variety ${order.variety} is not allowed.`);
+  if (!cfg.allowedExchanges.includes(order.exchange)) r.push(`Exchange ${order.exchange} is not allowed.`);
+  if (!cfg.allowedProducts.includes(order.product)) r.push(`Product ${order.product} is not allowed.`);
+  if (!cfg.allowedOrderTypes.includes(order.order_type)) r.push(`Order type ${order.order_type} is not allowed.`);
+  if (!cfg.allowMarketOrders && order.order_type === 'MARKET') r.push('Market orders are disabled.');
+  if (!order.tradingsymbol) r.push('Missing trading symbol.');
+  if (order.quantity <= 0) r.push('Quantity must be greater than zero.');
+  if (cfg.maxQuantityPerOrder > 0 && order.quantity > cfg.maxQuantityPerOrder)
+    r.push(`Quantity ${order.quantity} exceeds MAX_QUANTITY_PER_ORDER=${cfg.maxQuantityPerOrder}.`);
+  return { ok: r.length === 0, reasons: r };
 }
 
-export function buildFollowerOrder(sourceOrder, config, { traceId } = {}) {
-  const normalized = normalizeOrderInput(sourceOrder);
-  const multipliedQuantity = Math.floor(
-    normalized.quantity * numeric(config.quantityMultiplier, 1),
-  );
+export function buildFollowerOrder(sourceOrder, cfg, { traceId } = {}) {
+  const norm = normalizeOrderInput(sourceOrder);
+  let qty =Math.floor(norm.quantity * num(cfg.quantityMultiplier, 1));
+  if (cfg.lotSize > 0)
+    qty = Math.floor(qty / cfg.lotSize) * cfg.lotSize;
+  if (cfg.maxLots > 0 && cfg.lotSize > 0)
+    qty = Math.min(qty, cfg.maxLots * cfg.lotSize);
+    qty = cfg.maxLots;
+  const tag = makeTag(cfg.tagPrefix, traceId ?? String(sourceOrder.order_id ?? makeId()).slice(-8));
+  const order = { ...norm, quantity: qty, tag };
 
-  const followerOrder = {
-    ...normalized,
-    quantity: multipliedQuantity,
-    tag: makeOrderTag(
-      config.tagPrefix,
-      traceId ?? String(sourceOrder.order_id ?? makeTraceId()).slice(-8),
-    ),
-  };
-
-  if (shouldMirrorMarketAsLimit(followerOrder.order_type, config)) {
-    const boundedLimitPrice = toFollowerLimitPrice(sourceOrder, config);
-
-    if (boundedLimitPrice > 0) {
-      followerOrder.order_type = 'LIMIT';
-      followerOrder.price = boundedLimitPrice;
-      followerOrder.trigger_price = 0;
-      followerOrder.market_protection = undefined;
-      return followerOrder;
-    }
+  if (cfg.followMarketOrdersAsLimit && upper(order.order_type) === 'MARKET') {
+    const lp = followerLimitPrice(sourceOrder, cfg);
+    if (lp > 0)
+      return { ...order, order_type: 'LIMIT', price: lp, trigger_price: 0, market_protection: undefined };
+    // average_price was 0 → fall through to protected market order
   }
 
-  if (needsMarketProtection(followerOrder.order_type)) {
-    const sourceMarketProtection = String(
-      followerOrder.market_protection ?? '',
-    ).trim();
-
-    if (!sourceMarketProtection || sourceMarketProtection === '0') {
-      followerOrder.market_protection = String(config.marketProtection ?? '-1');
-    }
+  if (['MARKET', 'SL-M'].includes(upper(order.order_type))) {
+    const mp = String(order.market_protection ?? '').trim();
+    if (!mp || mp === '0') order.market_protection = String(cfg.marketProtection ?? '-1');
   }
 
-  return followerOrder;
+  return order;
 }
 
+// ── TradeCopier ───────────────────────────────────────────────────────────────
 export class TradeCopier {
   constructor({ config, logger = console }) {
-    this.config = config;
+    this.cfg = config;
     this.logger = logger;
-    this.kiteClients = {
-      [SOURCE_ACCOUNT]: this.createKiteClient(SOURCE_ACCOUNT),
-      [FOLLOWER_ACCOUNT]: this.createKiteClient(FOLLOWER_ACCOUNT),
-    };
 
-    this.tokens = readJsonFile(config.tokenStoreFile, defaultTokens());
-    this.runtime = readJsonFile(config.runtimeStoreFile, defaultRuntime());
+    this.clients = { [LEADER]: this._mkClient(LEADER) };
+    for (const f of this._followers()) this.clients[f.id] = this._mkClient(f.id);
+
+    this.tokens = readJsonFile(config.tokenStoreFile, { [LEADER]: null, followers: {} });
+    this.tokens.followers ??= {};
+
+    // Migrate old single-follower token format
+    if (this.tokens.follower && !Object.keys(this.tokens.followers).length) {
+      const first = this._followers()[0];
+      if (first) { this.tokens.followers[first.id] = this.tokens.follower; delete this.tokens.follower; this._persistTokens(); }
+    }
+
+    this.runtime = readJsonFile(config.runtimeStoreFile, { mirroredOrders: {}, recentEvents: [] });
+
+    // Migrate old single-follower runtime format
+    const first = this._followers()[0];
+    for (const entry of Object.values(this.runtime.mirroredOrders)) {
+      if (entry.followerOrderId && !entry.followers && first) {
+        entry.followers = { [first.id]: { mirrorStatus: entry.mirrorStatus, followerOrderId: entry.followerOrderId, followerVariety: entry.followerVariety, errors: entry.errors } };
+        ['followerOrderId', 'followerVariety', 'mirrorStatus', 'blockedReasons', 'errors'].forEach(k => delete entry[k]);
+      }
+    }
 
     this.sourceSocket = null;
-    this.sourceSocketState = 'disconnected';
+    this.socketState = 'disconnected';
     this.reconnectTimer = null;
     this.reconnectAttempt = 0;
     this.isShuttingDown = false;
-    this.processingSourceOrders = new Set();
+    this.inFlight = new Set();
   }
 
   getStatus() {
     return {
-      dryRun: this.config.dryRun,
-      sourceSocketState: this.sourceSocketState,
-      quantityMultiplier: this.config.quantityMultiplier,
-      leader: summarizeSession(
-        this.tokens[SOURCE_ACCOUNT],
-        this.getAccountConfig(SOURCE_ACCOUNT),
-      ),
-      follower: summarizeSession(
-        this.tokens[FOLLOWER_ACCOUNT],
-        this.getAccountConfig(FOLLOWER_ACCOUNT),
-      ),
+      dryRun: this.cfg.dryRun,
+      sourceSocketState: this.socketState,
+      quantityMultiplier: this.cfg.quantityMultiplier,
+      leader: this._sessionSummary(LEADER),
+      followers: this._followers().map(f => ({ id: f.id, label: f.label, ...this._sessionSummary(f.id) })),
       recentEvents: this.runtime.recentEvents,
       mirroredOrders: Object.keys(this.runtime.mirroredOrders).length,
     };
   }
 
-  isSessionExpired(account) {
-    return isTokenExpired(this.tokens[account]);
-  }
-
-  getSessionAge(account) {
-    return tokenAgeLabel(this.tokens[account]);
-  }
-
-  buildLoginUrl(account) {
-    return this.getClient(account).buildLoginUrl({ account });
-  }
+  buildLoginUrl(account) { return this._client(account).buildLoginUrl({ account }); }
+  isSessionExpired(account) { return tokenExpired(this._getSession(account)); }
+  getSessionAge(account) { return tokenAge(this._getSession(account)); }
 
   async completeLogin(account, requestToken) {
-    const session = await this.getClient(account).exchangeRequestToken(requestToken);
-    const storedSession = {
-      account,
-      userId: session.user_id,
-      userName: session.user_name,
-      apiKey: this.getAccountConfig(account).apiKey,
-      accessToken: session.access_token,
-      publicToken: session.public_token,
-      loginTime: session.login_time,
-      createdAt: nowIso(),
+    const raw = await this._client(account).exchangeRequestToken(requestToken);
+    const session = {
+      account, userId: raw.user_id, userName: raw.user_name,
+      apiKey: this._acctCfg(account).apiKey,
+      accessToken: raw.access_token, publicToken: raw.public_token,
+      loginTime: raw.login_time, createdAt: nowIso(),
     };
-
-    this.tokens[account] = storedSession;
-    this.persistTokens();
-    this.recordEvent('auth.success', `${account} account authenticated`, {
-      account,
-      userId: storedSession.userId,
-      loginTime: storedSession.loginTime,
-    });
-
-    if (account === SOURCE_ACCOUNT) {
-      this.startSourceStream(true);
-    }
-
-    return storedSession;
+    this._setSession(account, session);
+    this._persistTokens();
+    this._log('auth.success', `${account} account authenticated`, { account, userId: session.userId });
+    if (account === LEADER) this.startSourceStream(true);
+    return session;
   }
 
   async resume() {
-    // Warn about expired tokens on startup
-    for (const account of [SOURCE_ACCOUNT, FOLLOWER_ACCOUNT]) {
-      const session = this.tokens[account];
-      if (session?.accessToken && isTokenExpired(session)) {
-        this.recordEvent('auth.expired', `${account} token appears expired (age: ${tokenAgeLabel(session)}). Please re-authenticate.`, {
-          account,
-          userId: session.userId,
-          tokenAge: tokenAgeLabel(session),
-        });
-      }
+    for (const id of [LEADER, ...this._followerIds()]) {
+      const s = this._getSession(id);
+      if (s?.accessToken && tokenExpired(s))
+        this._log('auth.expired', `${id} token expired (${tokenAge(s)}). Re-authenticate.`, { account: id });
     }
-
-    if (this.tokens[SOURCE_ACCOUNT]?.accessToken) {
-      if (isTokenExpired(this.tokens[SOURCE_ACCOUNT])) {
-        this.recordEvent(
-          'stream.skip',
-          'Leader token is expired – re-authenticate the leader account before market opens',
-        );
-        return;
-      }
+    const ls = this._getSession(LEADER);
+    if (ls?.accessToken) {
+      if (tokenExpired(ls)) { this._log('stream.skip', 'Leader token expired – re-authenticate before market opens'); return; }
       this.startSourceStream();
     }
   }
 
   async shutdown() {
     this.isShuttingDown = true;
-    if (this.reconnectTimer) {
-      clearTimeout(this.reconnectTimer);
-      this.reconnectTimer = null;
-    }
-    if (this.sourceSocket && this.sourceSocket.readyState < WebSocket.CLOSING) {
-      this.sourceSocket.close();
-    }
+    if (this.reconnectTimer) { clearTimeout(this.reconnectTimer); this.reconnectTimer = null; }
+    if (this.sourceSocket?.readyState < WebSocket.CLOSING) this.sourceSocket.close();
   }
 
   async fanoutPlaceOrder(rawOrder) {
-    const leaderSession = this.requireSession(SOURCE_ACCOUNT);
-    const followerSession = this.requireSession(FOLLOWER_ACCOUNT);
-    const traceId = makeTraceId();
-
+    const traceId = makeId();
+    const leaderSession = this._requireSession(LEADER);
     const leaderOrder = normalizeOrderInput(rawOrder);
-    leaderOrder.tag = makeOrderTag(`${this.config.tagPrefix}L`, traceId);
-    if (
-      ['MARKET', 'SL-M'].includes(leaderOrder.order_type)) {
-        const leaderMarketProtection = String(
-          leaderOrder.market_protection ?? '',
-        ).trim();
-        if (!leaderMarketProtection || leaderMarketProtection === '0') {
-          leaderOrder.market_protection = String(this.config.marketProtection ?? '-1');
-        }
-      }
+    leaderOrder.tag = makeTag(`${this.cfg.tagPrefix}L`, traceId);
+    this._patchMp(leaderOrder, this.cfg);
 
-    const followerOrder = buildFollowerOrder(leaderOrder, this.config, { traceId });
+    const entries = this._followers().map(f => {
+      const cfg = this._mergedCfg(f.id);
+      return { f, cfg, order: buildFollowerOrder(leaderOrder, cfg, { traceId }) };
+    });
 
-    const leaderPolicy = validateOrderAgainstPolicy(leaderOrder, this.config);
-    const followerPolicy = validateOrderAgainstPolicy(followerOrder, this.config);
     const errors = [
-      ...leaderPolicy.reasons.map((reason) => `Leader: ${reason}`),
-      ...followerPolicy.reasons.map((reason) => `Follower: ${reason}`),
+      ...validateOrderAgainstPolicy(leaderOrder, this.cfg).reasons.map(r => `Leader: ${r}`),
+      ...entries.flatMap(({ f, cfg, order }) =>
+        validateOrderAgainstPolicy(order, cfg).reasons.map(r => `${f.id}: ${r}`)
+      ),
     ];
+    if (errors.length) throw new Error(errors.join(' '));
 
-    if (errors.length > 0) {
-      throw new Error(errors.join(' '));
-    }
-
-    if (this.config.dryRun) {
-      const payload = {
-        traceId,
-        mode: 'dry_run',
-        leaderOrder,
-        followerOrder,
-      };
-      this.recordEvent('fanout.dry_run', 'Dry-run fan-out prepared', payload);
+    if (this.cfg.dryRun) {
+      const payload = { traceId, mode: 'dry_run', leaderOrder, followers: entries.map(({ f, order }) => ({ followerId: f.id, label: f.label, order })) };
+      this._log('fanout.dry_run', 'Dry-run fan-out prepared', payload);
       return payload;
     }
 
-    const leaderClient = this.getClient(SOURCE_ACCOUNT);
-    const followerClient = this.getClient(FOLLOWER_ACCOUNT);
-    const [leaderResult, followerResult] = await Promise.allSettled([
-      leaderClient.placeOrder(leaderSession.accessToken, leaderOrder),
-      followerClient.placeOrder(followerSession.accessToken, followerOrder),
+    const settled = await Promise.allSettled([
+      this._client(LEADER).placeOrder(leaderSession.accessToken, leaderOrder),
+      ...entries.map(({ f, order }) => Promise.resolve().then(() => {
+        const s = this._requireSession(f.id);
+        return this._client(f.id).placeOrder(s.accessToken, order);
+      })),
     ]);
 
     const result = {
-      traceId,
-      mode: 'live',
-      leaderOrder,
-      followerOrder,
-      leaderResult: settleResult(leaderResult),
-      followerResult: settleResult(followerResult),
+      traceId, mode: 'live', leaderOrder, leaderResult: settleResult(settled[0]),
+      followers: entries.map(({ f, order }, i) => ({ followerId: f.id, label: f.label, order, result: settleResult(settled[i + 1]) })),
     };
-
-    this.recordEvent('fanout.live', 'Fan-out order submitted', result);
+    this._log('fanout.live', 'Fan-out order submitted', result);
     return result;
   }
 
   async simulateSourceOrder(order) {
-    return this.handleSourceOrder({
-      ...order,
-      order_id: order.order_id ?? `SIM-${Date.now()}`,
-    });
+    return this.handleSourceOrder({ ...order, order_id: order.order_id ?? `SIM-${Date.now()}` });
   }
 
   startSourceStream(force = false) {
-    const sourceSession = this.tokens[SOURCE_ACCOUNT];
-    if (!sourceSession?.accessToken) {
-      this.recordEvent(
-        'stream.skip',
-        'Leader stream not started because the leader account is not authenticated',
-      );
+    const s = this.tokens[LEADER];
+    if (!s?.accessToken) { this._log('stream.skip', 'Leader not authenticated'); return; }
+    if (tokenExpired(s)) {
+      this.socketState = 'token_expired';
+      this._log('stream.token_expired', `Leader token expired (${tokenAge(s)}). Re-authenticate.`, { userId: s.userId });
       return;
     }
-  
-    if (isTokenExpired(sourceSession)) {
-      this.sourceSocketState = 'token_expired';
-      this.recordEvent(
-        'stream.token_expired',
-        `Leader token expired (age: ${tokenAgeLabel(sourceSession)}). Re-authenticate to resume.`,
-        { userId: sourceSession.userId, tokenAge: tokenAgeLabel(sourceSession) },
-      );
+    if (!force && this.sourceSocket && (this.sourceSocket.readyState === WebSocket.OPEN || this.sourceSocket.readyState === WebSocket.CONNECTING))
       return;
-    }
-  
-    if (
-      !force &&
-      this.sourceSocket &&
-      (this.sourceSocket.readyState === WebSocket.OPEN ||
-        this.sourceSocket.readyState === WebSocket.CONNECTING)
-    ) {
-      return;
-    }
-  
-    const previousSocket = this.sourceSocket;
-    if (force && previousSocket && previousSocket.readyState < WebSocket.CLOSING) {
-      previousSocket.close();
-    }
-  
-    this.sourceSocketState = 'connecting';
-    this.recordEvent('stream.connecting', 'Connecting to leader order stream', {
-      userId: sourceSession.userId,
-    });
-  
-    const socket = this.getClient(SOURCE_ACCOUNT).connectOrderStream({
-      accessToken: sourceSession.accessToken,
+    if (force && this.sourceSocket?.readyState < WebSocket.CLOSING) this.sourceSocket.close();
+
+    this.socketState = 'connecting';
+    this._log('stream.connecting', 'Connecting to leader order stream', { userId: s.userId });
+
+    const socket = this._client(LEADER).connectOrderStream({
+      accessToken: s.accessToken,
       onOpen: () => {
-        if (socket !== this.sourceSocket) {
-          return;
-        }
-  
-        this.sourceSocketState = 'connected';
+        if (socket !== this.sourceSocket) return;
+        this.socketState = 'connected';
         this.reconnectAttempt = 0;
-  
-        if (this.reconnectTimer) {
-          clearTimeout(this.reconnectTimer);
-          this.reconnectTimer = null;
-        }
-        this.recordEvent('stream.connected', 'Leader order stream connected', {
-          userId: sourceSession.userId,
-        });
+        if (this.reconnectTimer) { clearTimeout(this.reconnectTimer); this.reconnectTimer = null; }
+        this._log('stream.connected', 'Leader order stream connected', { userId: s.userId });
       },
       onClose: (event) => {
-        if (socket !== this.sourceSocket) {
-          return;
-        }
-  
-        this.sourceSocketState = 'disconnected';
+        if (socket !== this.sourceSocket) return;
+        this.socketState = 'disconnected';
         this.sourceSocket = null;
-  
-        this.recordEvent('stream.closed', 'Leader order stream closed', {
-          code: event.code,
-          reason: event.reason || 'No reason provided',
-        });
-  
-        this.scheduleReconnect();
+        this._log('stream.closed', 'Leader order stream closed', { code: event.code, reason: event.reason || 'No reason provided' });
+        this._scheduleReconnect();
       },
-      onError: (error) => {
-        if (socket !== this.sourceSocket) {
-          return;
-        }
-  
-        this.recordEvent('stream.error', 'Leader order stream error', {
-          message: error?.message ?? String(error),
-        });
+      onError: (err) => {
+        if (socket !== this.sourceSocket) return;
+        this._log('stream.error', 'Leader order stream error', { message: err?.message ?? String(err) });
       },
       onOrder: (order) => {
-        this.handleSourceOrder(order).catch((error) => {
-          this.recordEvent('mirror.error', 'Failed to process source order', {
-            orderId: order?.order_id,
-            message: error.message,
-          });
-        });
+        this.handleSourceOrder(order).catch(err =>
+          this._log('mirror.error', 'Failed to process source order', { orderId: order?.order_id, message: err.message })
+        );
       },
-      onMessage: (message) => {
-        if (socket !== this.sourceSocket) {
-          return;
-        }
-  
-        if (message?.type === 'error') {
-          this.recordEvent('stream.error_message', 'Leader stream error message', {
-            message: message.data,
-          });
-        }
+      onMessage: (msg) => {
+        if (socket !== this.sourceSocket) return;
+        if (msg?.type === 'error') this._log('stream.error_message', 'Leader stream error message', { message: msg.data });
       },
     });
-  
+
     this.sourceSocket = socket;
-  }
-      
-
-  scheduleReconnect() {
-    if (this.isShuttingDown || this.reconnectTimer) {
-      return;
-    }
-
-    // Exponential backoff: 2s → 4s → 8s → 16s → 30s (max)
-    const baseDelay = 2000;
-    const maxDelay = 30_000;
-    const delay = Math.min(baseDelay * Math.pow(2, this.reconnectAttempt), maxDelay);
-    this.reconnectAttempt += 1;
-
-    this.recordEvent('stream.reconnect_scheduled', `Reconnecting in ${(delay / 1000).toFixed(0)}s (attempt ${this.reconnectAttempt})`);
-
-    this.reconnectTimer = setTimeout(() => {
-      this.reconnectTimer = null;
-      if (!this.isShuttingDown) {
-        this.startSourceStream();
-      }
-    }, delay);
   }
 
   async handleSourceOrder(order) {
-    if (!order?.order_id) {
+    if (!order?.order_id) return;
+    if (isSelfTagged(order, this.cfg.tagPrefix)) {
+      this._log('mirror.ignored', 'Skipped self-originated order', { orderId: order.order_id, tag: order.tag });
       return;
     }
-
-    if (isSelfTagged(order, this.config.tagPrefix)) {
-      this.recordEvent('mirror.ignored', 'Skipped self-originated order', {
-        orderId: order.order_id,
-        tag: order.tag,
-      });
-      return;
-    }
-
     if (order.parent_order_id) {
-      this.recordEvent('mirror.ignored', 'Skipped child order update', {
-        orderId: order.order_id,
-        parentOrderId: order.parent_order_id,
-      });
+      this._log('mirror.ignored', 'Skipped child order update', { orderId: order.order_id, parentOrderId: order.parent_order_id });
       return;
     }
 
-    const normalizedStatus = normalizeOrderStatus(order.status);
+    const status = normalizeOrderStatus(order.status);
     const mapping = this.runtime.mirroredOrders[order.order_id];
+    const followerMap = mapping?.followers ?? {};
+    const anyPlaced = Object.values(followerMap).some(f => Boolean(f?.followerOrderId));
 
-    if (
-      normalizedStatus === 'CANCELLED' &&
-      this.config.replicateCancellations &&
-      mapping?.followerOrderId
-    ) {
-      await this.replicateCancellation(order, mapping);
+    if (status === 'CANCELLED' && this.cfg.replicateCancellations && anyPlaced) {
+      await this._replicateCancellation(order, followerMap); return;
+    }
+    if (status === 'MODIFIED' && this.cfg.replicateModifications && anyPlaced) {
+      await this._replicateModification(order, followerMap); return;
+    }
+
+    const pending = this._followers().filter(f => !followerMap[f.id]?.mirrorStatus);
+    if (!pending.length) return;
+
+    if (this.inFlight.has(order.order_id)) {
+      this._log('mirror.ignored', 'Skipped duplicate source order while in-flight', { orderId: order.order_id, status });
+      return;
+    }
+    if (!isActionableSourceOrder(order, this.cfg)) {
+      this._log('mirror.waiting', 'Source order not actionable yet', { orderId: order.order_id, status });
       return;
     }
 
-    if (
-      normalizedStatus === 'MODIFIED' &&
-      this.config.replicateModifications &&
-      mapping?.followerOrderId
-    ) {
-      await this.replicateModification(order, mapping);
-      return;
-    }
-
-    if (mapping?.mirrorStatus) {
-      return;
-    }
-
-    if (this.processingSourceOrders.has(order.order_id)) {
-      this.recordEvent(
-        'mirror.ignored',
-        'Skipped duplicate source order while processing is already in progress',
-        {
-          orderId: order.order_id,
-          status: normalizedStatus,
-        },
-      );
-      return;
-    }
-
-    if (!isActionableSourceOrder(order, this.config)) {
-      this.recordEvent('mirror.waiting', 'Source order update not actionable yet', {
-        orderId: order.order_id,
-        status: normalizedStatus,
-      });
-      return;
-    }
-
-    this.processingSourceOrders.add(order.order_id);
-
+    this.inFlight.add(order.order_id);
     try {
-      const followerOrder = buildFollowerOrder(order, this.config);
-      const policy = validateOrderAgainstPolicy(followerOrder, this.config);
-
-      if (!policy.ok) {
-        this.runtime.mirroredOrders[order.order_id] = {
-          sourceOrderId: order.order_id,
-          mirrorStatus: 'blocked',
-          blockedReasons: policy.reasons,
-          updatedAt: nowIso(),
-        };
-        this.persistRuntime();
-        this.recordEvent('mirror.blocked', 'Follower order blocked by policy', {
-          orderId: order.order_id,
-          reasons: policy.reasons,
-        });
-        return;
-      }
-
-      if (followerOrder.quantity <= 0) {
-        this.runtime.mirroredOrders[order.order_id] = {
-          sourceOrderId: order.order_id,
-          mirrorStatus: 'skipped',
-          blockedReasons: ['Follower quantity became 0 after multiplier.'],
-          updatedAt: nowIso(),
-        };
-        this.persistRuntime();
-        this.recordEvent('mirror.skipped', 'Follower order skipped after multiplier', {
-          orderId: order.order_id,
-          sourceQuantity: order.quantity,
-          multiplier: this.config.quantityMultiplier,
-        });
-        return;
-      }
-
-      if (this.config.dryRun) {
-        this.runtime.mirroredOrders[order.order_id] = {
-          sourceOrderId: order.order_id,
-          mirrorStatus: 'dry_run',
-          followerPreview: followerOrder,
-          updatedAt: nowIso(),
-        };
-        this.persistRuntime();
-        this.recordEvent('mirror.dry_run', 'Dry-run follower order prepared', {
-          orderId: order.order_id,
-          followerOrder,
-        });
-        return;
-      }
-
-      const followerSession = this.requireSession(FOLLOWER_ACCOUNT);
-
-      if (isTokenExpired(followerSession)) {
-        this.runtime.mirroredOrders[order.order_id] = {
-          sourceOrderId: order.order_id,
-          mirrorStatus: 'error',
-          updatedAt: nowIso(),
-          errors: {
-            name: 'TokenExpired',
-            message: `Follower token expired (age: ${tokenAgeLabel(followerSession)}). Re-authenticate.`,
-          },
-        };
-        this.persistRuntime();
-        this.recordEvent(
-          'mirror.token_expired',
-          'Follower token expired — cannot place order. Re-authenticate.',
-          {
-            orderId: order.order_id,
-            tokenAge: tokenAgeLabel(followerSession),
-          },
-        );
-        return;
-      }
-
-      let lastError;
-      for (let attempt = 0; attempt <= MAX_PLACE_RETRIES; attempt++) {
-        try {
-          if (attempt > 0) {
-            this.recordEvent(
-              'mirror.retry',
-              `Retrying follower order (attempt ${attempt + 1}/${MAX_PLACE_RETRIES + 1})`,
-              { orderId: order.order_id },
-            );
-            await sleep(RETRY_DELAY_MS * attempt);
-          }
-
-          const placed = await this.getClient(FOLLOWER_ACCOUNT).placeOrder(
-            followerSession.accessToken,
-            followerOrder,
-          );
-
-          this.runtime.mirroredOrders[order.order_id] = {
-            sourceOrderId: order.order_id,
-            sourceStatus: normalizedStatus,
-            followerOrderId: placed.order_id,
-            followerVariety: followerOrder.variety,
-            mirrorStatus: 'placed',
-            updatedAt: nowIso(),
-          };
-          this.persistRuntime();
-
-          this.recordEvent('mirror.placed', 'Follower order placed', {
-            sourceOrderId: order.order_id,
-            followerOrderId: placed.order_id,
-            attempt: attempt + 1,
-            followerOrder,
-          });
-          return;
-        } catch (error) {
-          lastError = error;
-
-          if (error instanceof KiteApiError && error.status >= 400 && error.status < 500) {
-            break;
-          }
-        }
-      }
-
-      this.runtime.mirroredOrders[order.order_id] = {
-        sourceOrderId: order.order_id,
-        mirrorStatus: 'error',
-        updatedAt: nowIso(),
-        errors: serializeError(lastError),
-      };
-      this.persistRuntime();
-
-      throw lastError;
+      const results = await Promise.allSettled(pending.map(f => this._mirrorToFollower(order, f, status)));
+      results.forEach((r, i) => {
+        if (r.status === 'rejected')
+          this._log('mirror.error', 'Failed to process source order', { orderId: order.order_id, followerId: pending[i].id, message: r.reason?.message });
+      });
     } finally {
-      this.processingSourceOrders.delete(order.order_id);
+      this.inFlight.delete(order.order_id);
     }
   }
-  
-    async replicateCancellation(sourceOrder, mapping) {
-        if (this.config.dryRun) {
-          this.recordEvent('cancel.dry_run', 'Dry-run follower cancellation prepared', {
-            sourceOrderId: sourceOrder.order_id,
-            followerOrderId: mapping.followerOrderId,
-          });
-          return;
+
+  // ── private ───────────────────────────────────────────────────────────────
+  async _mirrorToFollower(order, followerCfg, status) {
+    const { id } = followerCfg;
+    const cfg = this._mergedCfg(id);
+    const fo = buildFollowerOrder(order, cfg);
+    const policy = validateOrderAgainstPolicy(fo, cfg);
+
+    if (!policy.ok) {
+      this._saveFollower(order.order_id, id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'blocked', blockedReasons: policy.reasons });
+      this._log('mirror.blocked', 'Follower order blocked by policy', { orderId: order.order_id, followerId: id, reasons: policy.reasons });
+      return;
+    }
+    if (fo.quantity <= 0) {
+      this._saveFollower(order.order_id, id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'skipped', blockedReasons: ['Quantity became 0 after multiplier.'] });
+      this._log('mirror.skipped', 'Follower order skipped after multiplier', { orderId: order.order_id, followerId: id });
+      return;
+    }
+    if (this.cfg.dryRun) {
+      this._saveFollower(order.order_id, id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'dry_run', followerPreview: fo });
+      this._log('mirror.dry_run', 'Dry-run follower order prepared', { orderId: order.order_id, followerId: id, followerOrder: fo });
+      return;
+    }
+
+    const session = this._requireSession(id);
+    if (tokenExpired(session)) {
+      this._saveFollower(order.order_id, id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'error', errors: { name: 'TokenExpired', message: `Token expired (${tokenAge(session)}). Re-authenticate.` } });
+      this._log('mirror.token_expired', `${id} token expired – cannot place order`, { orderId: order.order_id, followerId: id });
+      return;
+    }
+
+    let lastErr;
+    for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+      try {
+        if (attempt > 0) {
+          this._log('mirror.retry', `Retrying ${id} (attempt ${attempt + 1}/${MAX_RETRIES + 1})`, { orderId: order.order_id });
+          await sleep(RETRY_MS * attempt);
         }
-    
-        const followerSession = this.requireSession(FOLLOWER_ACCOUNT);
-        try {
-          await this.getClient(FOLLOWER_ACCOUNT).cancelOrder(followerSession.accessToken, {
-            variety: mapping.followerVariety,
-            orderId: mapping.followerOrderId,
-          });
-          mapping.mirrorStatus = 'cancelled';
-          mapping.updatedAt = nowIso();
-          this.persistRuntime();
-          this.recordEvent('cancel.live', 'Follower order cancellation sent', {
-            sourceOrderId: sourceOrder.order_id,
-            followerOrderId: mapping.followerOrderId,
-          });
-        } catch (error) {
-          this.recordEvent('cancel.error', 'Follower cancellation failed', {
-            sourceOrderId: sourceOrder.order_id,
-            followerOrderId: mapping.followerOrderId,
-            message: error.message,
-          });
-        }
+        const placed = await this._client(id).placeOrder(session.accessToken, fo);
+        this._saveFollower(order.order_id, id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'placed', followerOrderId: placed.order_id, followerVariety: fo.variety });
+        this._log('mirror.placed', 'Follower order placed', { sourceOrderId: order.order_id, followerId: id, followerOrderId: placed.order_id, attempt: attempt + 1 });
+        return placed;
+      } catch (err) {
+        lastErr = err;
+        if (err instanceof KiteApiError && err.status >= 400 && err.status < 500) break;
       }
-    
-      async replicateModification(sourceOrder, mapping) {
-        const followerSession = this.requireSession(FOLLOWER_ACCOUNT);
-        if (isTokenExpired(followerSession)) {
-          this.recordEvent(
-            'modify.error',
-            'Follower token expired — cannot modify order. Re-authenticate.',
-            {
-              sourceOrderId: sourceOrder.order_id,
-              followerOrderId: mapping.followerOrderId,
-              tokenAge: tokenAgeLabel(followerSession),
-            },
-          );
-          return;
-        }
-        const followerPatch = {
-          variety: mapping.followerVariety,
-          order_id: mapping.followerOrderId,
-          quantity: Math.floor(numeric(sourceOrder.quantity) * this.config.quantityMultiplier),
-          price: numeric(sourceOrder.price),
-          trigger_price: numeric(sourceOrder.trigger_price),
-          order_type: upper(sourceOrder.order_type),
-          validity: upper(sourceOrder.validity || 'DAY'),
-          disclosed_quantity: Math.trunc(numeric(sourceOrder.disclosed_quantity)),
-        };
-    
-        if (this.config.dryRun) {
-          this.recordEvent('modify.dry_run', 'Dry-run follower modification prepared', {
-            sourceOrderId: sourceOrder.order_id,
-            followerOrderId: mapping.followerOrderId,
-            followerPatch,
+    }
+    this._saveFollower(order.order_id, id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'error', errors: serializeError(lastErr) });
+    throw lastErr;
+  }
+
+  async _replicateCancellation(sourceOrder, followerMap) {
+    if (this.cfg.dryRun) { this._log('cancel.dry_run', 'Dry-run cancellation prepared', { sourceOrderId: sourceOrder.order_id }); return; }
+    await Promise.allSettled(
+      Object.entries(followerMap)
+        .filter(([, s]) => s?.followerOrderId)
+        .map(([id, state]) => Promise.resolve().then(async () => {
+          const sess = this._requireSession(id);
+          await this._client(id).cancelOrder(sess.accessToken, { variety: state.followerVariety, orderId: state.followerOrderId });
+          this._saveFollower(sourceOrder.order_id, id, { mirrorStatus: 'cancelled' });
+          this._log('cancel.live', 'Follower cancellation sent', { sourceOrderId: sourceOrder.order_id, followerId: id, followerOrderId: state.followerOrderId });
+        }).catch(err => {
+          this._log('cancel.error', 'Follower cancellation failed', { sourceOrderId: sourceOrder.order_id, followerId: id, message: err.message });
+        }))
+    );
+  }
+
+  async _replicateModification(sourceOrder, followerMap) {
+    if (this.cfg.dryRun) { this._log('modify.dry_run', 'Dry-run modification prepared', { sourceOrderId: sourceOrder.order_id }); return; }
+    await Promise.allSettled(
+      Object.entries(followerMap)
+        .filter(([, s]) => s?.followerOrderId)
+        .map(([id, state]) => Promise.resolve().then(async () => {
+          const sess = this._requireSession(id);
+          if (tokenExpired(sess)) { this._log('modify.error', `${id} token expired – cannot modify`, { sourceOrderId: sourceOrder.order_id }); return; }
+          const cfg = this._mergedCfg(id);
+          await this._client(id).modifyOrder(sess.accessToken, {
+            variety: state.followerVariety, order_id: state.followerOrderId,
+            quantity: Math.floor(num(sourceOrder.quantity) * cfg.quantityMultiplier),
+            price: num(sourceOrder.price), trigger_price: num(sourceOrder.trigger_price),
+            order_type: upper(sourceOrder.order_type), validity: upper(sourceOrder.validity || 'DAY'),
+            disclosed_quantity: Math.trunc(num(sourceOrder.disclosed_quantity)),
           });
-          return;
-        }
+          this._saveFollower(sourceOrder.order_id, id, { mirrorStatus: 'modified' });
+          this._log('modify.live', 'Follower modification sent', { sourceOrderId: sourceOrder.order_id, followerId: id });
+        }).catch(err => {
+          this._log('modify.error', 'Follower modification failed', { sourceOrderId: sourceOrder.order_id, followerId: id, message: err.message });
+        }))
+    );
+  }
 
-        try {
-            await this.getClient(FOLLOWER_ACCOUNT).modifyOrder(
-              followerSession.accessToken,
-              followerPatch,
-            );
-            mapping.mirrorStatus = 'modified';
-            mapping.updatedAt = nowIso();
-            this.persistRuntime();
-            this.recordEvent('modify.live', 'Follower order modification sent', {
-              sourceOrderId: sourceOrder.order_id,
-              followerOrderId: mapping.followerOrderId,
-            });
-          } catch (error) {
-            this.recordEvent('modify.error', 'Follower modification failed', {
-              sourceOrderId: sourceOrder.order_id,
-              followerOrderId: mapping.followerOrderId,
-              message: error.message,
-            });
-          }
-        }
-      
-        requireSession(account) {
-          const session = this.tokens[account];
-          if (!session?.accessToken) {
-            throw new Error(`Authenticate the ${account} account first.`);
-          }
-          return session;
-        }
-      
-        createKiteClient(account) {
-            const accountConfig = this.getAccountConfig(account);
-            if (!isAccountConfigured(accountConfig)) {
-              return null;
-            }
-        
-            return new KiteClient({
-              apiKey: accountConfig.apiKey,
-              apiSecret: accountConfig.apiSecret,
-            });
-          }
+  _scheduleReconnect() {
+    if (this.isShuttingDown || this.reconnectTimer) return;
+    const delay = Math.min(2000 * Math.pow(2, this.reconnectAttempt), 30_000);
+    this.reconnectAttempt++;
+    this._log('stream.reconnect_scheduled', `Reconnecting in ${Math.round(delay / 1000)}s (attempt ${this.reconnectAttempt})`);
+    this.reconnectTimer = setTimeout(() => { this.reconnectTimer = null; if (!this.isShuttingDown) this.startSourceStream(); }, delay);
+  }
 
-          getClient(account) {
-            const client = this.kiteClients[account];
-            if (!client) {
-              throw new Error(
-                `Kite credentials are not configured for ${account}. Update your .env first.`,
-              );
-            }
-        
-            return client;
-          }
-        
-          getAccountConfig(account) {
-            const accountConfig = this.config.accounts?.[account];
-            if (!accountConfig) {
-              throw new Error(`Unknown account "${account}". Expected leader or follower.`);
-            }
-        
-            return accountConfig;
-          }
-        
-          persistTokens() {
-            writeJsonFile(this.config.tokenStoreFile, this.tokens);
-          }
-        
-          persistRuntime() {
-            writeJsonFile(this.config.runtimeStoreFile, this.runtime);
-          }
-        
-          recordEvent(type, summary, detail = undefined) {
-            const event = {
-              at: nowIso(),
-              type,
-              summary,
-              detail,
-            };
-        
-            this.runtime.recentEvents = trimRecentEvents(
-              [event, ...(this.runtime.recentEvents ?? [])],
-              this.config.logBufferSize,
-            );
-            this.persistRuntime();
+  _followers() { return this.cfg.accounts?.followers ?? []; }
+  _followerIds() { return this._followers().map(f => f.id); }
 
-            const target = type.endsWith('.error') ? this.logger.error : this.logger.info;
+  _acctCfg(account) {
+    if (account === LEADER) return this.cfg.accounts.leader;
+    const f = this._followers().find(x => x.id === account);
+    if (!f) throw new Error(`Unknown account "${account}".`);
+    return f;
+  }
+
+  _mergedCfg(followerId) { return { ...this.cfg, ...this._acctCfg(followerId) }; }
+
+  _mkClient(account) {
+    const c = typeof account === 'string' ? this._acctCfg(account) : account;
+    if (!c?.apiKey || !c?.apiSecret) return null;
+    return new KiteClient({ apiKey: c.apiKey, apiSecret: c.apiSecret });
+  }
+
+  _client(account) {
+    const c = this.clients[account];
+    if (!c) throw new Error(`Kite client not configured for ${account}. Check your .env.`);
+    return c;
+  }
+
+  _getSession(account) {
+    return account === LEADER ? this.tokens[LEADER] : this.tokens.followers?.[account];
+  }
+  _setSession(account, session) {
+    if (account === LEADER) this.tokens[LEADER] = session;
+    else { this.tokens.followers ??= {}; this.tokens.followers[account] = session; }
+  }
+  _requireSession(account) {
+    const s = this._getSession(account);
+    if (!s?.accessToken) throw new Error(`Authenticate the ${account} account first.`);
+    return s;
+  }
+  _sessionSummary(account) {
+    const s = this._getSession(account);
+    const cfg = this._acctCfg(account);
+    const configured = Boolean(cfg?.apiKey && cfg?.apiSecret && cfg?.redirectUrl);
+    if (!s) return { configured, connected: false };
+    const expired = tokenExpired(s);
+    return { configured, connected: !expired, expired, tokenAge: tokenAge(s), userId: s.userId, userName: s.userName, loginTime: s.loginTime };
+  }
+  _saveFollower(sourceOrderId, followerId, updates) {
+    const m = this.runtime.mirroredOrders[sourceOrderId] ??= { sourceOrderId, followers: {}, updatedAt: nowIso() };
+    m.followers ??= {};
+    m.followers[followerId] = { ...(m.followers[followerId] ?? {}), ...updates, followerId, updatedAt: nowIso() };
+    m.updatedAt = nowIso();
+    this._persistRuntime();
+  }
+  _patchMp(order, cfg) {
+    if (['MARKET', 'SL-M'].includes(upper(order.order_type))) {
+      const mp = String(order.market_protection ?? '').trim();
+      if (!mp || mp === '0') order.market_protection = String(cfg.marketProtection ?? '-1');
+    }
+  }
+  _persistTokens() { writeJsonFile(this.cfg.tokenStoreFile, this.tokens); }
+  _persistRuntime() {
+    // Prune entries older than 2 days to prevent unbounded growth
+    const cutoff = Date.now() - 2 * 24 * 3_600_000;
+    for (const [id, entry] of Object.entries(this.runtime.mirroredOrders)) {
+      if (entry.updatedAt && new Date(entry.updatedAt).getTime() < cutoff)
+        delete this.runtime.mirroredOrders[id];
+    }
+    writeJsonFile(this.cfg.runtimeStoreFile, this.runtime);
+  }
+  _log(type, summary, detail) {
+    const event = { at: nowIso(), type, summary, detail };
+    this.runtime.recentEvents = [event, ...(this.runtime.recentEvents ?? [])].slice(0, this.cfg.logBufferSize);
+    this._persistRuntime();
+    const target = type.endsWith('.error') ? this.logger.error : this.logger.info;
     target?.(`[${event.at}] ${summary}`, detail ?? '');
   }
 }
 
-function settleResult(result) {
-    if (result.status === 'fulfilled') {
-      return {
-        ok: true,
-        value: result.value,
-      };
-    }
-  
-    return {
-      ok: false,
-      error: serializeError(result.reason),
-    };
-  }
-  
-  function serializeError(error) {
-    if (error instanceof KiteApiError) {
-      return {
-        name: error.name,
-        message: error.message,
-        status: error.status,
-        errorType: error.errorType,
-        body: error.body,
-      };
-    }
-  
-    return {
-      name: error?.name ?? 'Error',
-      message: error?.message ?? String(error),
-    };
-  }
-  
-  function summarizeSession(session, accountConfig) {
-    if (!session) {
-      return {
-        configured: isAccountConfigured(accountConfig),
-        connected: false,
-      };
-    }
-
-    const expired = isTokenExpired(session);
-  return {
-    configured: isAccountConfigured(accountConfig),
-    connected: !expired,
-    expired,
-    tokenAge: tokenAgeLabel(session),
-    userId: session.userId,
-    userName: session.userName,
-    loginTime: session.loginTime,
-    createdAt: session.createdAt,
-  };
+function settleResult(r) {
+  return r.status === 'fulfilled' ? { ok: true, value: r.value } : { ok: false, error: serializeError(r.reason) };
 }
-
-function isAccountConfigured(accountConfig) {
-  return Boolean(
-    accountConfig?.apiKey &&
-      accountConfig?.apiSecret &&
-      accountConfig?.redirectUrl,
-  );
-}
-          

@@ -166,7 +166,7 @@ test('pre-connect guard skips square-off when follower has no pre-connect positi
   const saved = copier.runtime.mirroredOrders['SKIP001']?.followers?.follower_1;
   assert.ok(saved, 'Expected follower entry to be saved');
   assert.equal(saved.mirrorStatus, 'skipped');
-  assert.ok(saved.blockedReasons?.[0]?.includes('pre-connect'));
+  assert.ok(saved.blockedReasons?.[0]?.includes('pre connect'));
 });
 
 test('pre-connect guard allows square-off when follower also has pre-connect position', async () => {

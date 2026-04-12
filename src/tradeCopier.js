@@ -373,8 +373,8 @@ export class TradeCopier {
       this._log('mirror.skipped', 'Follower order skipped after multiplier', { orderId: order.order_id, followerId: id });
       return;
     }
-    const leaderPre =this.runtime.preConnectedPositions?.leader ?? {};
-    const followerPre =this.runtime.preConnectedPositions?.[id] ?? {};
+    const leaderPre =this.runtime.preConnectPositions?.leader ?? {};
+    const followerPre =this.runtime.preConnectPositions?.[id] ?? {};
     const symbol = fo.tradingsymbol;
     const leaderPreQty = leaderPre[symbol] ?? 0;
     if (leaderPreQty !== 0){

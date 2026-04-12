@@ -158,7 +158,7 @@ const squareOffOrder = {
 
 test('pre-connect guard skips square-off when follower has no pre-connect position', async () => {
   const copier = makeCopier();
-  copier.runtime.preConnectedPositions = {
+  copier.runtime.preConnectPositions = {
     leader: { 'NIFTY25APR23500CE': -65 },
     follower_1: {},
   };
@@ -171,7 +171,7 @@ test('pre-connect guard skips square-off when follower has no pre-connect positi
 
 test('pre-connect guard allows square-off when follower also has pre-connect position', async () => {
   const copier = makeCopier();
-  copier.runtime.preConnectedPositions = {
+  copier.runtime.preConnectPositions = {
     leader: { 'NIFTY25APR23500CE': -65 },
     follower_1: { 'NIFTY25APR23500CE': -65 },
   };
@@ -183,7 +183,7 @@ test('pre-connect guard allows square-off when follower also has pre-connect pos
 
 test('pre-connect guard allows fresh entry when no pre-connect positions exist', async () => {
   const copier = makeCopier();
-  copier.runtime.preConnectedPositions = { leader: {}, follower_1: {} };
+  copier.runtime.preConnectPositions = { leader: {}, follower_1: {} };
   await copier.simulateSourceOrder({ ...squareOffOrder, order_id: 'FRESH001' });
   const saved = copier.runtime.mirroredOrders['FRESH001']?.followers?.follower_1;
   assert.ok(saved, 'Expected follower entry to be saved');
@@ -192,7 +192,7 @@ test('pre-connect guard allows fresh entry when no pre-connect positions exist',
 
 test('pre-connect guard allows adding to pre-connect long (same direction, not a square-off)', async () => {
   const copier = makeCopier();
-  copier.runtime.preConnectedPositions = {
+  copier.runtime.preConnectPositions = {
     leader: { 'NIFTY25APR23500CE': 65 },  // leader was LONG before connect
     follower_1: {},
   };

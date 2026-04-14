@@ -1,369 +1,877 @@
 {
   "mirroredOrders": {
-    "SIM-1001": {
-      "sourceOrderId": "SIM-1001",
-      "mirrorStatus": "blocked",
-      "blockedReasons": [
-        "Quantity 75 exceeds MAX_QUANTITY_PER_ORDER=10."
-      ],
-      "updatedAt": "2026-03-23T06:19:25.772Z"
-    },
-    "SIM-1002": {
-      "sourceOrderId": "SIM-1002",
-      "mirrorStatus": "dry_run",
-      "followerPreview": {
-        "variety": "regular",
-        "exchange": "NFO",
-        "tradingsymbol": "NIFTY2530620000PE",
-        "transaction_type": "SELL",
-        "order_type": "LIMIT",
-        "quantity": 10,
-        "product": "NRML",
-        "validity": "DAY",
-        "disclosed_quantity": 0,
-        "price": 150,
-        "trigger_price": 0,
-        "tag": "CPYSIM1002"
+    "260413150286981": {
+      "sourceOrderId": "260413150286981",
+      "followers": {
+        "follower_1": {
+          "sourceOrderId": "260413150286981",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "dry_run",
+          "followerPreview": {
+            "variety": "regular",
+            "exchange": "NFO",
+            "tradingsymbol": "NIFTY2641323650CE",
+            "transaction_type": "SELL",
+            "order_type": "LIMIT",
+            "quantity": 65,
+            "product": "NRML",
+            "validity": "DAY",
+            "disclosed_quantity": 0,
+            "price": 52.35,
+            "trigger_price": 0,
+            "tag": "CPY50286981"
+          },
+          "followerId": "follower_1",
+          "updatedAt": "2026-04-13T03:59:08.068Z"
+        },
+        "follower_2": {
+          "sourceOrderId": "260413150286981",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "dry_run",
+          "followerPreview": {
+            "variety": "regular",
+            "exchange": "NFO",
+            "tradingsymbol": "NIFTY2641323650CE",
+            "transaction_type": "SELL",
+            "order_type": "LIMIT",
+            "quantity": 65,
+            "product": "NRML",
+            "validity": "DAY",
+            "disclosed_quantity": 0,
+            "price": 52.35,
+            "trigger_price": 0,
+            "tag": "CPY50286981"
+          },
+          "followerId": "follower_2",
+          "updatedAt": "2026-04-13T03:59:08.070Z"
+        }
       },
-      "updatedAt": "2026-03-23T06:21:10.709Z"
+      "updatedAt": "2026-04-13T03:59:08.070Z"
     },
-    "260324151526489": {
-      "sourceOrderId": "260324151526489",
-      "mirrorStatus": "blocked",
-      "blockedReasons": [
-        "Quantity 65 exceeds MAX_QUANTITY_PER_ORDER=10."
-      ],
-      "updatedAt": "2026-03-24T07:43:04.825Z"
-    },
-    "260324151540814": {
-      "sourceOrderId": "260324151540814",
-      "mirrorStatus": "blocked",
-      "blockedReasons": [
-        "Quantity 65 exceeds MAX_QUANTITY_PER_ORDER=10."
-      ],
-      "updatedAt": "2026-03-24T07:45:46.328Z"
-    },
-    "260324151828538": {
-      "sourceOrderId": "260324151828538",
-      "mirrorStatus": "blocked",
-      "blockedReasons": [
-        "Quantity 845 exceeds MAX_QUANTITY_PER_ORDER=10."
-      ],
-      "updatedAt": "2026-03-24T08:46:44.287Z"
-    },
-    "260324151831015": {
-      "sourceOrderId": "260324151831015",
-      "mirrorStatus": "blocked",
-      "blockedReasons": [
-        "Quantity 845 exceeds MAX_QUANTITY_PER_ORDER=10."
-      ],
-      "updatedAt": "2026-03-24T08:46:58.751Z"
-    },
-    "260325150439170": {
-      "sourceOrderId": "260325150439170",
-      "mirrorStatus": "dry_run",
-      "followerPreview": {
-        "variety": "regular",
-        "exchange": "NFO",
-        "tradingsymbol": "NIFTY26MAR23900CE",
-        "transaction_type": "SELL",
-        "order_type": "MARKET",
-        "quantity": 65,
-        "product": "NRML",
-        "validity": "DAY",
-        "disclosed_quantity": 0,
-        "price": 0,
-        "trigger_price": 0,
-        "market_protection": "0",
-        "tag": "CPY50439170"
+    "260413150295943": {
+      "sourceOrderId": "260413150295943",
+      "followers": {
+        "follower_1": {
+          "sourceOrderId": "260413150295943",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "dry_run",
+          "followerPreview": {
+            "variety": "regular",
+            "exchange": "NFO",
+            "tradingsymbol": "NIFTY2641323650CE",
+            "transaction_type": "BUY",
+            "order_type": "LIMIT",
+            "quantity": 65,
+            "product": "NRML",
+            "validity": "DAY",
+            "disclosed_quantity": 0,
+            "price": 54.6,
+            "trigger_price": 0,
+            "tag": "CPY50295943"
+          },
+          "followerId": "follower_1",
+          "updatedAt": "2026-04-13T04:00:05.462Z"
+        },
+        "follower_2": {
+          "sourceOrderId": "260413150295943",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "dry_run",
+          "followerPreview": {
+            "variety": "regular",
+            "exchange": "NFO",
+            "tradingsymbol": "NIFTY2641323650CE",
+            "transaction_type": "BUY",
+            "order_type": "LIMIT",
+            "quantity": 65,
+            "product": "NRML",
+            "validity": "DAY",
+            "disclosed_quantity": 0,
+            "price": 54.6,
+            "trigger_price": 0,
+            "tag": "CPY50295943"
+          },
+          "followerId": "follower_2",
+          "updatedAt": "2026-04-13T04:00:05.463Z"
+        }
       },
-      "updatedAt": "2026-03-25T04:28:33.520Z"
+      "updatedAt": "2026-04-13T04:00:05.463Z"
     },
-    "260325150480250": {
-      "sourceOrderId": "260325150480250",
-      "mirrorStatus": "dry_run",
-      "followerPreview": {
-        "variety": "regular",
-        "exchange": "NFO",
-        "tradingsymbol": "NIFTY26MAR23900CE",
-        "transaction_type": "BUY",
-        "order_type": "MARKET",
-        "quantity": 65,
-        "product": "NRML",
-        "validity": "DAY",
-        "disclosed_quantity": 0,
-        "price": 0,
-        "trigger_price": 0,
-        "market_protection": "0",
-        "tag": "CPY50480250"
+    "260413150319818": {
+      "sourceOrderId": "260413150319818",
+      "followers": {
+        "follower_1": {
+          "sourceOrderId": "260413150319818",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "placed",
+          "followerOrderId": "260413170280303",
+          "followerVariety": "regular",
+          "followerId": "follower_1",
+          "updatedAt": "2026-04-13T04:01:49.347Z"
+        }
       },
-      "updatedAt": "2026-03-25T04:36:14.312Z"
+      "updatedAt": "2026-04-13T04:01:49.347Z"
     },
-    "260325150495126": {
-      "sourceOrderId": "260325150495126",
-      "mirrorStatus": "blocked",
-      "blockedReasons": [
-        "Quantity 1040 exceeds MAX_QUANTITY_PER_ORDER=1000."
-      ],
-      "updatedAt": "2026-03-25T04:38:31.718Z"
-    },
-    "260325150512209": {
-      "sourceOrderId": "260325150512209",
-      "mirrorStatus": "error",
-      "updatedAt": "2026-03-25T04:41:34.244Z",
-      "errors": {
-        "name": "KiteApiError",
-        "message": "NFO is disabled for your account. You can activate the segment on [Console.](https://console.zerodha.com/account/segment-activation)",
-        "status": 400,
-        "errorType": "InputException",
-        "body": {
-          "status": "error",
-          "message": "NFO is disabled for your account. You can activate the segment on [Console.](https://console.zerodha.com/account/segment-activation)",
-          "data": null,
-          "error_type": "InputException"
+    "260413150352125": {
+      "sourceOrderId": "260413150352125",
+      "followers": {
+        "follower_1": {
+          "sourceOrderId": "260413150352125",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "placed",
+          "followerOrderId": "260413170309467",
+          "followerVariety": "regular",
+          "followerId": "follower_1",
+          "updatedAt": "2026-04-13T04:05:24.672Z"
         }
-      }
+      },
+      "updatedAt": "2026-04-13T04:05:24.672Z"
     },
-    "260402150213608": {
-      "sourceOrderId": "260402150213608",
-      "mirrorStatus": "error",
-      "updatedAt": "2026-04-02T03:55:59.499Z",
-      "errors": {
-        "name": "KiteApiError",
-        "message": "No IPs configured for this app. Add allowed IPs on the Kite developer console (https://developers.kite.trade).",
-        "status": 403,
-        "errorType": "PermissionException",
-        "body": {
-          "status": "error",
-          "message": "No IPs configured for this app. Add allowed IPs on the Kite developer console (https://developers.kite.trade).",
-          "data": null,
-          "error_type": "PermissionException"
+    "260413150371504": {
+      "sourceOrderId": "260413150371504",
+      "followers": {
+        "follower_1": {
+          "sourceOrderId": "260413150371504",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "placed",
+          "followerOrderId": "260413170327162",
+          "followerVariety": "regular",
+          "followerId": "follower_1",
+          "updatedAt": "2026-04-13T04:07:23.837Z"
         }
-      }
+      },
+      "updatedAt": "2026-04-13T04:07:23.837Z"
     },
-    "260402150261680": {
-      "sourceOrderId": "260402150261680",
-      "mirrorStatus": "error",
-      "updatedAt": "2026-04-02T04:00:53.827Z",
-      "errors": {
-        "name": "KiteApiError",
-        "message": "Market orders without market protection are not allowed via API. Please set market protection or use a Limit order.",
-        "status": 400,
-        "errorType": "InputException",
-        "body": {
-          "status": "error",
-          "message": "Market orders without market protection are not allowed via API. Please set market protection or use a Limit order.",
-          "data": null,
-          "error_type": "InputException"
+    "260413150372929": {
+      "sourceOrderId": "260413150372929",
+      "followers": {
+        "follower_1": {
+          "sourceOrderId": "260413150372929",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "placed",
+          "followerOrderId": "260413170328317",
+          "followerVariety": "regular",
+          "followerId": "follower_1",
+          "updatedAt": "2026-04-13T04:07:33.129Z"
         }
-      }
+      },
+      "updatedAt": "2026-04-13T04:07:33.129Z"
     },
-    "260402150631955": {
-      "sourceOrderId": "260402150631955",
-      "sourceStatus": "COMPLETE",
-      "followerOrderId": "260402170573185",
-      "followerVariety": "regular",
-      "mirrorStatus": "placed",
-      "updatedAt": "2026-04-02T05:02:07.166Z"
-    },
-    "260402150632983": {
-      "sourceOrderId": "260402150632983",
-      "sourceStatus": "OPEN",
-      "followerOrderId": "260402170574251",
-      "followerVariety": "regular",
-      "mirrorStatus": "placed",
-      "updatedAt": "2026-04-02T05:02:21.247Z"
-    },
-    "260406151559342": {
-      "sourceOrderId": "260406151559342",
-      "sourceStatus": "COMPLETE",
-      "followerOrderId": "260406171510174",
-      "followerVariety": "regular",
-      "mirrorStatus": "placed",
-      "updatedAt": "2026-04-06T09:35:46.988Z"
-    },
-    "260406151560204": {
-      "sourceOrderId": "260406151560204",
-      "sourceStatus": "COMPLETE",
-      "followerOrderId": "260406171511029",
-      "followerVariety": "regular",
-      "mirrorStatus": "placed",
-      "updatedAt": "2026-04-06T09:35:58.837Z"
-    },
-    "260406151568752": {
-      "sourceOrderId": "260406151568752",
-      "sourceStatus": "COMPLETE",
-      "followerOrderId": "260406171519468",
-      "followerVariety": "regular",
-      "mirrorStatus": "placed",
-      "updatedAt": "2026-04-06T09:38:05.443Z"
-    },
-    "260406151570234": {
-      "sourceOrderId": "260406151570234",
-      "sourceStatus": "COMPLETE",
-      "followerOrderId": "260406171521022",
-      "followerVariety": "regular",
-      "mirrorStatus": "placed",
-      "updatedAt": "2026-04-06T09:38:31.842Z"
-    },
-    "260406151584403": {
-      "sourceOrderId": "260406151584403",
-      "sourceStatus": "OPEN",
-      "followerOrderId": "260406171535213",
-      "followerVariety": "regular",
-      "mirrorStatus": "cancelled",
-      "updatedAt": "2026-04-06T09:42:36.185Z"
-    },
-    "260410150112559": {
-      "sourceOrderId": "260410150112559",
-      "sourceStatus": "COMPLETE",
-      "followerOrderId": "260410170096414",
-      "followerVariety": "regular",
-      "mirrorStatus": "placed",
-      "updatedAt": "2026-04-10T03:48:42.533Z"
-    },
-    "260410150114444": {
-      "sourceOrderId": "260410150114444",
-      "sourceStatus": "COMPLETE",
-      "followerOrderId": "260410170098097",
-      "followerVariety": "regular",
-      "mirrorStatus": "placed",
-      "updatedAt": "2026-04-10T03:48:50.423Z"
-    },
-    "260410150152472": {
-      "sourceOrderId": "260410150152472",
-      "mirrorStatus": "error",
-      "updatedAt": "2026-04-10T03:51:42.176Z",
-      "errors": {
-        "name": "KiteApiError",
-        "message": "`quantity` should be multiple of 65.",
-        "status": 400,
-        "errorType": "InputException",
-        "body": {
-          "status": "error",
-          "message": "`quantity` should be multiple of 65.",
-          "data": null,
-          "error_type": "InputException"
+    "260413150582015": {
+      "sourceOrderId": "260413150582015",
+      "followers": {
+        "follower_2": {
+          "sourceOrderId": "260413150582015",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "error",
+          "errors": {
+            "name": "KiteApiError",
+            "message": "IP (20.197.12.34) is not allowed to place orders for this app. Update allowed IPs on the Kite developer console (https://developers.kite.trade).",
+            "status": 403,
+            "errorType": "PermissionException",
+            "body": {
+              "status": "error",
+              "message": "IP (20.197.12.34) is not allowed to place orders for this app. Update allowed IPs on the Kite developer console (https://developers.kite.trade).",
+              "data": null,
+              "error_type": "PermissionException"
+            }
+          },
+          "followerId": "follower_2",
+          "updatedAt": "2026-04-13T04:37:17.878Z"
+        },
+        "follower_1": {
+          "sourceOrderId": "260413150582015",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "placed",
+          "followerOrderId": "260413170524575",
+          "followerVariety": "regular",
+          "followerId": "follower_1",
+          "updatedAt": "2026-04-13T04:37:17.895Z"
         }
-      }
+      },
+      "updatedAt": "2026-04-13T04:37:17.895Z"
     },
-    "260410150156466": {
-      "sourceOrderId": "260410150156466",
-      "mirrorStatus": "error",
-      "updatedAt": "2026-04-10T03:52:04.886Z",
-      "errors": {
-        "name": "KiteApiError",
-        "message": "`quantity` should be multiple of 65.",
-        "status": 400,
-        "errorType": "InputException",
-        "body": {
-          "status": "error",
-          "message": "`quantity` should be multiple of 65.",
-          "data": null,
-          "error_type": "InputException"
+    "260413150587467": {
+      "sourceOrderId": "260413150587467",
+      "followers": {
+        "follower_2": {
+          "sourceOrderId": "260413150587467",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "error",
+          "errors": {
+            "name": "KiteApiError",
+            "message": "IP (20.197.12.34) is not allowed to place orders for this app. Update allowed IPs on the Kite developer console (https://developers.kite.trade).",
+            "status": 403,
+            "errorType": "PermissionException",
+            "body": {
+              "status": "error",
+              "message": "IP (20.197.12.34) is not allowed to place orders for this app. Update allowed IPs on the Kite developer console (https://developers.kite.trade).",
+              "data": null,
+              "error_type": "PermissionException"
+            }
+          },
+          "followerId": "follower_2",
+          "updatedAt": "2026-04-13T04:38:22.197Z"
+        },
+        "follower_1": {
+          "sourceOrderId": "260413150587467",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "placed",
+          "followerOrderId": "260413170529869",
+          "followerVariety": "regular",
+          "followerId": "follower_1",
+          "updatedAt": "2026-04-13T04:38:22.221Z"
         }
-      }
+      },
+      "updatedAt": "2026-04-13T04:38:22.221Z"
     },
-    "260410150593362": {
-      "sourceOrderId": "260410150593362",
-      "sourceStatus": "COMPLETE",
-      "followerOrderId": "260410170536113",
-      "followerVariety": "regular",
-      "mirrorStatus": "placed",
-      "updatedAt": "2026-04-10T05:00:17.674Z"
-    },
-    "260410150632738": {
-      "sourceOrderId": "260410150632738",
-      "sourceStatus": "COMPLETE",
-      "followerOrderId": "260410170572867",
-      "followerVariety": "regular",
-      "mirrorStatus": "placed",
-      "updatedAt": "2026-04-10T05:11:42.102Z"
-    },
-    "260410150697769": {
-      "sourceOrderId": "260410150697769",
-      "sourceStatus": "COMPLETE",
-      "followerOrderId": "260410170634914",
-      "followerVariety": "regular",
-      "mirrorStatus": "placed",
-      "updatedAt": "2026-04-10T05:30:55.001Z"
-    },
-    "260410150700173": {
-      "sourceOrderId": "260410150700173",
-      "sourceStatus": "COMPLETE",
-      "followerOrderId": "260410170637166",
-      "followerVariety": "regular",
-      "mirrorStatus": "placed",
-      "updatedAt": "2026-04-10T05:31:27.564Z"
-    },
-    "260410151167003": {
-      "sourceOrderId": "260410151167003",
-      "sourceStatus": "COMPLETE",
-      "followerOrderId": "260410171089029",
-      "followerVariety": "regular",
-      "mirrorStatus": "placed",
-      "updatedAt": "2026-04-10T08:35:06.035Z"
-    },
-    "260410151175151": {
-      "sourceOrderId": "260410151175151",
-      "sourceStatus": "COMPLETE",
-      "followerOrderId": "260410171096738",
-      "followerVariety": "regular",
-      "mirrorStatus": "placed",
-      "updatedAt": "2026-04-10T08:38:24.884Z"
-    },
-    "260410151284078": {
-      "sourceOrderId": "260410151284078",
-      "sourceStatus": "OPEN",
-      "followerOrderId": "260410171204787",
-      "followerVariety": "regular",
-      "mirrorStatus": "placed",
-      "updatedAt": "2026-04-10T09:04:20.324Z"
-    },
-    "260410151324783": {
-      "sourceOrderId": "260410151324783",
-      "sourceStatus": "COMPLETE",
-      "followerOrderId": "260410171245500",
-      "followerVariety": "regular",
-      "mirrorStatus": "placed",
-      "updatedAt": "2026-04-10T09:17:12.286Z"
-    },
-    "260410151389173": {
-      "sourceOrderId": "260410151389173",
-      "mirrorStatus": "error",
-      "updatedAt": "2026-04-10T09:34:42.300Z",
-      "errors": {
-        "name": "KiteApiError",
-        "message": "`quantity` should be multiple of 65.",
-        "status": 400,
-        "errorType": "InputException",
-        "body": {
-          "status": "error",
-          "message": "`quantity` should be multiple of 65.",
-          "data": null,
-          "error_type": "InputException"
+    "260413150778698": {
+      "sourceOrderId": "260413150778698",
+      "followers": {
+        "follower_2": {
+          "sourceOrderId": "260413150778698",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "error",
+          "errors": {
+            "name": "KiteApiError",
+            "message": "IP (20.197.12.34) is not allowed to place orders for this app. Update allowed IPs on the Kite developer console (https://developers.kite.trade).",
+            "status": 403,
+            "errorType": "PermissionException",
+            "body": {
+              "status": "error",
+              "message": "IP (20.197.12.34) is not allowed to place orders for this app. Update allowed IPs on the Kite developer console (https://developers.kite.trade).",
+              "data": null,
+              "error_type": "PermissionException"
+            }
+          },
+          "followerId": "follower_2",
+          "updatedAt": "2026-04-13T05:13:24.902Z"
+        },
+        "follower_1": {
+          "sourceOrderId": "260413150778698",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "placed",
+          "followerOrderId": "260413170715560",
+          "followerVariety": "regular",
+          "followerId": "follower_1",
+          "updatedAt": "2026-04-13T05:13:24.927Z"
         }
-      }
+      },
+      "updatedAt": "2026-04-13T05:13:24.927Z"
     },
-    "260410151415533": {
-      "sourceOrderId": "260410151415533",
-      "mirrorStatus": "error",
-      "updatedAt": "2026-04-10T09:39:56.531Z",
-      "errors": {
-        "name": "KiteApiError",
-        "message": "`quantity` should be multiple of 65.",
-        "status": 400,
-        "errorType": "InputException",
-        "body": {
-          "status": "error",
-          "message": "`quantity` should be multiple of 65.",
-          "data": null,
-          "error_type": "InputException"
+    "260413150882181": {
+      "sourceOrderId": "260413150882181",
+      "followers": {
+        "follower_2": {
+          "sourceOrderId": "260413150882181",
+          "sourceStatus": "OPEN",
+          "mirrorStatus": "error",
+          "errors": {
+            "name": "KiteApiError",
+            "message": "IP (20.197.12.34) is not allowed to place orders for this app. Update allowed IPs on the Kite developer console (https://developers.kite.trade).",
+            "status": 403,
+            "errorType": "PermissionException",
+            "body": {
+              "status": "error",
+              "message": "IP (20.197.12.34) is not allowed to place orders for this app. Update allowed IPs on the Kite developer console (https://developers.kite.trade).",
+              "data": null,
+              "error_type": "PermissionException"
+            }
+          },
+          "followerId": "follower_2",
+          "updatedAt": "2026-04-13T05:38:18.349Z"
+        },
+        "follower_1": {
+          "sourceOrderId": "260413150882181",
+          "sourceStatus": "OPEN",
+          "mirrorStatus": "cancelled",
+          "followerOrderId": "260413170817947",
+          "followerVariety": "regular",
+          "followerId": "follower_1",
+          "updatedAt": "2026-04-13T05:42:14.969Z"
         }
-      }
+      },
+      "updatedAt": "2026-04-13T05:42:14.969Z"
+    },
+    "260413150906727": {
+      "sourceOrderId": "260413150906727",
+      "followers": {
+        "follower_2": {
+          "sourceOrderId": "260413150906727",
+          "sourceStatus": "OPEN",
+          "mirrorStatus": "error",
+          "errors": {
+            "name": "KiteApiError",
+            "message": "IP (20.197.12.34) is not allowed to place orders for this app. Update allowed IPs on the Kite developer console (https://developers.kite.trade).",
+            "status": 403,
+            "errorType": "PermissionException",
+            "body": {
+              "status": "error",
+              "message": "IP (20.197.12.34) is not allowed to place orders for this app. Update allowed IPs on the Kite developer console (https://developers.kite.trade).",
+              "data": null,
+              "error_type": "PermissionException"
+            }
+          },
+          "followerId": "follower_2",
+          "updatedAt": "2026-04-13T05:45:33.125Z"
+        },
+        "follower_1": {
+          "sourceOrderId": "260413150906727",
+          "sourceStatus": "OPEN",
+          "mirrorStatus": "placed",
+          "followerOrderId": "260413170842486",
+          "followerVariety": "regular",
+          "followerId": "follower_1",
+          "updatedAt": "2026-04-13T05:45:33.150Z"
+        }
+      },
+      "updatedAt": "2026-04-13T05:45:33.150Z"
     }
   },
   "recentEvents": [
+    {
+      "at": "2026-04-13T05:45:33.151Z",
+      "type": "mirror.error",
+      "summary": "Failed to process source order",
+      "detail": {
+        "orderId": "260413150906727",
+        "followerId": "follower_2",
+        "message": "IP (20.197.12.34) is not allowed to place orders for this app. Update allowed IPs on the Kite developer console (https://developers.kite.trade)."
+      }
+    },
+    {
+      "at": "2026-04-13T05:45:33.151Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260413150906727",
+        "followerId": "follower_1",
+        "followerOrderId": "260413170842486",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-13T05:42:14.969Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
+      "detail": {
+        "sourceOrderId": "260413150882181",
+        "followerId": "follower_1",
+        "followerOrderId": "260413170817947"
+      }
+    },
+    {
+      "at": "2026-04-13T05:42:14.968Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
+      "detail": {
+        "sourceOrderId": "260413150882181",
+        "followerId": "follower_1",
+        "followerOrderId": "260413170817947"
+      }
+    },
+    {
+      "at": "2026-04-13T05:38:18.384Z",
+      "type": "mirror.error",
+      "summary": "Failed to process source order",
+      "detail": {
+        "orderId": "260413150882181",
+        "followerId": "follower_2",
+        "message": "IP (20.197.12.34) is not allowed to place orders for this app. Update allowed IPs on the Kite developer console (https://developers.kite.trade)."
+      }
+    },
+    {
+      "at": "2026-04-13T05:38:18.383Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260413150882181",
+        "followerId": "follower_1",
+        "followerOrderId": "260413170817947",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-13T05:13:24.928Z",
+      "type": "mirror.error",
+      "summary": "Failed to process source order",
+      "detail": {
+        "orderId": "260413150778698",
+        "followerId": "follower_2",
+        "message": "IP (20.197.12.34) is not allowed to place orders for this app. Update allowed IPs on the Kite developer console (https://developers.kite.trade)."
+      }
+    },
+    {
+      "at": "2026-04-13T05:13:24.927Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260413150778698",
+        "followerId": "follower_1",
+        "followerOrderId": "260413170715560",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-13T05:13:24.670Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260413150778698",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-13T04:38:22.223Z",
+      "type": "mirror.error",
+      "summary": "Failed to process source order",
+      "detail": {
+        "orderId": "260413150587467",
+        "followerId": "follower_2",
+        "message": "IP (20.197.12.34) is not allowed to place orders for this app. Update allowed IPs on the Kite developer console (https://developers.kite.trade)."
+      }
+    },
+    {
+      "at": "2026-04-13T04:38:22.222Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260413150587467",
+        "followerId": "follower_1",
+        "followerOrderId": "260413170529869",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-13T04:38:22.165Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260413150587467",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-13T04:37:17.896Z",
+      "type": "mirror.error",
+      "summary": "Failed to process source order",
+      "detail": {
+        "orderId": "260413150582015",
+        "followerId": "follower_2",
+        "message": "IP (20.197.12.34) is not allowed to place orders for this app. Update allowed IPs on the Kite developer console (https://developers.kite.trade)."
+      }
+    },
+    {
+      "at": "2026-04-13T04:37:17.895Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260413150582015",
+        "followerId": "follower_1",
+        "followerOrderId": "260413170524575",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-13T04:37:17.840Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260413150582015",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-13T04:34:53.836Z",
+      "type": "auth.success",
+      "summary": "follower_2 account authenticated",
+      "detail": {
+        "account": "follower_2",
+        "userId": "AUY168"
+      }
+    },
+    {
+      "at": "2026-04-13T04:07:33.130Z",
+      "type": "mirror.error",
+      "summary": "Failed to process source order",
+      "detail": {
+        "orderId": "260413150372929",
+        "followerId": "follower_2",
+        "message": "Authenticate the follower_2 account first."
+      }
+    },
+    {
+      "at": "2026-04-13T04:07:33.130Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260413150372929",
+        "followerId": "follower_1",
+        "followerOrderId": "260413170328317",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-13T04:07:33.064Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260413150372929",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-13T04:07:33.063Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260413150372929",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-13T04:07:33.062Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260413150372929",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-13T04:07:33.061Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260413150372929",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-13T04:07:33.060Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260413150372929",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-13T04:07:23.838Z",
+      "type": "mirror.error",
+      "summary": "Failed to process source order",
+      "detail": {
+        "orderId": "260413150371504",
+        "followerId": "follower_2",
+        "message": "Authenticate the follower_2 account first."
+      }
+    },
+    {
+      "at": "2026-04-13T04:07:23.837Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260413150371504",
+        "followerId": "follower_1",
+        "followerOrderId": "260413170327162",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-13T04:07:23.778Z",
+      "type": "mirror.ignored",
+      "summary": "Skipped duplicate source order while in-flight",
+      "detail": {
+        "orderId": "260413150371504",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-13T04:07:23.775Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260413150371504",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-13T04:07:23.774Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260413150371504",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-13T04:05:24.673Z",
+      "type": "mirror.error",
+      "summary": "Failed to process source order",
+      "detail": {
+        "orderId": "260413150352125",
+        "followerId": "follower_2",
+        "message": "Authenticate the follower_2 account first."
+      }
+    },
+    {
+      "at": "2026-04-13T04:05:24.672Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260413150352125",
+        "followerId": "follower_1",
+        "followerOrderId": "260413170309467",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-13T04:05:24.604Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260413150352125",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-13T04:01:49.349Z",
+      "type": "mirror.error",
+      "summary": "Failed to process source order",
+      "detail": {
+        "orderId": "260413150319818",
+        "followerId": "follower_2",
+        "message": "Authenticate the follower_2 account first."
+      }
+    },
+    {
+      "at": "2026-04-13T04:01:49.348Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260413150319818",
+        "followerId": "follower_1",
+        "followerOrderId": "260413170280303",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-13T04:01:48.622Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260413150319818",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-13T04:00:27.101Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-13T04:00:27.014Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-13T04:00:05.463Z",
+      "type": "mirror.dry_run",
+      "summary": "Dry-run follower order prepared",
+      "detail": {
+        "orderId": "260413150295943",
+        "followerId": "follower_2",
+        "followerOrder": {
+          "variety": "regular",
+          "exchange": "NFO",
+          "tradingsymbol": "NIFTY2641323650CE",
+          "transaction_type": "BUY",
+          "order_type": "LIMIT",
+          "quantity": 65,
+          "product": "NRML",
+          "validity": "DAY",
+          "disclosed_quantity": 0,
+          "price": 54.6,
+          "trigger_price": 0,
+          "tag": "CPY50295943"
+        }
+      }
+    },
+    {
+      "at": "2026-04-13T04:00:05.462Z",
+      "type": "mirror.dry_run",
+      "summary": "Dry-run follower order prepared",
+      "detail": {
+        "orderId": "260413150295943",
+        "followerId": "follower_1",
+        "followerOrder": {
+          "variety": "regular",
+          "exchange": "NFO",
+          "tradingsymbol": "NIFTY2641323650CE",
+          "transaction_type": "BUY",
+          "order_type": "LIMIT",
+          "quantity": 65,
+          "product": "NRML",
+          "validity": "DAY",
+          "disclosed_quantity": 0,
+          "price": 54.6,
+          "trigger_price": 0,
+          "tag": "CPY50295943"
+        }
+      }
+    },
+    {
+      "at": "2026-04-13T04:00:05.460Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260413150295943",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-13T03:59:08.071Z",
+      "type": "mirror.dry_run",
+      "summary": "Dry-run follower order prepared",
+      "detail": {
+        "orderId": "260413150286981",
+        "followerId": "follower_2",
+        "followerOrder": {
+          "variety": "regular",
+          "exchange": "NFO",
+          "tradingsymbol": "NIFTY2641323650CE",
+          "transaction_type": "SELL",
+          "order_type": "LIMIT",
+          "quantity": 65,
+          "product": "NRML",
+          "validity": "DAY",
+          "disclosed_quantity": 0,
+          "price": 52.35,
+          "trigger_price": 0,
+          "tag": "CPY50286981"
+        }
+      }
+    },
+    {
+      "at": "2026-04-13T03:59:08.069Z",
+      "type": "mirror.dry_run",
+      "summary": "Dry-run follower order prepared",
+      "detail": {
+        "orderId": "260413150286981",
+        "followerId": "follower_1",
+        "followerOrder": {
+          "variety": "regular",
+          "exchange": "NFO",
+          "tradingsymbol": "NIFTY2641323650CE",
+          "transaction_type": "SELL",
+          "order_type": "LIMIT",
+          "quantity": 65,
+          "product": "NRML",
+          "validity": "DAY",
+          "disclosed_quantity": 0,
+          "price": 52.35,
+          "trigger_price": 0,
+          "tag": "CPY50286981"
+        }
+      }
+    },
+    {
+      "at": "2026-04-13T03:59:08.067Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260413150286981",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-13T03:56:00.810Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-13T03:56:00.760Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-13T03:56:00.759Z",
+      "type": "auth.success",
+      "summary": "leader account authenticated",
+      "detail": {
+        "account": "leader",
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-13T03:54:45.602Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-13T03:54:45.269Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-13T03:45:23.603Z",
+      "type": "stream.skip",
+      "summary": "Leader token expired – re-authenticate before market opens"
+    },
+    {
+      "at": "2026-04-13T03:45:23.602Z",
+      "type": "auth.expired",
+      "summary": "follower_1 token expired (16h 23m). Re-authenticate.",
+      "detail": {
+        "account": "follower_1"
+      }
+    },
+    {
+      "at": "2026-04-13T03:45:23.601Z",
+      "type": "auth.expired",
+      "summary": "leader token expired (72h 16m). Re-authenticate.",
+      "detail": {
+        "account": "leader"
+      }
+    },
+    {
+      "at": "2026-04-12T11:20:05.565Z",
+      "type": "stream.skip",
+      "summary": "Leader token expired – re-authenticate before market opens"
+    },
+    {
+      "at": "2026-04-12T11:20:05.564Z",
+      "type": "auth.expired",
+      "summary": "follower_1 token expired (55h 47m). Re-authenticate.",
+      "detail": {
+        "account": "follower_1"
+      }
+    },
+    {
+      "at": "2026-04-12T11:20:05.562Z",
+      "type": "auth.expired",
+      "summary": "leader token expired (55h 51m). Re-authenticate.",
+      "detail": {
+        "account": "leader"
+      }
+    },
     {
       "at": "2026-04-10T09:39:56.532Z",
       "type": "mirror.error",
@@ -1811,404 +2319,10 @@
         "code": 1005,
         "reason": "No reason provided"
       }
-    },
-    {
-      "at": "2026-04-02T05:04:10.699Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:08.712Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:08.697Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:04:08.697Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:08.692Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:06.728Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:06.690Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:04:06.689Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:06.685Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:04.704Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:04.683Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:04:04.682Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:04.678Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:02.689Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:02.677Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:04:02.676Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:02.671Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:00.686Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:00.669Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:04:00.669Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:00.664Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:58.678Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:58.662Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:03:58.662Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:58.657Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:56.678Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:56.656Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:03:56.656Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:56.650Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:54.677Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:54.649Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:03:54.648Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:54.643Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:52.664Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:52.641Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:03:52.639Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:52.635Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:50.654Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:50.634Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:03:50.634Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:50.629Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:48.649Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:48.628Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:03:48.628Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:48.623Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:46.636Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:46.622Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:03:46.621Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:46.617Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:44.628Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:44.616Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:03:44.615Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:03:44.611Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
     }
-  ]
+  ],
+  "preConnectPositions": {
+    "leader": {},
+    "follower_2": {}
+  }
 }

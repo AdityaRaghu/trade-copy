@@ -1,5 +1,4 @@
 import crypto from 'node:crypto';
-import WebSocket from 'ws';
 
 const API_BASE_URL = 'https://api.kite.trade';
 const LOGIN_BASE_URL = 'https://kite.zerodha.com/connect/login';

@@ -6,3 +6,4 @@
 [2026-04-18T08:50:49.690Z] follower token expired (28h 30m). Re-authenticate. { account: 'follower' }
 [2026-04-18T08:50:49.691Z] Leader token expired – re-authenticate before market opens 
 Trade copier listening on http://0.0.0.0:8787 (dry_run=false)
+Killed

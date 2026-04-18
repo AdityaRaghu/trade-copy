@@ -4,6 +4,9 @@ import { TradeCopier } from './tradeCopier.js';
 
 const copier = new TradeCopier({ config });
 await copier.resume();
+process.on('unhandledRejection', (err) => {
+  console.error('Unhandled rejection:', err);
+});
 
 const knownAccounts = new Set(['leader', 'follower']);
 

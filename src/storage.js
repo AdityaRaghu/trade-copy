@@ -35,10 +35,9 @@ export function readJsonFile(filePath, initialValue) {
 export function writeJsonFile(filePath, value) {
   ensureJsonFile(filePath, value);
 
-  fs.writeFileSync(
-    filePath,
-    JSON.stringify(value, null, 2)
-  );
+  const tmp =filePath + '.tmp';
+  fs.writeFileSync(tmp, JSON.stringify(value, null, 2));
+  fs.renameSync(tmp, filePath);
 
   return value;
 }

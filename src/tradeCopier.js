@@ -145,6 +145,8 @@ export function buildFollowerOrder(sourceOrder, cfg, { traceId } = {}) {
   if (['MARKET', 'SL-M'].includes(upper(order.order_type))) {
     const mp = String(order.market_protection ?? '').trim();
     if (!mp || mp === '0') order.market_protection = String(cfg.marketProtection ?? '-1');
+  } else {
+    order.market_protection = undefined;
   }
 
   return order;
@@ -393,7 +395,7 @@ export class TradeCopier {
       await this._replicateModification(order, followerState); return;
     }
 
-    if (followerState.mirrorStatus) return;
+    if (followerState.mirrorStatus && followerState.mirrorStatus !== 'error') return;
 
     if (this.inFlight.has(order.order_id)) {
       this._log('mirror.ignored', 'Skipped duplicate source order while in-flight', { orderId: order.order_id, status });
@@ -497,9 +499,12 @@ export class TradeCopier {
       const sess = this._requireSession(FOLLOWER);
       if (tokenExpired(sess)) { this._log('modify.error', `${FOLLOWER} token expired – cannot modify`, { sourceOrderId: sourceOrder.order_id }); return; }
       const cfg = this._acctCfg(FOLLOWER);
+      let modQty = Math.floor(num(sourceOrder.quantity) * cfg.quantityMultiplier);
+      if (cfg.lotSize > 0) modQty = Math.floor(modQty / cfg.lotSize) * cfg.lotSize;
+      if (cfg.maxLots > 0 && cfg.lotSize > 0) modQty = Math.min(modQty, cfg.maxLots * cfg.lotSize);
       await this._client(FOLLOWER).modifyOrder(sess.accessToken, {
         variety: followerState.followerVariety, order_id: followerState.followerOrderId,
-        quantity: Math.floor(num(sourceOrder.quantity) * cfg.quantityMultiplier),
+        quantity: modQty,
         price: num(sourceOrder.price), trigger_price: num(sourceOrder.trigger_price),
         order_type: upper(sourceOrder.order_type), validity: upper(sourceOrder.validity || 'DAY'),
         disclosed_quantity: Math.trunc(num(sourceOrder.disclosed_quantity)),
@@ -572,6 +577,9 @@ export class TradeCopier {
     this.runtime.preConnectPositions[account] = snapshot;
     this._persistRuntime();
     return snapshot;
+  } catch (err) {
+    this._log('position.snapshot.error', '${account}: failed to snapshot positions (non-fatal)', {message: err.message });
+    return {};
   }
   _saveFollower(sourceOrderId, updates) {
     const m = this.runtime.mirroredOrders[sourceOrderId] ??= { sourceOrderId, followerId: FOLLOWER, updatedAt: nowIso() };

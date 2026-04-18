@@ -1,23 +1,5 @@
 {
   "mirroredOrders": {
-    "260416151832613": {
-      "sourceOrderId": "260416151832613",
-      "updatedAt": "2026-04-16T09:34:23.473Z",
-      "sourceStatus": "COMPLETE",
-      "mirrorStatus": "placed",
-      "followerOrderId": "260416191769982",
-      "followerVariety": "regular",
-      "followerId": "follower"
-    },
-    "260416151836989": {
-      "sourceOrderId": "260416151836989",
-      "updatedAt": "2026-04-16T09:35:04.028Z",
-      "sourceStatus": "COMPLETE",
-      "mirrorStatus": "placed",
-      "followerOrderId": "260416191774446",
-      "followerVariety": "regular",
-      "followerId": "follower"
-    },
     "260417151094538": {
       "sourceOrderId": "260417151094538",
       "updatedAt": "2026-04-17T07:44:04.394Z",
@@ -47,6 +29,48 @@
     }
   },
   "recentEvents": [
+    {
+      "at": "2026-04-18T10:05:52.666Z",
+      "type": "stream.skip",
+      "summary": "Leader token expired – re-authenticate before market opens"
+    },
+    {
+      "at": "2026-04-18T10:05:52.666Z",
+      "type": "auth.expired",
+      "summary": "follower token expired (29h 45m). Re-authenticate.",
+      "detail": {
+        "account": "follower"
+      }
+    },
+    {
+      "at": "2026-04-18T10:05:52.660Z",
+      "type": "auth.expired",
+      "summary": "leader token expired (30h 25m). Re-authenticate.",
+      "detail": {
+        "account": "leader"
+      }
+    },
+    {
+      "at": "2026-04-18T10:05:17.353Z",
+      "type": "stream.skip",
+      "summary": "Leader token expired – re-authenticate before market opens"
+    },
+    {
+      "at": "2026-04-18T10:05:17.352Z",
+      "type": "auth.expired",
+      "summary": "follower token expired (29h 45m). Re-authenticate.",
+      "detail": {
+        "account": "follower"
+      }
+    },
+    {
+      "at": "2026-04-18T10:05:17.347Z",
+      "type": "auth.expired",
+      "summary": "leader token expired (30h 25m). Re-authenticate.",
+      "detail": {
+        "account": "leader"
+      }
+    },
     {
       "at": "2026-04-18T08:50:49.691Z",
       "type": "stream.skip",
@@ -2011,91 +2035,6 @@
           "trigger_price": 0,
           "tag": "CPY51568752"
         }
-      }
-    },
-    {
-      "at": "2026-04-06T09:38:05.369Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260406151568752",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-06T09:35:58.837Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260406151560204",
-        "followerOrderId": "260406171511029",
-        "attempt": 1,
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2640723200CE",
-          "transaction_type": "SELL",
-          "order_type": "LIMIT",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 90.1,
-          "trigger_price": 0,
-          "tag": "CPY51560204"
-        }
-      }
-    },
-    {
-      "at": "2026-04-06T09:35:58.759Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260406151560204",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-06T09:35:46.988Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260406151559342",
-        "followerOrderId": "260406171510174",
-        "attempt": 1,
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2640723200CE",
-          "transaction_type": "BUY",
-          "order_type": "LIMIT",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 88.95,
-          "trigger_price": 0,
-          "tag": "CPY51559342"
-        }
-      }
-    },
-    {
-      "at": "2026-04-06T09:35:46.925Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260406151559342",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-06T09:33:30.973Z",
-      "type": "auth.success",
-      "summary": "follower account authenticated",
-      "detail": {
-        "account": "follower",
-        "userId": "QKR315",
-        "loginTime": "2026-04-06 15:03:30"
       }
     }
   ],

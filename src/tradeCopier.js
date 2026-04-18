@@ -3,6 +3,7 @@ import { KiteApiError, KiteClient } from './kiteClient.js';
 import { readJsonFile, writeJsonFile } from './storage.js';
 
 const LEADER = 'leader';
+const FOLLOWER = 'follower';
 const TERMINAL = new Set(['COMPLETE', 'CANCELLED', 'REJECTED']);
 const ACTIONABLE = new Set(['OPEN', 'COMPLETE', 'TRIGGER PENDING', 'MODIFIED', 'UPDATE']);
 const TOKEN_TTL = 16 * 3_600_000;
@@ -59,6 +60,26 @@ function serializeError(err) {
   if (err instanceof KiteApiError)
     return { name: err.name, message: err.message, status: err.status, errorType: err.errorType, body: err.body };
   return { name: err?.name ?? 'Error', message: err?.message ?? String(err) };
+}
+
+function recordTimestamp(value) {
+  const ts = value?.updatedAt ?? value?.createdAt ?? value?.loginTime;
+  const ms = ts ? new Date(ts).getTime() : 0;
+  return Number.isFinite(ms) ? ms : 0;
+}
+
+function pickLegacyFollowerEntry(entries, preferredId) {
+  const pairs = Object.entries(entries ?? {})
+    .filter(([id, value]) => /^follower(?:_\d+)?$/.test(id) && value && typeof value === 'object');
+
+  if (preferredId) {
+    const preferred = pairs.find(([id]) => id === preferredId);
+    if (preferred) return preferred;
+  }
+
+  if (!pairs.length) return [null, null];
+  pairs.sort((a, b) => recordTimestamp(b[1]) - recordTimestamp(a[1]));
+  return pairs[0];
 }
 
 // ── exported pure functions ───────────────────────────────────────────────────
@@ -134,29 +155,66 @@ export class TradeCopier {
   constructor({ config, logger = console }) {
     this.cfg = config;
     this.logger = logger;
+    this.clients = {
+      [LEADER]: this._mkClient(LEADER),
+      [FOLLOWER]: this._mkClient(FOLLOWER),
+    };
 
-    this.clients = { [LEADER]: this._mkClient(LEADER) };
-    for (const f of this._followers()) this.clients[f.id] = this._mkClient(f.id);
+    this.tokens = readJsonFile(config.tokenStoreFile, { [LEADER]: null, [FOLLOWER]: null });
+    let tokensChanged = false;
+    this.legacyFollowerAccount = null;
 
-    this.tokens = readJsonFile(config.tokenStoreFile, { [LEADER]: null, followers: {} });
-    this.tokens.followers ??= {};
-
-    // Migrate old single-follower token format
-    if (this.tokens.follower && !Object.keys(this.tokens.followers).length) {
-      const first = this._followers()[0];
-      if (first) { this.tokens.followers[first.id] = this.tokens.follower; delete this.tokens.follower; this._persistTokens(); }
-    }
-
-    this.runtime = readJsonFile(config.runtimeStoreFile, { mirroredOrders: {}, recentEvents: [] });
-
-    // Migrate old single-follower runtime format
-    const first = this._followers()[0];
-    for (const entry of Object.values(this.runtime.mirroredOrders)) {
-      if (entry.followerOrderId && !entry.followers && first) {
-        entry.followers = { [first.id]: { mirrorStatus: entry.mirrorStatus, followerOrderId: entry.followerOrderId, followerVariety: entry.followerVariety, errors: entry.errors } };
-        ['followerOrderId', 'followerVariety', 'mirrorStatus', 'blockedReasons', 'errors'].forEach(k => delete entry[k]);
+    if (this.tokens.followers && !this.tokens[FOLLOWER]) {
+      const [legacyId, legacySession] = pickLegacyFollowerEntry(this.tokens.followers);
+      if (legacySession) {
+        this.tokens[FOLLOWER] = { ...legacySession, account: FOLLOWER };
+        this.legacyFollowerAccount = legacyId;
+        tokensChanged = true;
       }
     }
+    if (this.tokens[FOLLOWER]?.account && this.tokens[FOLLOWER].account !== FOLLOWER) {
+      this.tokens[FOLLOWER] = { ...this.tokens[FOLLOWER], account: FOLLOWER };
+      tokensChanged = true;
+    }
+    if ('followers' in this.tokens) {
+      delete this.tokens.followers;
+      tokensChanged = true;
+    }
+    if (tokensChanged) this._persistTokens();
+
+    this.runtime = readJsonFile(config.runtimeStoreFile, { mirroredOrders: {}, recentEvents: [] });
+    this.runtime.preConnectPositions ??= {};
+
+    let runtimeChanged = false;
+    const [legacyPreAccount, legacyPrePositions] = pickLegacyFollowerEntry(this.runtime.preConnectPositions, this.legacyFollowerAccount);
+    if (!this.runtime.preConnectPositions[FOLLOWER] && legacyPrePositions) {
+      this.runtime.preConnectPositions[FOLLOWER] = legacyPrePositions;
+      if (!this.legacyFollowerAccount) this.legacyFollowerAccount = legacyPreAccount;
+      runtimeChanged = true;
+    }
+    for (const key of Object.keys(this.runtime.preConnectPositions)) {
+      if (key !== LEADER && key !== FOLLOWER) {
+        delete this.runtime.preConnectPositions[key];
+        runtimeChanged = true;
+      }
+    }
+
+    for (const entry of Object.values(this.runtime.mirroredOrders)) {
+      if (entry.followers) {
+        const [legacyId, followerState] = pickLegacyFollowerEntry(entry.followers, this.legacyFollowerAccount);
+        if (followerState) {
+          Object.assign(entry, { ...followerState, followerId: FOLLOWER });
+          if (!this.legacyFollowerAccount) this.legacyFollowerAccount = legacyId;
+        }
+        delete entry.followers;
+        runtimeChanged = true;
+      }
+      if (entry.followerId && entry.followerId !== FOLLOWER) {
+        entry.followerId = FOLLOWER;
+        runtimeChanged = true;
+      }
+    }
+    if (runtimeChanged) this._persistRuntime();
 
     this.sourceSocket = null;
     this.socketState = 'disconnected';
@@ -172,7 +230,7 @@ export class TradeCopier {
       sourceSocketState: this.socketState,
       quantityMultiplier: this.cfg.quantityMultiplier,
       leader: this._sessionSummary(LEADER),
-      followers: this._followers().map(f => ({ id: f.id, label: f.label, ...this._sessionSummary(f.id) })),
+      follower: { id: FOLLOWER, label: this.cfg.accounts.follower?.label, ...this._sessionSummary(FOLLOWER) },
       recentEvents: this.runtime.recentEvents,
       mirroredOrders: Object.keys(this.runtime.mirroredOrders).length,
     };
@@ -199,7 +257,7 @@ export class TradeCopier {
   }
 
   async resume() {
-    for (const id of [LEADER, ...this._followerIds()]) {
+    for (const id of [LEADER, FOLLOWER]) {
       const s = this._getSession(id);
       if (s?.accessToken && tokenExpired(s))
         this._log('auth.expired', `${id} token expired (${tokenAge(s)}). Re-authenticate.`, { account: id });
@@ -223,37 +281,37 @@ export class TradeCopier {
     const leaderOrder = normalizeOrderInput(rawOrder);
     leaderOrder.tag = makeTag(`${this.cfg.tagPrefix}L`, traceId);
     this._patchMp(leaderOrder, this.cfg);
-
-    const entries = this._followers().map(f => {
-      const cfg = this._mergedCfg(f.id);
-      return { f, cfg, order: buildFollowerOrder(leaderOrder, cfg, { traceId }) };
-    });
+    const followerCfg = this._acctCfg(FOLLOWER);
+    const followerOrder = buildFollowerOrder(leaderOrder, followerCfg, { traceId });
 
     const errors = [
       ...validateOrderAgainstPolicy(leaderOrder, this.cfg).reasons.map(r => `Leader: ${r}`),
-      ...entries.flatMap(({ f, cfg, order }) =>
-        validateOrderAgainstPolicy(order, cfg).reasons.map(r => `${f.id}: ${r}`)
-      ),
+      ...validateOrderAgainstPolicy(followerOrder, followerCfg).reasons.map(r => `${FOLLOWER}: ${r}`),
     ];
     if (errors.length) throw new Error(errors.join(' '));
 
     if (this.cfg.dryRun) {
-      const payload = { traceId, mode: 'dry_run', leaderOrder, followers: entries.map(({ f, order }) => ({ followerId: f.id, label: f.label, order })) };
+      const payload = {
+        traceId,
+        mode: 'dry_run',
+        leaderOrder,
+        follower: { followerId: FOLLOWER, label: followerCfg.label, order: followerOrder },
+      };
       this._log('fanout.dry_run', 'Dry-run fan-out prepared', payload);
       return payload;
     }
 
     const settled = await Promise.allSettled([
       this._client(LEADER).placeOrder(leaderSession.accessToken, leaderOrder),
-      ...entries.map(({ f, order }) => Promise.resolve().then(() => {
-        const s = this._requireSession(f.id);
-        return this._client(f.id).placeOrder(s.accessToken, order);
-      })),
+      Promise.resolve().then(() => {
+        const s = this._requireSession(FOLLOWER);
+        return this._client(FOLLOWER).placeOrder(s.accessToken, followerOrder);
+      }),
     ]);
 
     const result = {
       traceId, mode: 'live', leaderOrder, leaderResult: settleResult(settled[0]),
-      followers: entries.map(({ f, order }, i) => ({ followerId: f.id, label: f.label, order, result: settleResult(settled[i + 1]) })),
+      follower: { followerId: FOLLOWER, label: followerCfg.label, order: followerOrder, result: settleResult(settled[1]) },
     };
     this._log('fanout.live', 'Fan-out order submitted', result);
     return result;
@@ -325,18 +383,17 @@ export class TradeCopier {
 
     const status = normalizeOrderStatus(order.status);
     const mapping = this.runtime.mirroredOrders[order.order_id];
-    const followerMap = mapping?.followers ?? {};
-    const anyPlaced = Object.values(followerMap).some(f => Boolean(f?.followerOrderId));
+    const followerState = mapping ?? {};
+    const anyPlaced = Boolean(followerState.followerOrderId);
 
     if (status === 'CANCELLED' && this.cfg.replicateCancellations && anyPlaced) {
-      await this._replicateCancellation(order, followerMap); return;
+      await this._replicateCancellation(order, followerState); return;
     }
     if (status === 'MODIFIED' && this.cfg.replicateModifications && anyPlaced) {
-      await this._replicateModification(order, followerMap); return;
+      await this._replicateModification(order, followerState); return;
     }
 
-    const pending = this._followers().filter(f => !followerMap[f.id]?.mirrorStatus);
-    if (!pending.length) return;
+    if (followerState.mirrorStatus) return;
 
     if (this.inFlight.has(order.order_id)) {
       this._log('mirror.ignored', 'Skipped duplicate source order while in-flight', { orderId: order.order_id, status });
@@ -349,57 +406,54 @@ export class TradeCopier {
 
     this.inFlight.add(order.order_id);
     try {
-      const results = await Promise.allSettled(pending.map(f => this._mirrorToFollower(order, f, status)));
-      results.forEach((r, i) => {
-        if (r.status === 'rejected')
-          this._log('mirror.error', 'Failed to process source order', { orderId: order.order_id, followerId: pending[i].id, message: r.reason?.message });
-      });
+      await this._mirrorToFollower(order, status);
+    } catch (err) {
+      this._log('mirror.error', 'Failed to process source order', { orderId: order.order_id, followerId: FOLLOWER, message: err?.message });
     } finally {
       this.inFlight.delete(order.order_id);
     }
   }
 
   // ── private ───────────────────────────────────────────────────────────────
-  async _mirrorToFollower(order, followerCfg, status) {
-    const { id } = followerCfg;
-    const cfg = this._mergedCfg(id);
+  async _mirrorToFollower(order, status) {
+    const cfg = this._acctCfg(FOLLOWER);
     const fo = buildFollowerOrder(order, cfg);
     const policy = validateOrderAgainstPolicy(fo, cfg);
 
     if (!policy.ok) {
-      this._saveFollower(order.order_id, id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'blocked', blockedReasons: policy.reasons });
-      this._log('mirror.blocked', 'Follower order blocked by policy', { orderId: order.order_id, followerId: id, reasons: policy.reasons });
+      this._saveFollower(order.order_id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'blocked', blockedReasons: policy.reasons });
+      this._log('mirror.blocked', 'Follower order blocked by policy', { orderId: order.order_id, followerId: FOLLOWER, reasons: policy.reasons });
       return;
     }
     if (fo.quantity <= 0) {
-      this._saveFollower(order.order_id, id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'skipped', blockedReasons: ['Quantity became 0 after multiplier.'] });
-      this._log('mirror.skipped', 'Follower order skipped after multiplier', { orderId: order.order_id, followerId: id });
+      this._saveFollower(order.order_id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'skipped', blockedReasons: ['Quantity became 0 after multiplier.'] });
+      this._log('mirror.skipped', 'Follower order skipped after multiplier', { orderId: order.order_id, followerId: FOLLOWER });
       return;
     }
     const leaderPre =this.runtime.preConnectPositions?.leader ?? {};
-    const followerPre =this.runtime.preConnectPositions?.[id] ?? {};
+    const followerPre =this.runtime.preConnectPositions?.[FOLLOWER] ?? {};
     const symbol = fo.tradingsymbol;
     const leaderPreQty = leaderPre[symbol] ?? 0;
     if (leaderPreQty !== 0){
       const isBuy = upper(fo.transaction_type) === 'BUY';
       const isSquareingOff = (leaderPreQty < 0 && isBuy) || (leaderPreQty > 0 && !isBuy);
       if (isSquareingOff && (followerPre[symbol] ?? 0) === 0) {
-        this._saveFollower(order.order_id, id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'skipped', blockedReasons: [`Square off pre connect ${symbol} position skipped - follower was not tin this trade`] });
-        this._log('mirror.skipped_preconnect', 'Skipped pre connect square off for  ${id}',{orderId: order.order_id, followerId: id, symbol, leaderPreQty });
+        this._saveFollower(order.order_id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'skipped', blockedReasons: [`Square off pre connect ${symbol} position skipped - follower was not tin this trade`] });
+        this._log('mirror.skipped_preconnect', `Skipped pre connect square off for ${FOLLOWER}`, { orderId: order.order_id, followerId: FOLLOWER, symbol, leaderPreQty });
           return;
         }
       }
     if (this.cfg.dryRun) {
-      this._saveFollower(order.order_id, id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'dry_run', followerPreview: fo });
-      this._log('mirror.dry_run', 'Dry-run follower order prepared', { orderId: order.order_id, followerId: id, followerOrder: fo });
+      this._saveFollower(order.order_id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'dry_run', followerPreview: fo });
+      this._log('mirror.dry_run', 'Dry-run follower order prepared', { orderId: order.order_id, followerId: FOLLOWER, followerOrder: fo });
       return;
     }
   
 
-    const session = this._requireSession(id);
+    const session = this._requireSession(FOLLOWER);
     if (tokenExpired(session)) {
-      this._saveFollower(order.order_id, id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'error', errors: { name: 'TokenExpired', message: `Token expired (${tokenAge(session)}). Re-authenticate.` } });
-      this._log('mirror.token_expired', `${id} token expired – cannot place order`, { orderId: order.order_id, followerId: id });
+      this._saveFollower(order.order_id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'error', errors: { name: 'TokenExpired', message: `Token expired (${tokenAge(session)}). Re-authenticate.` } });
+      this._log('mirror.token_expired', `${FOLLOWER} token expired – cannot place order`, { orderId: order.order_id, followerId: FOLLOWER });
       return;
     }
 
@@ -407,60 +461,54 @@ export class TradeCopier {
     for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
       try {
         if (attempt > 0) {
-          this._log('mirror.retry', `Retrying ${id} (attempt ${attempt + 1}/${MAX_RETRIES + 1})`, { orderId: order.order_id });
+          this._log('mirror.retry', `Retrying ${FOLLOWER} (attempt ${attempt + 1}/${MAX_RETRIES + 1})`, { orderId: order.order_id });
           await sleep(RETRY_MS * attempt);
         }
-        const placed = await this._client(id).placeOrder(session.accessToken, fo);
-        this._saveFollower(order.order_id, id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'placed', followerOrderId: placed.order_id, followerVariety: fo.variety });
-        this._log('mirror.placed', 'Follower order placed', { sourceOrderId: order.order_id, followerId: id, followerOrderId: placed.order_id, attempt: attempt + 1 });
+        const placed = await this._client(FOLLOWER).placeOrder(session.accessToken, fo);
+        this._saveFollower(order.order_id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'placed', followerOrderId: placed.order_id, followerVariety: fo.variety });
+        this._log('mirror.placed', 'Follower order placed', { sourceOrderId: order.order_id, followerId: FOLLOWER, followerOrderId: placed.order_id, attempt: attempt + 1 });
         return placed;
       } catch (err) {
         lastErr = err;
         if (err instanceof KiteApiError && err.status >= 400 && err.status < 500) break;
       }
     }
-    this._saveFollower(order.order_id, id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'error', errors: serializeError(lastErr) });
+    this._saveFollower(order.order_id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'error', errors: serializeError(lastErr) });
     throw lastErr;
   }
 
-  async _replicateCancellation(sourceOrder, followerMap) {
+  async _replicateCancellation(sourceOrder, followerState) {
     if (this.cfg.dryRun) { this._log('cancel.dry_run', 'Dry-run cancellation prepared', { sourceOrderId: sourceOrder.order_id }); return; }
-    await Promise.allSettled(
-      Object.entries(followerMap)
-        .filter(([, s]) => s?.followerOrderId)
-        .map(([id, state]) => Promise.resolve().then(async () => {
-          const sess = this._requireSession(id);
-          await this._client(id).cancelOrder(sess.accessToken, { variety: state.followerVariety, orderId: state.followerOrderId });
-          this._saveFollower(sourceOrder.order_id, id, { mirrorStatus: 'cancelled' });
-          this._log('cancel.live', 'Follower cancellation sent', { sourceOrderId: sourceOrder.order_id, followerId: id, followerOrderId: state.followerOrderId });
-        }).catch(err => {
-          this._log('cancel.error', 'Follower cancellation failed', { sourceOrderId: sourceOrder.order_id, followerId: id, message: err.message });
-        }))
-    );
+    if (!followerState?.followerOrderId) return;
+    try {
+      const sess = this._requireSession(FOLLOWER);
+      await this._client(FOLLOWER).cancelOrder(sess.accessToken, { variety: followerState.followerVariety, orderId: followerState.followerOrderId });
+      this._saveFollower(sourceOrder.order_id, { mirrorStatus: 'cancelled' });
+      this._log('cancel.live', 'Follower cancellation sent', { sourceOrderId: sourceOrder.order_id, followerId: FOLLOWER, followerOrderId: followerState.followerOrderId });
+    } catch (err) {
+      this._log('cancel.error', 'Follower cancellation failed', { sourceOrderId: sourceOrder.order_id, followerId: FOLLOWER, message: err.message });
+    }
   }
 
-  async _replicateModification(sourceOrder, followerMap) {
+  async _replicateModification(sourceOrder, followerState) {
     if (this.cfg.dryRun) { this._log('modify.dry_run', 'Dry-run modification prepared', { sourceOrderId: sourceOrder.order_id }); return; }
-    await Promise.allSettled(
-      Object.entries(followerMap)
-        .filter(([, s]) => s?.followerOrderId)
-        .map(([id, state]) => Promise.resolve().then(async () => {
-          const sess = this._requireSession(id);
-          if (tokenExpired(sess)) { this._log('modify.error', `${id} token expired – cannot modify`, { sourceOrderId: sourceOrder.order_id }); return; }
-          const cfg = this._mergedCfg(id);
-          await this._client(id).modifyOrder(sess.accessToken, {
-            variety: state.followerVariety, order_id: state.followerOrderId,
-            quantity: Math.floor(num(sourceOrder.quantity) * cfg.quantityMultiplier),
-            price: num(sourceOrder.price), trigger_price: num(sourceOrder.trigger_price),
-            order_type: upper(sourceOrder.order_type), validity: upper(sourceOrder.validity || 'DAY'),
-            disclosed_quantity: Math.trunc(num(sourceOrder.disclosed_quantity)),
-          });
-          this._saveFollower(sourceOrder.order_id, id, { mirrorStatus: 'modified' });
-          this._log('modify.live', 'Follower modification sent', { sourceOrderId: sourceOrder.order_id, followerId: id });
-        }).catch(err => {
-          this._log('modify.error', 'Follower modification failed', { sourceOrderId: sourceOrder.order_id, followerId: id, message: err.message });
-        }))
-    );
+    if (!followerState?.followerOrderId) return;
+    try {
+      const sess = this._requireSession(FOLLOWER);
+      if (tokenExpired(sess)) { this._log('modify.error', `${FOLLOWER} token expired – cannot modify`, { sourceOrderId: sourceOrder.order_id }); return; }
+      const cfg = this._acctCfg(FOLLOWER);
+      await this._client(FOLLOWER).modifyOrder(sess.accessToken, {
+        variety: followerState.followerVariety, order_id: followerState.followerOrderId,
+        quantity: Math.floor(num(sourceOrder.quantity) * cfg.quantityMultiplier),
+        price: num(sourceOrder.price), trigger_price: num(sourceOrder.trigger_price),
+        order_type: upper(sourceOrder.order_type), validity: upper(sourceOrder.validity || 'DAY'),
+        disclosed_quantity: Math.trunc(num(sourceOrder.disclosed_quantity)),
+      });
+      this._saveFollower(sourceOrder.order_id, { mirrorStatus: 'modified' });
+      this._log('modify.live', 'Follower modification sent', { sourceOrderId: sourceOrder.order_id, followerId: FOLLOWER });
+    } catch (err) {
+      this._log('modify.error', 'Follower modification failed', { sourceOrderId: sourceOrder.order_id, followerId: FOLLOWER, message: err.message });
+    }
   }
 
   _scheduleReconnect() {
@@ -471,17 +519,11 @@ export class TradeCopier {
     this.reconnectTimer = setTimeout(() => { this.reconnectTimer = null; if (!this.isShuttingDown) this.startSourceStream(); }, delay);
   }
 
-  _followers() { return this.cfg.accounts?.followers ?? []; }
-  _followerIds() { return this._followers().map(f => f.id); }
-
   _acctCfg(account) {
     if (account === LEADER) return this.cfg.accounts.leader;
-    const f = this._followers().find(x => x.id === account);
-    if (!f) throw new Error(`Unknown account "${account}".`);
-    return f;
+    if (account === FOLLOWER) return this.cfg.accounts.follower;
+    throw new Error(`Unknown account "${account}".`);
   }
-
-  _mergedCfg(followerId) { return { ...this.cfg, ...this._acctCfg(followerId) }; }
 
   _mkClient(account) {
     const c = typeof account === 'string' ? this._acctCfg(account) : account;
@@ -496,11 +538,11 @@ export class TradeCopier {
   }
 
   _getSession(account) {
-    return account === LEADER ? this.tokens[LEADER] : this.tokens.followers?.[account];
+    return account === LEADER ? this.tokens[LEADER] : this.tokens[FOLLOWER];
   }
   _setSession(account, session) {
     if (account === LEADER) this.tokens[LEADER] = session;
-    else { this.tokens.followers ??= {}; this.tokens.followers[account] = session; }
+    else this.tokens[FOLLOWER] = { ...session, account: FOLLOWER };
   }
   _requireSession(account) {
     const s = this._getSession(account);
@@ -531,10 +573,9 @@ export class TradeCopier {
     this._persistRuntime();
     return snapshot;
   }
-  _saveFollower(sourceOrderId, followerId, updates) {
-    const m = this.runtime.mirroredOrders[sourceOrderId] ??= { sourceOrderId, followers: {}, updatedAt: nowIso() };
-    m.followers ??= {};
-    m.followers[followerId] = { ...(m.followers[followerId] ?? {}), ...updates, followerId, updatedAt: nowIso() };
+  _saveFollower(sourceOrderId, updates) {
+    const m = this.runtime.mirroredOrders[sourceOrderId] ??= { sourceOrderId, followerId: FOLLOWER, updatedAt: nowIso() };
+    Object.assign(m, updates, { followerId: FOLLOWER, updatedAt: nowIso() });
     m.updatedAt = nowIso();
     this._persistRuntime();
   }

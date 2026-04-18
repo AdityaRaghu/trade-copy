@@ -61,10 +61,19 @@ test('TradeCopier uses separate app credentials for leader and follower logins',
       host: '127.0.0.1', port: 8787,
       accounts: {
         leader: { apiKey: 'leaderKey', apiSecret: 'leaderSecret', redirectUrl: 'http://127.0.0.1:8787/auth/zerodha/callback' },
-        followers: [
-          { id: 'follower_1', label: 'F1', apiKey: 'followerKey', apiSecret: 'followerSecret', redirectUrl: 'http://127.0.0.1:8787/auth/zerodha/callback',
-            quantityMultiplier: 1, maxQuantityPerOrder: 0, maxPriceDeviationPercent: 1.0, marketProtection: '-1', followMarketOrdersAsLimit: true, priceTickSize: 0.05 },
-        ],
+        follower: {
+          id: 'follower',
+          label: 'Follower',
+          apiKey: 'followerKey',
+          apiSecret: 'followerSecret',
+          redirectUrl: 'http://127.0.0.1:8787/auth/zerodha/callback',
+          quantityMultiplier: 1,
+          maxQuantityPerOrder: 0,
+          maxPriceDeviationPercent: 1.0,
+          marketProtection: '-1',
+          followMarketOrdersAsLimit: true,
+          priceTickSize: 0.05,
+        },
       },
       dryRun: true, quantityMultiplier: 1, maxQuantityPerOrder: 0, allowMarketOrders: true,
       marketProtection: '-1', followMarketOrdersAsLimit: true, maxPriceDeviationPercent: 1.0, priceTickSize: 0.05,
@@ -78,7 +87,7 @@ test('TradeCopier uses separate app credentials for leader and follower logins',
   });
 
   const leaderUrl = new URL(copier.buildLoginUrl('leader'));
-  const followerUrl = new URL(copier.buildLoginUrl('follower_1'));
+  const followerUrl = new URL(copier.buildLoginUrl('follower'));
   assert.equal(leaderUrl.searchParams.get('api_key'), 'leaderKey');
   assert.equal(followerUrl.searchParams.get('api_key'), 'followerKey');
 });
@@ -130,11 +139,21 @@ function makeCopier() {
       host: '127.0.0.1', port: 8787,
       accounts: {
         leader: { apiKey: 'lKey', apiSecret: 'lSec', redirectUrl: 'http://127.0.0.1:8787/auth/zerodha/callback' },
-        followers: [
-          { id: 'follower_1', label: 'F1', apiKey: 'fKey', apiSecret: 'fSec', redirectUrl: 'http://127.0.0.1:8787/auth/zerodha/callback',
-            quantityMultiplier: 1, maxQuantityPerOrder: 0, maxPriceDeviationPercent: 1.0, marketProtection: '-1',
-            followMarketOrdersAsLimit: false, priceTickSize: 0.05, lotSize: 65, maxLots: 1 },
-        ],
+        follower: {
+          id: 'follower',
+          label: 'Follower',
+          apiKey: 'fKey',
+          apiSecret: 'fSec',
+          redirectUrl: 'http://127.0.0.1:8787/auth/zerodha/callback',
+          quantityMultiplier: 1,
+          maxQuantityPerOrder: 0,
+          maxPriceDeviationPercent: 1.0,
+          marketProtection: '-1',
+          followMarketOrdersAsLimit: false,
+          priceTickSize: 0.05,
+          lotSize: 65,
+          maxLots: 1,
+        },
       },
       dryRun: true, quantityMultiplier: 1, maxQuantityPerOrder: 0, allowMarketOrders: true,
       marketProtection: '-1', followMarketOrdersAsLimit: false, maxPriceDeviationPercent: 1.0,
@@ -158,7 +177,7 @@ const squareOffOrder = {
 
 test('completeLogin snapshots net positions for the authenticated account', async () => {
   const copier = makeCopier();
-  const client = copier._client('follower_1');
+  const client = copier._client('follower');
 
   client.exchangeRequestToken = async () => ({
     user_id: 'AB1234',
@@ -177,10 +196,10 @@ test('completeLogin snapshots net positions for the authenticated account', asyn
     ],
   });
 
-  const session = await copier.completeLogin('follower_1', 'request-token');
+  const session = await copier.completeLogin('follower', 'request-token');
 
   assert.equal(session.userId, 'AB1234');
-  assert.deepEqual(copier.runtime.preConnectPositions?.follower_1, {
+  assert.deepEqual(copier.runtime.preConnectPositions?.follower, {
     NIFTY25APR23500CE: -100,
     INFY: 12,
   });
@@ -190,10 +209,10 @@ test('pre-connect guard skips square-off when follower has no pre-connect positi
   const copier = makeCopier();
   copier.runtime.preConnectPositions = {
     leader: { 'NIFTY25APR23500CE': -65 },
-    follower_1: {},
+    follower: {},
   };
   await copier.simulateSourceOrder({ ...squareOffOrder, order_id: 'SKIP001' });
-  const saved = copier.runtime.mirroredOrders['SKIP001']?.followers?.follower_1;
+  const saved = copier.runtime.mirroredOrders['SKIP001'];
   assert.ok(saved, 'Expected follower entry to be saved');
   assert.equal(saved.mirrorStatus, 'skipped');
   assert.ok(saved.blockedReasons?.[0]?.includes('pre connect'));
@@ -203,19 +222,19 @@ test('pre-connect guard allows square-off when follower also has pre-connect pos
   const copier = makeCopier();
   copier.runtime.preConnectPositions = {
     leader: { 'NIFTY25APR23500CE': -65 },
-    follower_1: { 'NIFTY25APR23500CE': -65 },
+    follower: { 'NIFTY25APR23500CE': -65 },
   };
   await copier.simulateSourceOrder({ ...squareOffOrder, order_id: 'ALLOW001' });
-  const saved = copier.runtime.mirroredOrders['ALLOW001']?.followers?.follower_1;
+  const saved = copier.runtime.mirroredOrders['ALLOW001'];
   assert.ok(saved, 'Expected follower entry to be saved');
   assert.equal(saved.mirrorStatus, 'dry_run');
 });
 
 test('pre-connect guard allows fresh entry when no pre-connect positions exist', async () => {
   const copier = makeCopier();
-  copier.runtime.preConnectPositions = { leader: {}, follower_1: {} };
+  copier.runtime.preConnectPositions = { leader: {}, follower: {} };
   await copier.simulateSourceOrder({ ...squareOffOrder, order_id: 'FRESH001' });
-  const saved = copier.runtime.mirroredOrders['FRESH001']?.followers?.follower_1;
+  const saved = copier.runtime.mirroredOrders['FRESH001'];
   assert.ok(saved, 'Expected follower entry to be saved');
   assert.equal(saved.mirrorStatus, 'dry_run');
 });
@@ -224,11 +243,11 @@ test('pre-connect guard allows adding to pre-connect long (same direction, not a
   const copier = makeCopier();
   copier.runtime.preConnectPositions = {
     leader: { 'NIFTY25APR23500CE': 65 },  // leader was LONG before connect
-    follower_1: {},
+    follower: {},
   };
   // BUY when leader has positive pre-connect = adding to long, not square-off
   await copier.simulateSourceOrder({ ...squareOffOrder, transaction_type: 'BUY', order_id: 'ADDLONG001' });
-  const saved = copier.runtime.mirroredOrders['ADDLONG001']?.followers?.follower_1;
+  const saved = copier.runtime.mirroredOrders['ADDLONG001'];
   assert.ok(saved, 'Expected follower entry to be saved');
   assert.equal(saved.mirrorStatus, 'dry_run');
 });

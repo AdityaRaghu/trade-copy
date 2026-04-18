@@ -1,11 +1,11 @@
 # Zerodha Trade Copier
 
-This is a starter service for a leader/follower setup:
+This is a starter service for a single leader/follower setup:
 
 - "mirror mode": listen to the leader account’s Zerodha order updates and place a matching follower order.
 - "fan-out mode": submit one order request to both accounts at nearly the same time.
 
-The default configuration now assumes two separate Kite Connect apps:
+The default configuration assumes two separate Kite Connect apps:
 
 - "leader": your friend’s account, used to watch trades placed from Kite web/app.
 - "follower": your account, used to place the mirrored order.
@@ -24,6 +24,8 @@ Important limitations: if your friend trades directly on Kite web/mobile/desktop
 - Optional follower cancellation replication
 - Safe "DRY_RUN=true" mode
 - A small dashboard at http://localhost:8787
+
+This repo supports one follower account only. If you need a different follower, replace the single `FOLLOWER_*` credentials in `.env`.
 
 ---
 

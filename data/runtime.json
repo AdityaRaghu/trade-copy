@@ -1,127 +1,94 @@
 {
   "mirroredOrders": {
-    "260416151406454": {
-      "sourceOrderId": "260416151406454",
-      "followers": {
-        "follower_2": {
-          "sourceOrderId": "260416151406454",
-          "sourceStatus": "COMPLETE",
-          "mirrorStatus": "placed",
-          "followerOrderId": "260416191327555",
-          "followerVariety": "regular",
-          "followerId": "follower_2",
-          "updatedAt": "2026-04-16T08:11:05.104Z"
-        }
-      },
-      "updatedAt": "2026-04-16T08:11:05.104Z"
-    },
-    "260416151410440": {
-      "sourceOrderId": "260416151410440",
-      "followers": {
-        "follower_2": {
-          "sourceOrderId": "260416151410440",
-          "sourceStatus": "COMPLETE",
-          "mirrorStatus": "placed",
-          "followerOrderId": "260416191331594",
-          "followerVariety": "regular",
-          "followerId": "follower_2",
-          "updatedAt": "2026-04-16T08:12:05.380Z"
-        }
-      },
-      "updatedAt": "2026-04-16T08:12:05.380Z"
-    },
-    "260416151510617": {
-      "sourceOrderId": "260416151510617",
-      "followers": {
-        "follower_2": {
-          "sourceOrderId": "260416151510617",
-          "sourceStatus": "COMPLETE",
-          "mirrorStatus": "placed",
-          "followerOrderId": "260416191435262",
-          "followerVariety": "regular",
-          "followerId": "follower_2",
-          "updatedAt": "2026-04-16T08:33:25.076Z"
-        }
-      },
-      "updatedAt": "2026-04-16T08:33:25.076Z"
-    },
     "260416151832613": {
       "sourceOrderId": "260416151832613",
-      "followers": {
-        "follower_2": {
-          "sourceOrderId": "260416151832613",
-          "sourceStatus": "COMPLETE",
-          "mirrorStatus": "placed",
-          "followerOrderId": "260416191769982",
-          "followerVariety": "regular",
-          "followerId": "follower_2",
-          "updatedAt": "2026-04-16T09:34:23.473Z"
-        }
-      },
-      "updatedAt": "2026-04-16T09:34:23.473Z"
+      "updatedAt": "2026-04-16T09:34:23.473Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260416191769982",
+      "followerVariety": "regular",
+      "followerId": "follower"
     },
     "260416151836989": {
       "sourceOrderId": "260416151836989",
-      "followers": {
-        "follower_2": {
-          "sourceOrderId": "260416151836989",
-          "sourceStatus": "COMPLETE",
-          "mirrorStatus": "placed",
-          "followerOrderId": "260416191774446",
-          "followerVariety": "regular",
-          "followerId": "follower_2",
-          "updatedAt": "2026-04-16T09:35:04.028Z"
-        }
-      },
-      "updatedAt": "2026-04-16T09:35:04.028Z"
+      "updatedAt": "2026-04-16T09:35:04.028Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260416191774446",
+      "followerVariety": "regular",
+      "followerId": "follower"
     },
     "260417151094538": {
       "sourceOrderId": "260417151094538",
-      "followers": {
-        "follower_2": {
-          "sourceOrderId": "260417151094538",
-          "sourceStatus": "COMPLETE",
-          "mirrorStatus": "placed",
-          "followerOrderId": "260417190937836",
-          "followerVariety": "regular",
-          "followerId": "follower_2",
-          "updatedAt": "2026-04-17T07:44:04.394Z"
-        }
-      },
-      "updatedAt": "2026-04-17T07:44:04.394Z"
+      "updatedAt": "2026-04-17T07:44:04.394Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260417190937836",
+      "followerVariety": "regular",
+      "followerId": "follower"
     },
     "260417151096238": {
       "sourceOrderId": "260417151096238",
-      "followers": {
-        "follower_2": {
-          "sourceOrderId": "260417151096238",
-          "sourceStatus": "COMPLETE",
-          "mirrorStatus": "placed",
-          "followerOrderId": "260417190939488",
-          "followerVariety": "regular",
-          "followerId": "follower_2",
-          "updatedAt": "2026-04-17T07:44:47.111Z"
-        }
-      },
-      "updatedAt": "2026-04-17T07:44:47.111Z"
+      "updatedAt": "2026-04-17T07:44:47.111Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260417190939488",
+      "followerVariety": "regular",
+      "followerId": "follower"
     },
     "260417151131276": {
       "sourceOrderId": "260417151131276",
-      "followers": {
-        "follower_2": {
-          "sourceOrderId": "260417151131276",
-          "sourceStatus": "COMPLETE",
-          "mirrorStatus": "placed",
-          "followerOrderId": "260417190972575",
-          "followerVariety": "regular",
-          "followerId": "follower_2",
-          "updatedAt": "2026-04-17T07:59:02.975Z"
-        }
-      },
-      "updatedAt": "2026-04-17T07:59:02.975Z"
+      "updatedAt": "2026-04-17T07:59:02.975Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260417190972575",
+      "followerVariety": "regular",
+      "followerId": "follower"
     }
   },
   "recentEvents": [
+    {
+      "at": "2026-04-18T08:50:49.691Z",
+      "type": "stream.skip",
+      "summary": "Leader token expired – re-authenticate before market opens"
+    },
+    {
+      "at": "2026-04-18T08:50:49.690Z",
+      "type": "auth.expired",
+      "summary": "follower token expired (28h 30m). Re-authenticate.",
+      "detail": {
+        "account": "follower"
+      }
+    },
+    {
+      "at": "2026-04-18T08:50:49.685Z",
+      "type": "auth.expired",
+      "summary": "leader token expired (29h 10m). Re-authenticate.",
+      "detail": {
+        "account": "leader"
+      }
+    },
+    {
+      "at": "2026-04-18T08:50:39.194Z",
+      "type": "stream.skip",
+      "summary": "Leader token expired – re-authenticate before market opens"
+    },
+    {
+      "at": "2026-04-18T08:50:39.191Z",
+      "type": "auth.expired",
+      "summary": "follower token expired (28h 30m). Re-authenticate.",
+      "detail": {
+        "account": "follower"
+      }
+    },
+    {
+      "at": "2026-04-18T08:50:39.185Z",
+      "type": "auth.expired",
+      "summary": "leader token expired (29h 10m). Re-authenticate.",
+      "detail": {
+        "account": "leader"
+      }
+    },
     {
       "at": "2026-04-17T07:59:02.976Z",
       "type": "mirror.placed",
@@ -2130,61 +2097,10 @@
         "userId": "QKR315",
         "loginTime": "2026-04-06 15:03:30"
       }
-    },
-    {
-      "at": "2026-04-06T09:33:23.768Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-06T09:33:23.714Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-06T09:33:23.714Z",
-      "type": "auth.success",
-      "summary": "leader account authenticated",
-      "detail": {
-        "account": "leader",
-        "userId": "FEK088",
-        "loginTime": "2026-04-06 09:06:36"
-      }
-    },
-    {
-      "at": "2026-04-05T17:50:15.138Z",
-      "type": "stream.skip",
-      "summary": "Leader token is expired – re-authenticate the leader account before market opens"
-    },
-    {
-      "at": "2026-04-05T17:50:15.137Z",
-      "type": "auth.expired",
-      "summary": "follower token appears expired (age: 84h 51m). Please re-authenticate.",
-      "detail": {
-        "account": "follower",
-        "userId": "QKR315",
-        "tokenAge": "84h 51m"
-      }
-    },
-    {
-      "at": "2026-04-05T17:50:15.136Z",
-      "type": "auth.expired",
-      "summary": "leader token appears expired (age: 84h 49m). Please re-authenticate.",
-      "detail": {
-        "account": "leader",
-        "userId": "FEK088",
-        "tokenAge": "84h 49m"
-      }
     }
   ],
   "preConnectPositions": {
     "leader": {},
-    "follower_2": {}
+    "follower": {}
   }
 }

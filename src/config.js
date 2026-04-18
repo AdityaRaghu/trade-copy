@@ -33,6 +33,7 @@ const csv = (v, d) => v ? v.split(',').map(s => s.trim()).filter(Boolean) : [...
 loadEnvFile();
 const port = num(process.env.PORT, 8787);
 const defaultRedirectUrl = `http://127.0.0.1:${port}/auth/zerodha/callback`;
+const FOLLOWER = 'follower';
 
 function creds(prefix) {
   return {
@@ -53,9 +54,11 @@ const globalDefs = {
   maxLots: num(process.env.MAX_LOTS, 0),
 };
 
-function followerObj(prefix, id, label) {
+function followerConfig(prefix, label) {
   return {
-    id, label, ...creds(prefix),
+    id: FOLLOWER,
+    label,
+    ...creds(prefix),
     quantityMultiplier: num(process.env[`${prefix}_QUANTITY_MULTIPLIER`], globalDefs.quantityMultiplier),
     maxQuantityPerOrder: num(process.env[`${prefix}_MAX_QUANTITY_PER_ORDER`], globalDefs.maxQuantityPerOrder),
     maxPriceDeviationPercent: num(process.env[`${prefix}_MAX_PRICE_DEVIATION_PERCENT`], globalDefs.maxPriceDeviationPercent),
@@ -67,22 +70,12 @@ function followerObj(prefix, id, label) {
   };
 }
 
-function buildFollowers() {
-  const list = [];
-  for (let i = 1; i <= 20; i++) {
-    const p = `FOLLOWER_${i}`;
-    if (process.env[`${p}_KITE_API_KEY`] || process.env[`${p}_KITE_API_SECRET`])
-      list.push(followerObj(p, `follower_${i}`, process.env[`${p}_LABEL`] ?? `Follower ${i}`));
-  }
-  // Legacy single-follower fallback
-  if (!list.length && (process.env.FOLLOWER_KITE_API_KEY || process.env.FOLLOWER_KITE_API_SECRET))
-    list.push(followerObj('FOLLOWER', 'follower_1', process.env.FOLLOWER_LABEL ?? 'Follower 1'));
-  return list;
-}
-
 export const config = {
   projectRoot, host: process.env.HOST ?? '127.0.0.1', port,
-  accounts: { leader: creds('LEADER'), followers: buildFollowers() },
+  accounts: {
+    leader: creds('LEADER'),
+    follower: followerConfig('FOLLOWER', process.env.FOLLOWER_LABEL ?? 'Follower'),
+  },
   dryRun: bool(process.env.DRY_RUN, true),
   ...globalDefs,
   allowMarketOrders: bool(process.env.ALLOW_MARKET_ORDERS, true),
@@ -100,9 +93,8 @@ export const config = {
 
 export function getAccountConfig(account) {
   if (account === 'leader') return config.accounts.leader;
-  const f = (config.accounts.followers ?? []).find(x => x.id === account);
-  if (!f) throw new Error(`Unknown account "${account}".`);
-  return f;
+  if (account === FOLLOWER) return config.accounts.follower;
+  throw new Error(`Unknown account "${account}".`);
 }
 
 export const hasKiteCredentials = account => {

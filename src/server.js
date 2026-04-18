@@ -5,7 +5,7 @@ import { TradeCopier } from './tradeCopier.js';
 const copier = new TradeCopier({ config });
 await copier.resume();
 
-const knownAccounts = new Set(['leader', ...(config.accounts.followers ?? []).map(f => f.id)]);
+const knownAccounts = new Set(['leader', 'follower']);
 
 const server = http.createServer(async (req, res) => {
   try {
@@ -85,10 +85,10 @@ function acctRow(label, info, id) {
 }
 
 function renderHome(status) {
-  const fs = status.followers ?? [];
+  const follower = status.follower;
   const warn = [
     (!status.leader.connected || status.leader.expired) ? 'Leader needs re-authentication.' : null,
-    ...fs.filter(f => !f.connected || f.expired).map(f => `${esc(f.label ?? f.id)} needs re-authentication.`),
+    (follower && (!follower.connected || follower.expired)) ? `${esc(follower.label ?? follower.id)} needs re-authentication.` : null,
   ].filter(Boolean);
   const streamColor = status.sourceSocketState === 'connected' ? '#16803c' : status.sourceSocketState === 'token_expired' ? '#c00' : '#b45309';
   const events = (status.recentEvents ?? []).slice(0, 15).map(e => `<li><b>${esc(e.type)}</b> ${esc(e.summary)}<br><small>${esc(e.at)}</small></li>`).join('');
@@ -100,12 +100,12 @@ function renderHome(status) {
 <span class="pill">Mirror Mode</span>
 <span class="pill ${status.dryRun ? 'pill-dry' : 'pill-live'}">${status.dryRun ? 'DRY RUN' : 'LIVE'}</span>
 <h1>Trade Mirror Dashboard</h1>
-<p class="muted">Copies leader trades to follower accounts. Auto-refreshes every 30s.</p>
+<p class="muted">Copies leader trades to the follower account. Auto-refreshes every 30s.</p>
 ${warn.length ? `<div style="background:#fef3c7;border:1px solid #f59e0b;border-radius:12px;padding:14px 18px;margin-bottom:16px"><b style="color:#92400e">Action needed:</b> <span style="color:#78350f">${warn.join(' ')} Tokens expire daily at ~6 AM IST.</span></div>` : ''}
 <div class="grid"><section class="card">
 <h2>Account status</h2>
 ${acctRow('Leader', status.leader, 'leader')}
-${fs.length ? fs.map(f => acctRow(f.label ?? f.id, f, f.id)).join('') : '<p><b>Followers:</b> <span style="color:#b45309">No followers configured.</span></p>'}
+${follower ? acctRow(follower.label ?? follower.id, follower, follower.id) : '<p><b>Follower:</b> <span style="color:#b45309">Not configured.</span></p>'}
 <p><b>WebSocket:</b> <span style="color:${streamColor}">${esc(status.sourceSocketState)}</span></p>
 <p><b>Default qty multiplier:</b> ${esc(String(status.quantityMultiplier))}x</p>
 <p><b>Orders mirrored:</b> ${esc(String(status.mirroredOrders))}</p>
@@ -113,7 +113,7 @@ ${fs.length ? fs.map(f => acctRow(f.label ?? f.id, f, f.id)).join('') : '<p><b>F
 <section class="card"><h2>Daily checklist</h2>
 <p><span class="step-num">1</span> Start server (<code>npm start</code>)</p>
 <p><span class="step-num">2</span> <a href="/auth/start?account=leader">Connect leader</a></p>
-<p><span class="step-num">3</span> Connect each follower from the status panel</p>
+<p><span class="step-num">3</span> Connect follower from the status panel</p>
 <p><span class="step-num">4</span> Keep open until 3:30 PM</p>
 <p class="muted" style="margin-top:8px">Re-authenticate every morning before 9:15 AM.</p>
 </section></div>

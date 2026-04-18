@@ -2,33 +2,7 @@
 > zerodha-trade-copier@0.1.0 start
 > node src/server.js
 
-[2026-04-17T07:31:50.087Z] Connecting to leader order stream { userId: 'FEK088' }
+[2026-04-18T08:50:49.685Z] leader token expired (29h 10m). Re-authenticate. { account: 'leader' }
+[2026-04-18T08:50:49.690Z] follower token expired (28h 30m). Re-authenticate. { account: 'follower' }
+[2026-04-18T08:50:49.691Z] Leader token expired – re-authenticate before market opens 
 Trade copier listening on http://0.0.0.0:8787 (dry_run=false)
-[2026-04-17T07:31:50.181Z] Leader order stream connected { userId: 'FEK088' }
-[2026-04-17T07:44:04.257Z] Source order not actionable yet { orderId: '260417151094538', status: 'OPEN' }
-[2026-04-17T07:44:04.258Z] Source order not actionable yet { orderId: '260417151094538', status: 'UPDATE' }
-[2026-04-17T07:44:04.259Z] Source order not actionable yet { orderId: '260417151094538', status: 'UPDATE' }
-[2026-04-17T07:44:04.261Z] Source order not actionable yet { orderId: '260417151094538', status: 'UPDATE' }
-[2026-04-17T07:44:04.262Z] Source order not actionable yet { orderId: '260417151094538', status: 'UPDATE' }
-[2026-04-17T07:44:04.397Z] Follower order placed {
-  sourceOrderId: '260417151094538',
-  followerId: 'follower_2',
-  followerOrderId: '260417190937836',
-  attempt: 1
-}
-[2026-04-17T07:44:47.050Z] Source order not actionable yet { orderId: '260417151096238', status: 'OPEN' }
-[2026-04-17T07:44:47.051Z] Source order not actionable yet { orderId: '260417151096238', status: 'UPDATE' }
-[2026-04-17T07:44:47.052Z] Source order not actionable yet { orderId: '260417151096238', status: 'UPDATE' }
-[2026-04-17T07:44:47.112Z] Follower order placed {
-  sourceOrderId: '260417151096238',
-  followerId: 'follower_2',
-  followerOrderId: '260417190939488',
-  attempt: 1
-}
-[2026-04-17T07:59:02.924Z] Source order not actionable yet { orderId: '260417151131276', status: 'OPEN' }
-[2026-04-17T07:59:02.976Z] Follower order placed {
-  sourceOrderId: '260417151131276',
-  followerId: 'follower_2',
-  followerOrderId: '260417190972575',
-  attempt: 1
-}

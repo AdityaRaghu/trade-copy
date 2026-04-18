@@ -8,6 +8,9 @@ const ACTIONABLE = new Set(['OPEN', 'COMPLETE', 'TRIGGER PENDING', 'MODIFIED', '
 const TOKEN_TTL = 16 * 3_600_000;
 const MAX_RETRIES = 2;
 const RETRY_MS = 800;
+const WS_CONNECTING = 0;
+const WS_OPEN = 1;
+const WS_CLOSING = 2;
 
 // ── utils ─────────────────────────────────────────────────────────────────────
 const nowIso = () => new Date().toISOString();
@@ -211,7 +214,7 @@ export class TradeCopier {
   async shutdown() {
     this.isShuttingDown = true;
     if (this.reconnectTimer) { clearTimeout(this.reconnectTimer); this.reconnectTimer = null; }
-    if (this.sourceSocket?.readyState < WebSocket.CLOSING) this.sourceSocket.close();
+    if (this.sourceSocket?.readyState < WS_CLOSING) this.sourceSocket.close();
   }
 
   async fanoutPlaceOrder(rawOrder) {
@@ -268,9 +271,9 @@ export class TradeCopier {
       this._log('stream.token_expired', `Leader token expired (${tokenAge(s)}). Re-authenticate.`, { userId: s.userId });
       return;
     }
-    if (!force && this.sourceSocket && (this.sourceSocket.readyState === WebSocket.OPEN || this.sourceSocket.readyState === WebSocket.CONNECTING))
+    if (!force && this.sourceSocket && (this.sourceSocket.readyState === WS_OPEN || this.sourceSocket.readyState === WS_CONNECTING))
       return;
-    if (force && this.sourceSocket?.readyState < WebSocket.CLOSING) this.sourceSocket.close();
+    if (force && this.sourceSocket?.readyState < WS_CLOSING) this.sourceSocket.close();
 
     this.socketState = 'connecting';
     this._log('stream.connecting', 'Connecting to leader order stream', { userId: s.userId });

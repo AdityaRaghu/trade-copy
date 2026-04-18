@@ -1,6 +1,524 @@
 {
-  "mirroredOrders": {},
+  "mirroredOrders": {
+    "260416151406454": {
+      "sourceOrderId": "260416151406454",
+      "followers": {
+        "follower_2": {
+          "sourceOrderId": "260416151406454",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "placed",
+          "followerOrderId": "260416191327555",
+          "followerVariety": "regular",
+          "followerId": "follower_2",
+          "updatedAt": "2026-04-16T08:11:05.104Z"
+        }
+      },
+      "updatedAt": "2026-04-16T08:11:05.104Z"
+    },
+    "260416151410440": {
+      "sourceOrderId": "260416151410440",
+      "followers": {
+        "follower_2": {
+          "sourceOrderId": "260416151410440",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "placed",
+          "followerOrderId": "260416191331594",
+          "followerVariety": "regular",
+          "followerId": "follower_2",
+          "updatedAt": "2026-04-16T08:12:05.380Z"
+        }
+      },
+      "updatedAt": "2026-04-16T08:12:05.380Z"
+    },
+    "260416151510617": {
+      "sourceOrderId": "260416151510617",
+      "followers": {
+        "follower_2": {
+          "sourceOrderId": "260416151510617",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "placed",
+          "followerOrderId": "260416191435262",
+          "followerVariety": "regular",
+          "followerId": "follower_2",
+          "updatedAt": "2026-04-16T08:33:25.076Z"
+        }
+      },
+      "updatedAt": "2026-04-16T08:33:25.076Z"
+    },
+    "260416151832613": {
+      "sourceOrderId": "260416151832613",
+      "followers": {
+        "follower_2": {
+          "sourceOrderId": "260416151832613",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "placed",
+          "followerOrderId": "260416191769982",
+          "followerVariety": "regular",
+          "followerId": "follower_2",
+          "updatedAt": "2026-04-16T09:34:23.473Z"
+        }
+      },
+      "updatedAt": "2026-04-16T09:34:23.473Z"
+    },
+    "260416151836989": {
+      "sourceOrderId": "260416151836989",
+      "followers": {
+        "follower_2": {
+          "sourceOrderId": "260416151836989",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "placed",
+          "followerOrderId": "260416191774446",
+          "followerVariety": "regular",
+          "followerId": "follower_2",
+          "updatedAt": "2026-04-16T09:35:04.028Z"
+        }
+      },
+      "updatedAt": "2026-04-16T09:35:04.028Z"
+    },
+    "260417151094538": {
+      "sourceOrderId": "260417151094538",
+      "followers": {
+        "follower_2": {
+          "sourceOrderId": "260417151094538",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "placed",
+          "followerOrderId": "260417190937836",
+          "followerVariety": "regular",
+          "followerId": "follower_2",
+          "updatedAt": "2026-04-17T07:44:04.394Z"
+        }
+      },
+      "updatedAt": "2026-04-17T07:44:04.394Z"
+    },
+    "260417151096238": {
+      "sourceOrderId": "260417151096238",
+      "followers": {
+        "follower_2": {
+          "sourceOrderId": "260417151096238",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "placed",
+          "followerOrderId": "260417190939488",
+          "followerVariety": "regular",
+          "followerId": "follower_2",
+          "updatedAt": "2026-04-17T07:44:47.111Z"
+        }
+      },
+      "updatedAt": "2026-04-17T07:44:47.111Z"
+    },
+    "260417151131276": {
+      "sourceOrderId": "260417151131276",
+      "followers": {
+        "follower_2": {
+          "sourceOrderId": "260417151131276",
+          "sourceStatus": "COMPLETE",
+          "mirrorStatus": "placed",
+          "followerOrderId": "260417190972575",
+          "followerVariety": "regular",
+          "followerId": "follower_2",
+          "updatedAt": "2026-04-17T07:59:02.975Z"
+        }
+      },
+      "updatedAt": "2026-04-17T07:59:02.975Z"
+    }
+  },
   "recentEvents": [
+    {
+      "at": "2026-04-17T07:59:02.976Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260417151131276",
+        "followerId": "follower_2",
+        "followerOrderId": "260417190972575",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-17T07:59:02.924Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260417151131276",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-17T07:44:47.112Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260417151096238",
+        "followerId": "follower_2",
+        "followerOrderId": "260417190939488",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-17T07:44:47.052Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260417151096238",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-17T07:44:47.051Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260417151096238",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-17T07:44:47.050Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260417151096238",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-17T07:44:04.397Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260417151094538",
+        "followerId": "follower_2",
+        "followerOrderId": "260417190937836",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-17T07:44:04.262Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260417151094538",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-17T07:44:04.261Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260417151094538",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-17T07:44:04.259Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260417151094538",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-17T07:44:04.258Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260417151094538",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-17T07:44:04.257Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260417151094538",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-17T07:31:50.181Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-17T07:31:50.087Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-17T07:30:01.306Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-17T07:30:01.216Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-17T04:20:15.473Z",
+      "type": "auth.success",
+      "summary": "follower_2 account authenticated",
+      "detail": {
+        "account": "follower_2",
+        "userId": "AUY168"
+      }
+    },
+    {
+      "at": "2026-04-17T03:39:59.194Z",
+      "type": "auth.success",
+      "summary": "leader account authenticated",
+      "detail": {
+        "account": "leader",
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-17T03:39:07.733Z",
+      "type": "auth.success",
+      "summary": "leader account authenticated",
+      "detail": {
+        "account": "leader",
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-17T03:37:16.683Z",
+      "type": "auth.success",
+      "summary": "leader account authenticated",
+      "detail": {
+        "account": "leader",
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-17T03:32:06.216Z",
+      "type": "stream.skip",
+      "summary": "Leader token expired – re-authenticate before market opens"
+    },
+    {
+      "at": "2026-04-17T03:32:06.215Z",
+      "type": "auth.expired",
+      "summary": "follower_2 token expired (19h 41m). Re-authenticate.",
+      "detail": {
+        "account": "follower_2"
+      }
+    },
+    {
+      "at": "2026-04-17T03:32:06.210Z",
+      "type": "auth.expired",
+      "summary": "leader token expired (19h 40m). Re-authenticate.",
+      "detail": {
+        "account": "leader"
+      }
+    },
+    {
+      "at": "2026-04-16T09:35:04.029Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260416151836989",
+        "followerId": "follower_2",
+        "followerOrderId": "260416191774446",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-16T09:35:03.982Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260416151836989",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-16T09:35:03.981Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260416151836989",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-16T09:35:03.980Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260416151836989",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-16T09:34:23.474Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260416151832613",
+        "followerId": "follower_2",
+        "followerOrderId": "260416191769982",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-16T09:34:23.410Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260416151832613",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-16T09:34:23.409Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260416151832613",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-16T09:34:23.407Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260416151832613",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-16T09:34:23.406Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260416151832613",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-16T08:33:25.077Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260416151510617",
+        "followerId": "follower_2",
+        "followerOrderId": "260416191435262",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-16T08:33:25.022Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260416151510617",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-16T08:33:25.020Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260416151510617",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-16T08:12:05.381Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260416151410440",
+        "followerId": "follower_2",
+        "followerOrderId": "260416191331594",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-16T08:12:05.333Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260416151410440",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-16T08:11:05.107Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260416151406454",
+        "followerId": "follower_2",
+        "followerOrderId": "260416191327555",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-16T08:11:04.962Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260416151406454",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-16T08:10:20.571Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-16T08:10:20.496Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-16T08:09:53.864Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-16T08:05:54.017Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-16T08:04:14.244Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
     {
       "at": "2026-04-16T07:51:42.307Z",
       "type": "auth.success",
@@ -1662,336 +2180,6 @@
         "account": "leader",
         "userId": "FEK088",
         "tokenAge": "84h 49m"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:40.830Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:40.811Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:04:40.811Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:40.806Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:38.830Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:38.804Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:04:38.804Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:38.800Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:36.814Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:36.797Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:04:36.797Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:36.792Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:34.808Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:34.792Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:04:34.791Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:34.786Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:32.805Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:32.784Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:04:32.783Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:32.778Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:30.793Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:30.776Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:04:30.775Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:30.771Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:28.785Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:28.768Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:04:28.767Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:28.762Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:26.782Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:26.760Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:04:26.760Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:26.755Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:24.769Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:24.753Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:04:24.752Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:24.748Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:22.784Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:22.746Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:04:22.746Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:22.741Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:20.754Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:20.740Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-02T05:04:20.739Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1005,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-02T05:04:20.735Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
       }
     }
   ],

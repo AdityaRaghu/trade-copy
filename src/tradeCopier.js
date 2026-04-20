@@ -231,6 +231,13 @@ export class TradeCopier {
       dryRun: this.cfg.dryRun,
       sourceSocketState: this.socketState,
       quantityMultiplier: this.cfg.quantityMultiplier,
+      lotSize: this.cfg.lotSize,
+      maxLots: this.cfg.maxLots,
+      maxPriceDeviationPercent: this.cfg.maxPriceDeviationPercent,
+      marketProtection: this.cfg.marketProtection,
+      followMarketOrdersAsLimit: this.cfg.followMarketOrdersAsLimit,
+      replicateCancellations: this.cfg.replicateCancellations,
+      replicateModifications: this.cfg.replicateModifications,
       leader: this._sessionSummary(LEADER),
       follower: { id: FOLLOWER, label: this.cfg.accounts.follower?.label, ...this._sessionSummary(FOLLOWER) },
       recentEvents: this.runtime.recentEvents,
@@ -418,7 +425,7 @@ export class TradeCopier {
 
   // ── private ───────────────────────────────────────────────────────────────
   async _mirrorToFollower(order, status) {
-    const cfg = this._acctCfg(FOLLOWER);
+    const cfg = { ...this.cfg, ...this._acctCfg(FOLLOWER) };
     const fo = buildFollowerOrder(order, cfg);
     const policy = validateOrderAgainstPolicy(fo, cfg);
 

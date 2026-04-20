@@ -1,34 +1,74 @@
 {
-  "mirroredOrders": {
-    "260417151094538": {
-      "sourceOrderId": "260417151094538",
-      "updatedAt": "2026-04-17T07:44:04.394Z",
-      "sourceStatus": "COMPLETE",
-      "mirrorStatus": "placed",
-      "followerOrderId": "260417190937836",
-      "followerVariety": "regular",
-      "followerId": "follower"
-    },
-    "260417151096238": {
-      "sourceOrderId": "260417151096238",
-      "updatedAt": "2026-04-17T07:44:47.111Z",
-      "sourceStatus": "COMPLETE",
-      "mirrorStatus": "placed",
-      "followerOrderId": "260417190939488",
-      "followerVariety": "regular",
-      "followerId": "follower"
-    },
-    "260417151131276": {
-      "sourceOrderId": "260417151131276",
-      "updatedAt": "2026-04-17T07:59:02.975Z",
-      "sourceStatus": "COMPLETE",
-      "mirrorStatus": "placed",
-      "followerOrderId": "260417190972575",
-      "followerVariety": "regular",
-      "followerId": "follower"
-    }
-  },
+  "mirroredOrders": {},
   "recentEvents": [
+    {
+      "at": "2026-04-20T03:45:03.353Z",
+      "type": "auth.success",
+      "summary": "follower account authenticated",
+      "detail": {
+        "account": "follower",
+        "userId": "AUY168"
+      }
+    },
+    {
+      "at": "2026-04-20T03:37:42.505Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-20T03:37:42.504Z",
+      "type": "auth.success",
+      "summary": "leader account authenticated",
+      "detail": {
+        "account": "leader",
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-20T03:32:38.017Z",
+      "type": "stream.skip",
+      "summary": "Leader token expired – re-authenticate before market opens"
+    },
+    {
+      "at": "2026-04-20T03:32:38.016Z",
+      "type": "auth.expired",
+      "summary": "follower token expired (71h 12m). Re-authenticate.",
+      "detail": {
+        "account": "follower"
+      }
+    },
+    {
+      "at": "2026-04-20T03:32:38.011Z",
+      "type": "auth.expired",
+      "summary": "leader token expired (71h 52m). Re-authenticate.",
+      "detail": {
+        "account": "leader"
+      }
+    },
+    {
+      "at": "2026-04-18T13:40:04.382Z",
+      "type": "stream.skip",
+      "summary": "Leader token expired – re-authenticate before market opens"
+    },
+    {
+      "at": "2026-04-18T13:40:04.381Z",
+      "type": "auth.expired",
+      "summary": "follower token expired (33h 19m). Re-authenticate.",
+      "detail": {
+        "account": "follower"
+      }
+    },
+    {
+      "at": "2026-04-18T13:40:04.376Z",
+      "type": "auth.expired",
+      "summary": "leader token expired (34h 0m). Re-authenticate.",
+      "detail": {
+        "account": "leader"
+      }
+    },
     {
       "at": "2026-04-18T10:05:52.666Z",
       "type": "stream.skip",
@@ -1913,133 +1953,14 @@
         "userId": "QKR315",
         "loginTime": "2026-04-07 10:32:45"
       }
-    },
-    {
-      "at": "2026-04-07T01:36:19.798Z",
-      "type": "stream.token_expired",
-      "summary": "Leader token expired (age: 16h 2m). Re-authenticate to resume.",
-      "detail": {
-        "userId": "FEK088",
-        "tokenAge": "16h 2m"
-      }
-    },
-    {
-      "at": "2026-04-07T01:36:17.796Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-07T01:36:17.795Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1006,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-06T09:42:36.186Z",
-      "type": "cancel.live",
-      "summary": "Follower order cancellation sent",
-      "detail": {
-        "sourceOrderId": "260406151584403",
-        "followerOrderId": "260406171535213"
-      }
-    },
-    {
-      "at": "2026-04-06T09:42:36.184Z",
-      "type": "cancel.live",
-      "summary": "Follower order cancellation sent",
-      "detail": {
-        "sourceOrderId": "260406151584403",
-        "followerOrderId": "260406171535213"
-      }
-    },
-    {
-      "at": "2026-04-06T09:42:11.200Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260406151584403",
-        "followerOrderId": "260406171535213",
-        "attempt": 1,
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2640723200CE",
-          "transaction_type": "BUY",
-          "order_type": "LIMIT",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 80,
-          "trigger_price": 0,
-          "market_protection": "0",
-          "tag": "CPY51584403"
-        }
-      }
-    },
-    {
-      "at": "2026-04-06T09:38:31.843Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260406151570234",
-        "followerOrderId": "260406171521022",
-        "attempt": 1,
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2640723500CE",
-          "transaction_type": "BUY",
-          "order_type": "LIMIT",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 26.25,
-          "trigger_price": 0,
-          "tag": "CPY51570234"
-        }
-      }
-    },
-    {
-      "at": "2026-04-06T09:38:31.756Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260406151570234",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-06T09:38:05.443Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260406151568752",
-        "followerOrderId": "260406171519468",
-        "attempt": 1,
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2640723500CE",
-          "transaction_type": "SELL",
-          "order_type": "LIMIT",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 26.35,
-          "trigger_price": 0,
-          "tag": "CPY51568752"
-        }
-      }
     }
   ],
   "preConnectPositions": {
-    "leader": {},
-    "follower": {}
+    "leader": {
+      "NIFTY2642124500CE": -65
+    },
+    "follower": {
+      "NIFTY2642124500CE": -65
+    }
   }
 }

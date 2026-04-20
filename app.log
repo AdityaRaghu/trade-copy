@@ -1,9 +1,12 @@
+nohup: ignoring input
 
 > zerodha-trade-copier@0.1.0 start
 > node src/server.js
 
-[2026-04-18T08:50:49.685Z] leader token expired (29h 10m). Re-authenticate. { account: 'leader' }
-[2026-04-18T08:50:49.690Z] follower token expired (28h 30m). Re-authenticate. { account: 'follower' }
-[2026-04-18T08:50:49.691Z] Leader token expired – re-authenticate before market opens 
+[2026-04-20T03:32:38.011Z] leader token expired (71h 52m). Re-authenticate. { account: 'leader' }
+[2026-04-20T03:32:38.016Z] follower token expired (71h 12m). Re-authenticate. { account: 'follower' }
+[2026-04-20T03:32:38.017Z] Leader token expired – re-authenticate before market opens 
 Trade copier listening on http://0.0.0.0:8787 (dry_run=false)
-Killed
+[2026-04-20T03:37:42.504Z] leader account authenticated { account: 'leader', userId: 'FEK088' }
+[2026-04-20T03:37:42.505Z] Connecting to leader order stream { userId: 'FEK088' }
+[2026-04-20T03:45:03.353Z] follower account authenticated { account: 'follower', userId: 'AUY168' }

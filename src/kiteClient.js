@@ -156,6 +156,19 @@ export class KiteClient {
         socket.addEventListener('error', (event) => {
           onError?.(event.error ?? event);
         });
+
+        socket.on('unexpected-response', async (_req, res) => {
+          let body = '';
+          try {
+            for await (const chunk of res) body += chunk;
+          } catch {}
+          onError?.(
+            new Error(
+              `WebSocket handshake rejected: ${res.statusCode} ${res.statusMessage}${body ? ` - ${body}` : ''}`,
+            ),
+          );
+          try { socket.close(); } catch {}
+        });
     
         socket.addEventListener('message', async (event) => {
           const incoming = await normalizeMessageData(event.data);

@@ -2,6 +2,14 @@
   "mirroredOrders": {},
   "recentEvents": [
     {
+      "at": "2026-04-20T05:01:40.724Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
       "at": "2026-04-20T03:45:03.353Z",
       "type": "auth.success",
       "summary": "follower account authenticated",
@@ -1942,16 +1950,6 @@
         "account": "leader",
         "userId": "FEK088",
         "loginTime": "2026-04-10 08:55:35"
-      }
-    },
-    {
-      "at": "2026-04-07T05:02:45.233Z",
-      "type": "auth.success",
-      "summary": "follower account authenticated",
-      "detail": {
-        "account": "follower",
-        "userId": "QKR315",
-        "loginTime": "2026-04-07 10:32:45"
       }
     }
   ],

@@ -1,6 +1,1030 @@
 {
-  "mirroredOrders": {},
+  "mirroredOrders": {
+    "260421150260071": {
+      "sourceOrderId": "260421150260071",
+      "followerId": "follower",
+      "updatedAt": "2026-04-21T04:02:22.338Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260421190212965",
+      "followerVariety": "regular"
+    },
+    "260421150274773": {
+      "sourceOrderId": "260421150274773",
+      "followerId": "follower",
+      "updatedAt": "2026-04-21T04:04:17.310Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260421190225475",
+      "followerVariety": "regular"
+    },
+    "260421150660609": {
+      "sourceOrderId": "260421150660609",
+      "followerId": "follower",
+      "updatedAt": "2026-04-21T05:10:14.969Z",
+      "sourceStatus": "OPEN",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260421190573488",
+      "followerVariety": "regular"
+    },
+    "260421150780164": {
+      "sourceOrderId": "260421150780164",
+      "followerId": "follower",
+      "updatedAt": "2026-04-21T05:40:47.562Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260421190690170",
+      "followerVariety": "regular"
+    },
+    "260421151412704": {
+      "sourceOrderId": "260421151412704",
+      "followerId": "follower",
+      "updatedAt": "2026-04-21T08:47:11.186Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260421191323004",
+      "followerVariety": "regular"
+    },
+    "260421151426117": {
+      "sourceOrderId": "260421151426117",
+      "followerId": "follower",
+      "updatedAt": "2026-04-21T08:49:40.496Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260421191336194",
+      "followerVariety": "regular"
+    },
+    "260421151562181": {
+      "sourceOrderId": "260421151562181",
+      "followerId": "follower",
+      "updatedAt": "2026-04-21T09:17:49.651Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260421191474809",
+      "followerVariety": "regular"
+    },
+    "260421151565211": {
+      "sourceOrderId": "260421151565211",
+      "followerId": "follower",
+      "updatedAt": "2026-04-21T09:18:22.170Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260421191477837",
+      "followerVariety": "regular"
+    },
+    "260421151654396": {
+      "sourceOrderId": "260421151654396",
+      "followerId": "follower",
+      "updatedAt": "2026-04-21T09:33:28.741Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260421191567207",
+      "followerVariety": "regular"
+    },
+    "260421151657582": {
+      "sourceOrderId": "260421151657582",
+      "followerId": "follower",
+      "updatedAt": "2026-04-21T09:33:59.404Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260421191570256",
+      "followerVariety": "regular"
+    },
+    "260422150243914": {
+      "sourceOrderId": "260422150243914",
+      "followerId": "follower",
+      "updatedAt": "2026-04-22T04:01:33.607Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260422190189523",
+      "followerVariety": "regular"
+    },
+    "260422150245765": {
+      "sourceOrderId": "260422150245765",
+      "followerId": "follower",
+      "updatedAt": "2026-04-22T04:01:47.941Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260422190191087",
+      "followerVariety": "regular"
+    },
+    "260422150278584": {
+      "sourceOrderId": "260422150278584",
+      "followerId": "follower",
+      "updatedAt": "2026-04-22T04:06:08.125Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260422190218402",
+      "followerVariety": "regular"
+    },
+    "260422150279410": {
+      "sourceOrderId": "260422150279410",
+      "followerId": "follower",
+      "updatedAt": "2026-04-22T04:06:15.117Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260422190219104",
+      "followerVariety": "regular"
+    },
+    "260422150756219": {
+      "sourceOrderId": "260422150756219",
+      "followerId": "follower",
+      "updatedAt": "2026-04-22T05:51:19.943Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260422190632921",
+      "followerVariety": "regular"
+    },
+    "260422150764097": {
+      "sourceOrderId": "260422150764097",
+      "followerId": "follower",
+      "updatedAt": "2026-04-22T05:53:38.719Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260422190640170",
+      "followerVariety": "regular"
+    },
+    "260422150863469": {
+      "sourceOrderId": "260422150863469",
+      "followerId": "follower",
+      "updatedAt": "2026-04-22T06:23:37.344Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260422190731269",
+      "followerVariety": "regular"
+    },
+    "260422150941630": {
+      "sourceOrderId": "260422150941630",
+      "followerId": "follower",
+      "updatedAt": "2026-04-22T06:50:07.700Z",
+      "sourceStatus": "COMPLETE",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260422190802213",
+      "followerVariety": "regular"
+    }
+  },
   "recentEvents": [
+    {
+      "at": "2026-04-22T08:19:11.428Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-22T08:19:11.322Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-22T06:50:07.700Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260422150941630",
+        "followerId": "follower",
+        "followerOrderId": "260422190802213",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-22T06:50:07.651Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150941630",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-22T06:50:07.651Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150941630",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-22T06:50:07.650Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150941630",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-22T06:50:07.650Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150941630",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-22T06:50:07.649Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150941630",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-22T06:50:07.648Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150941630",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-22T06:23:37.345Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260422150863469",
+        "followerId": "follower",
+        "followerOrderId": "260422190731269",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-22T06:23:37.273Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150863469",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-22T06:23:37.272Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150863469",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-22T06:23:37.270Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150863469",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-22T06:23:37.269Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150863469",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-22T06:23:37.268Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150863469",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-22T06:23:37.265Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150863469",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-22T05:53:38.720Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260422150764097",
+        "followerId": "follower",
+        "followerOrderId": "260422190640170",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-22T05:53:38.668Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150764097",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-22T05:53:38.667Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150764097",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-22T05:53:38.666Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150764097",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-22T05:53:38.666Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150764097",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-22T05:53:38.665Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150764097",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-22T05:53:38.664Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150764097",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-22T05:51:19.944Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260422150756219",
+        "followerId": "follower",
+        "followerOrderId": "260422190632921",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-22T05:51:19.890Z",
+      "type": "mirror.ignored",
+      "summary": "Skipped duplicate source order while in-flight",
+      "detail": {
+        "orderId": "260422150756219",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-22T05:51:19.887Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150756219",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-22T05:51:19.886Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150756219",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-22T05:51:19.885Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150756219",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-22T04:06:15.118Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260422150279410",
+        "followerId": "follower",
+        "followerOrderId": "260422190219104",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-22T04:06:15.075Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150279410",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-22T04:06:08.126Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260422150278584",
+        "followerId": "follower",
+        "followerOrderId": "260422190218402",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-22T04:06:08.057Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150278584",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-22T04:04:48.690Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-22T04:04:48.585Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-22T04:01:47.942Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260422150245765",
+        "followerId": "follower",
+        "followerOrderId": "260422190191087",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-22T04:01:47.896Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150245765",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-22T04:01:33.607Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260422150243914",
+        "followerId": "follower",
+        "followerOrderId": "260422190189523",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-22T04:01:33.550Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260422150243914",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-22T03:57:07.622Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-22T03:57:07.209Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-22T03:57:07.209Z",
+      "type": "auth.success",
+      "summary": "leader account authenticated",
+      "detail": {
+        "account": "leader",
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-22T03:54:25.032Z",
+      "type": "auth.success",
+      "summary": "follower account authenticated",
+      "detail": {
+        "account": "follower",
+        "userId": "AUY168"
+      }
+    },
+    {
+      "at": "2026-04-22T01:36:17.822Z",
+      "type": "stream.token_expired",
+      "summary": "Leader token expired (22h 3m). Re-authenticate.",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-22T01:36:15.819Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-04-22T01:36:15.819Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1006,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-21T09:33:59.405Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260421151657582",
+        "followerId": "follower",
+        "followerOrderId": "260421191570256",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-21T09:33:59.298Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421151657582",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-21T09:33:59.298Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421151657582",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-21T09:33:28.741Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260421151654396",
+        "followerId": "follower",
+        "followerOrderId": "260421191567207",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-21T09:33:28.687Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421151654396",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-21T09:33:28.686Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421151654396",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-21T09:18:22.170Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260421151565211",
+        "followerId": "follower",
+        "followerOrderId": "260421191477837",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-21T09:18:21.995Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421151565211",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-21T09:18:21.994Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421151565211",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-21T09:17:49.652Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260421151562181",
+        "followerId": "follower",
+        "followerOrderId": "260421191474809",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-21T09:17:49.589Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421151562181",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-21T08:49:40.497Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260421151426117",
+        "followerId": "follower",
+        "followerOrderId": "260421191336194",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-21T08:49:40.435Z",
+      "type": "mirror.ignored",
+      "summary": "Skipped duplicate source order while in-flight",
+      "detail": {
+        "orderId": "260421151426117",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-21T08:47:11.186Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260421151412704",
+        "followerId": "follower",
+        "followerOrderId": "260421191323004",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-21T08:47:11.032Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421151412704",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-21T08:47:11.031Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421151412704",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-21T08:47:11.030Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421151412704",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-21T08:47:11.030Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421151412704",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-21T08:47:11.028Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421151412704",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-21T05:40:47.562Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260421150780164",
+        "followerId": "follower",
+        "followerOrderId": "260421190690170",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-21T05:40:47.509Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421150780164",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-21T05:40:47.508Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421150780164",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-21T05:10:14.969Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260421150660609",
+        "followerId": "follower",
+        "followerOrderId": "260421190573488",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-21T04:04:17.311Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260421150274773",
+        "followerId": "follower",
+        "followerOrderId": "260421190225475",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-21T04:04:17.269Z",
+      "type": "mirror.ignored",
+      "summary": "Skipped duplicate source order while in-flight",
+      "detail": {
+        "orderId": "260421150274773",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-21T04:04:17.267Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421150274773",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-21T04:04:17.262Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421150274773",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-21T04:04:17.261Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421150274773",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-21T04:04:17.260Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421150274773",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-21T04:04:17.259Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421150274773",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-21T04:02:22.338Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260421150260071",
+        "followerId": "follower",
+        "followerOrderId": "260421190212965",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-04-21T04:02:22.257Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421150260071",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-04-21T04:02:22.256Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260421150260071",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-21T03:40:52.523Z",
+      "type": "auth.success",
+      "summary": "follower account authenticated",
+      "detail": {
+        "account": "follower",
+        "userId": "AUY168"
+      }
+    },
+    {
+      "at": "2026-04-21T03:32:51.048Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-21T03:32:50.983Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-21T03:32:50.982Z",
+      "type": "auth.success",
+      "summary": "leader account authenticated",
+      "detail": {
+        "account": "leader",
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-21T03:26:06.798Z",
+      "type": "stream.skip",
+      "summary": "Leader token expired – re-authenticate before market opens"
+    },
+    {
+      "at": "2026-04-21T03:26:06.797Z",
+      "type": "auth.expired",
+      "summary": "follower token expired (23h 41m). Re-authenticate.",
+      "detail": {
+        "account": "follower"
+      }
+    },
+    {
+      "at": "2026-04-21T03:26:06.796Z",
+      "type": "auth.expired",
+      "summary": "leader token expired (23h 48m). Re-authenticate.",
+      "detail": {
+        "account": "leader"
+      }
+    },
+    {
+      "at": "2026-04-20T06:18:54.222Z",
+      "type": "mirror.blocked",
+      "summary": "Follower order blocked by policy",
+      "detail": {
+        "orderId": "260420150906079",
+        "followerId": "follower",
+        "reasons": [
+          "Exchange BSE is not allowed.",
+          "Product CNC is not allowed."
+        ]
+      }
+    },
+    {
+      "at": "2026-04-20T06:18:54.220Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260420150906079",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-04-20T05:51:15.027Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-20T05:51:14.939Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-20T05:43:10.805Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-20T05:43:10.657Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-20T05:42:47.604Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1005,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-04-20T05:14:47.061Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-04-20T05:14:47.003Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
     {
       "at": "2026-04-20T05:01:40.724Z",
       "type": "stream.connecting",
@@ -909,1056 +1933,10 @@
         "orderId": "260413150372929",
         "status": "UPDATE"
       }
-    },
-    {
-      "at": "2026-04-13T04:07:33.061Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260413150372929",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-13T04:07:33.060Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260413150372929",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-13T04:07:23.838Z",
-      "type": "mirror.error",
-      "summary": "Failed to process source order",
-      "detail": {
-        "orderId": "260413150371504",
-        "followerId": "follower_2",
-        "message": "Authenticate the follower_2 account first."
-      }
-    },
-    {
-      "at": "2026-04-13T04:07:23.837Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260413150371504",
-        "followerId": "follower_1",
-        "followerOrderId": "260413170327162",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-13T04:07:23.778Z",
-      "type": "mirror.ignored",
-      "summary": "Skipped duplicate source order while in-flight",
-      "detail": {
-        "orderId": "260413150371504",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-13T04:07:23.775Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260413150371504",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-13T04:07:23.774Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260413150371504",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-13T04:05:24.673Z",
-      "type": "mirror.error",
-      "summary": "Failed to process source order",
-      "detail": {
-        "orderId": "260413150352125",
-        "followerId": "follower_2",
-        "message": "Authenticate the follower_2 account first."
-      }
-    },
-    {
-      "at": "2026-04-13T04:05:24.672Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260413150352125",
-        "followerId": "follower_1",
-        "followerOrderId": "260413170309467",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-13T04:05:24.604Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260413150352125",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-13T04:01:49.349Z",
-      "type": "mirror.error",
-      "summary": "Failed to process source order",
-      "detail": {
-        "orderId": "260413150319818",
-        "followerId": "follower_2",
-        "message": "Authenticate the follower_2 account first."
-      }
-    },
-    {
-      "at": "2026-04-13T04:01:49.348Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260413150319818",
-        "followerId": "follower_1",
-        "followerOrderId": "260413170280303",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-13T04:01:48.622Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260413150319818",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-13T04:00:27.101Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-13T04:00:27.014Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-13T04:00:05.463Z",
-      "type": "mirror.dry_run",
-      "summary": "Dry-run follower order prepared",
-      "detail": {
-        "orderId": "260413150295943",
-        "followerId": "follower_2",
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2641323650CE",
-          "transaction_type": "BUY",
-          "order_type": "LIMIT",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 54.6,
-          "trigger_price": 0,
-          "tag": "CPY50295943"
-        }
-      }
-    },
-    {
-      "at": "2026-04-13T04:00:05.462Z",
-      "type": "mirror.dry_run",
-      "summary": "Dry-run follower order prepared",
-      "detail": {
-        "orderId": "260413150295943",
-        "followerId": "follower_1",
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2641323650CE",
-          "transaction_type": "BUY",
-          "order_type": "LIMIT",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 54.6,
-          "trigger_price": 0,
-          "tag": "CPY50295943"
-        }
-      }
-    },
-    {
-      "at": "2026-04-13T04:00:05.460Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260413150295943",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-13T03:59:08.071Z",
-      "type": "mirror.dry_run",
-      "summary": "Dry-run follower order prepared",
-      "detail": {
-        "orderId": "260413150286981",
-        "followerId": "follower_2",
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2641323650CE",
-          "transaction_type": "SELL",
-          "order_type": "LIMIT",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 52.35,
-          "trigger_price": 0,
-          "tag": "CPY50286981"
-        }
-      }
-    },
-    {
-      "at": "2026-04-13T03:59:08.069Z",
-      "type": "mirror.dry_run",
-      "summary": "Dry-run follower order prepared",
-      "detail": {
-        "orderId": "260413150286981",
-        "followerId": "follower_1",
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2641323650CE",
-          "transaction_type": "SELL",
-          "order_type": "LIMIT",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 52.35,
-          "trigger_price": 0,
-          "tag": "CPY50286981"
-        }
-      }
-    },
-    {
-      "at": "2026-04-13T03:59:08.067Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260413150286981",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-13T03:56:00.810Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-13T03:56:00.760Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-13T03:56:00.759Z",
-      "type": "auth.success",
-      "summary": "leader account authenticated",
-      "detail": {
-        "account": "leader",
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-13T03:54:45.602Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-13T03:54:45.269Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-13T03:45:23.603Z",
-      "type": "stream.skip",
-      "summary": "Leader token expired – re-authenticate before market opens"
-    },
-    {
-      "at": "2026-04-13T03:45:23.602Z",
-      "type": "auth.expired",
-      "summary": "follower_1 token expired (16h 23m). Re-authenticate.",
-      "detail": {
-        "account": "follower_1"
-      }
-    },
-    {
-      "at": "2026-04-13T03:45:23.601Z",
-      "type": "auth.expired",
-      "summary": "leader token expired (72h 16m). Re-authenticate.",
-      "detail": {
-        "account": "leader"
-      }
-    },
-    {
-      "at": "2026-04-12T11:20:05.565Z",
-      "type": "stream.skip",
-      "summary": "Leader token expired – re-authenticate before market opens"
-    },
-    {
-      "at": "2026-04-12T11:20:05.564Z",
-      "type": "auth.expired",
-      "summary": "follower_1 token expired (55h 47m). Re-authenticate.",
-      "detail": {
-        "account": "follower_1"
-      }
-    },
-    {
-      "at": "2026-04-12T11:20:05.562Z",
-      "type": "auth.expired",
-      "summary": "leader token expired (55h 51m). Re-authenticate.",
-      "detail": {
-        "account": "leader"
-      }
-    },
-    {
-      "at": "2026-04-10T09:39:56.532Z",
-      "type": "mirror.error",
-      "summary": "Failed to process source order",
-      "detail": {
-        "orderId": "260410151415533",
-        "message": "`quantity` should be multiple of 65."
-      }
-    },
-    {
-      "at": "2026-04-10T09:39:56.460Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410151415533",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-10T09:34:42.300Z",
-      "type": "mirror.error",
-      "summary": "Failed to process source order",
-      "detail": {
-        "orderId": "260410151389173",
-        "message": "`quantity` should be multiple of 65."
-      }
-    },
-    {
-      "at": "2026-04-10T09:34:42.229Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410151389173",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-10T09:17:12.286Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260410151324783",
-        "followerOrderId": "260410171245500",
-        "attempt": 1,
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2641324200CE",
-          "transaction_type": "BUY",
-          "order_type": "LIMIT",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 54.45,
-          "trigger_price": 0,
-          "tag": "CPY51324783"
-        }
-      }
-    },
-    {
-      "at": "2026-04-10T09:17:12.217Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410151324783",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T09:17:12.217Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410151324783",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-10T09:04:20.324Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260410151284078",
-        "followerOrderId": "260410171204787",
-        "attempt": 1,
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2641324200CE",
-          "transaction_type": "SELL",
-          "order_type": "LIMIT",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 56.5,
-          "trigger_price": 0,
-          "market_protection": "0",
-          "tag": "CPY51284078"
-        }
-      }
-    },
-    {
-      "at": "2026-04-10T08:38:24.884Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260410151175151",
-        "followerOrderId": "260410171096738",
-        "attempt": 1,
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2641324200CE",
-          "transaction_type": "BUY",
-          "order_type": "LIMIT",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 71.65,
-          "trigger_price": 0,
-          "tag": "CPY51175151"
-        }
-      }
-    },
-    {
-      "at": "2026-04-10T08:38:24.825Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410151175151",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T08:38:24.824Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410151175151",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T08:38:24.823Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410151175151",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-10T08:35:06.035Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260410151167003",
-        "followerOrderId": "260410171089029",
-        "attempt": 1,
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2641324200CE",
-          "transaction_type": "SELL",
-          "order_type": "LIMIT",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 75.7,
-          "trigger_price": 0,
-          "tag": "CPY51167003"
-        }
-      }
-    },
-    {
-      "at": "2026-04-10T08:35:05.959Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410151167003",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T08:35:05.959Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410151167003",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T08:35:05.958Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410151167003",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T08:35:05.957Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410151167003",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T08:35:05.957Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410151167003",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-10T05:31:27.565Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260410150700173",
-        "followerOrderId": "260410170637166",
-        "attempt": 1,
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2641323700PE",
-          "transaction_type": "BUY",
-          "order_type": "LIMIT",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 51.05,
-          "trigger_price": 0,
-          "tag": "CPY50700173"
-        }
-      }
-    },
-    {
-      "at": "2026-04-10T05:31:27.491Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150700173",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T05:31:27.491Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150700173",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T05:31:27.490Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150700173",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T05:31:27.489Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150700173",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-10T05:30:55.002Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260410150697769",
-        "followerOrderId": "260410170634914",
-        "attempt": 1,
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2641323700PE",
-          "transaction_type": "SELL",
-          "order_type": "LIMIT",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 53.6,
-          "trigger_price": 0,
-          "tag": "CPY50697769"
-        }
-      }
-    },
-    {
-      "at": "2026-04-10T05:30:54.936Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150697769",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T05:30:54.935Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150697769",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T05:30:54.934Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150697769",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T05:30:54.933Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150697769",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-10T05:11:42.103Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260410150632738",
-        "followerOrderId": "260410170572867",
-        "attempt": 1,
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2641324200CE",
-          "transaction_type": "BUY",
-          "order_type": "LIMIT",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 72.6,
-          "trigger_price": 0,
-          "tag": "CPY50632738"
-        }
-      }
-    },
-    {
-      "at": "2026-04-10T05:11:42.008Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150632738",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T05:11:42.007Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150632738",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T05:11:42.006Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150632738",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T05:11:42.005Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150632738",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-10T05:00:17.675Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260410150593362",
-        "followerOrderId": "260410170536113",
-        "attempt": 1,
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2641324200CE",
-          "transaction_type": "SELL",
-          "order_type": "LIMIT",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 74.5,
-          "trigger_price": 0,
-          "tag": "CPY50593362"
-        }
-      }
-    },
-    {
-      "at": "2026-04-10T05:00:17.577Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150593362",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T05:00:17.576Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150593362",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T05:00:17.575Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150593362",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T05:00:17.574Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150593362",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-10T03:52:04.887Z",
-      "type": "mirror.error",
-      "summary": "Failed to process source order",
-      "detail": {
-        "orderId": "260410150156466",
-        "message": "`quantity` should be multiple of 65."
-      }
-    },
-    {
-      "at": "2026-04-10T03:52:04.833Z",
-      "type": "mirror.ignored",
-      "summary": "Skipped duplicate source order while processing is already in progress",
-      "detail": {
-        "orderId": "260410150156466",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T03:52:04.832Z",
-      "type": "mirror.ignored",
-      "summary": "Skipped duplicate source order while processing is already in progress",
-      "detail": {
-        "orderId": "260410150156466",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T03:52:04.830Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150156466",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T03:52:04.829Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150156466",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-10T03:51:42.177Z",
-      "type": "mirror.error",
-      "summary": "Failed to process source order",
-      "detail": {
-        "orderId": "260410150152472",
-        "message": "`quantity` should be multiple of 65."
-      }
-    },
-    {
-      "at": "2026-04-10T03:51:42.121Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150152472",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-10T03:48:50.424Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260410150114444",
-        "followerOrderId": "260410170098097",
-        "attempt": 1,
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2641324150CE",
-          "transaction_type": "BUY",
-          "order_type": "LIMIT",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 72.8,
-          "trigger_price": 0,
-          "tag": "CPY50114444"
-        }
-      }
-    },
-    {
-      "at": "2026-04-10T03:48:50.355Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150114444",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T03:48:50.355Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150114444",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T03:48:50.354Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150114444",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T03:48:50.353Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150114444",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T03:48:50.352Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150114444",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T03:48:50.351Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150114444",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-10T03:48:42.534Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260410150112559",
-        "followerOrderId": "260410170096414",
-        "attempt": 1,
-        "followerOrder": {
-          "variety": "regular",
-          "exchange": "NFO",
-          "tradingsymbol": "NIFTY2641324150CE",
-          "transaction_type": "SELL",
-          "order_type": "LIMIT",
-          "quantity": 65,
-          "product": "NRML",
-          "validity": "DAY",
-          "disclosed_quantity": 0,
-          "price": 73.7,
-          "trigger_price": 0,
-          "tag": "CPY50112559"
-        }
-      }
-    },
-    {
-      "at": "2026-04-10T03:48:42.452Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150112559",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T03:48:42.451Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150112559",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-10T03:48:42.450Z",
-      "type": "mirror.waiting",
-      "summary": "Source order update not actionable yet",
-      "detail": {
-        "orderId": "260410150112559",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-10T03:47:36.483Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-10T03:47:36.379Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-10T03:32:44.757Z",
-      "type": "auth.success",
-      "summary": "follower account authenticated",
-      "detail": {
-        "account": "follower",
-        "userId": "QKR315",
-        "loginTime": "2026-04-10 09:02:44"
-      }
-    },
-    {
-      "at": "2026-04-10T03:28:24.161Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-10T03:28:24.093Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-10T03:28:24.092Z",
-      "type": "auth.success",
-      "summary": "leader account authenticated",
-      "detail": {
-        "account": "leader",
-        "userId": "FEK088",
-        "loginTime": "2026-04-10 08:55:35"
-      }
     }
   ],
   "preConnectPositions": {
-    "leader": {
-      "NIFTY2642124500CE": -65
-    },
-    "follower": {
-      "NIFTY2642124500CE": -65
-    }
+    "leader": {},
+    "follower": {}
   }
 }

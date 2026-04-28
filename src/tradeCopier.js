@@ -224,6 +224,7 @@ export class TradeCopier {
     this.reconnectAttempt = 0;
     this.isShuttingDown = false;
     this.inFlight = new Set();
+    this.lockedSymbols = new Set();
   }
 
   getStatus() {
@@ -403,6 +404,11 @@ export class TradeCopier {
       await this._replicateModification(order, followerState); return;
     }
 
+    if (this.lockedSymbols.has(order.tradingsymbol)) {
+      this._log('mirror.locked', `Skipping ${order.tradingsymbol} - locked due to insufficient funds`, { orderId: order.order_id, symbol: order.tradingsymbol });
+      return;
+    }
+
     if (followerState.mirrorStatus && followerState.mirrorStatus !== 'error') return;
 
     if (this.inFlight.has(order.order_id)) {
@@ -480,7 +486,13 @@ export class TradeCopier {
         return placed;
       } catch (err) {
         lastErr = err;
-        if (err instanceof KiteApiError && err.status >= 400 && err.status < 500) break;
+        if (err instanceof KiteApiError && err.status >= 400 && err.status < 500) {
+          if (err.message && err.message.toLowerCase().includes('insufficient')) {
+            this.lockedSymbols.add(order.tradingsymbol);
+            this._log('mirror.lock_activated', `LOCKED ${order.tradingsymbol} - insufficient funds`, { symbol: order.tradingsymbol, error: err.message });
+          }
+          break;
+        }
       }
     }
     this._saveFollower(order.order_id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'error', errors: serializeError(lastErr) });

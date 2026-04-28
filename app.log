@@ -1,8 +1,0 @@
-nohup: ignoring input
-
-> zerodha-trade-copier@0.1.0 start
-> node src/server.js
-
-[2026-04-22T08:19:11.322Z] Connecting to leader order stream { userId: 'FEK088' }
-Trade copier listening on http://0.0.0.0:8787 (dry_run=false)
-[2026-04-22T08:19:11.428Z] Leader order stream connected { userId: 'FEK088' }

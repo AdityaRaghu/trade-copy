@@ -227,19 +227,20 @@ export class TradeCopier {
   }
 
   getStatus() {
+    const fCfg = this._acctCfg(FOLLOWER);
     return {
       dryRun: this.cfg.dryRun,
       sourceSocketState: this.socketState,
-      quantityMultiplier: this.cfg.quantityMultiplier,
-      lotSize: this.cfg.lotSize,
-      maxLots: this.cfg.maxLots,
-      maxPriceDeviationPercent: this.cfg.maxPriceDeviationPercent,
-      marketProtection: this.cfg.marketProtection,
-      followMarketOrdersAsLimit: this.cfg.followMarketOrdersAsLimit,
+      quantityMultiplier: fCfg.quantityMultiplier,
+      lotSize: fCfg.lotSize,
+      maxLots: fCfg.maxLots,
+      maxPriceDeviationPercent: fCfg.maxPriceDeviationPercent,
+      marketProtection: fCfg.marketProtection,
+      followMarketOrdersAsLimit: fCfg.followMarketOrdersAsLimit,
       replicateCancellations: this.cfg.replicateCancellations,
       replicateModifications: this.cfg.replicateModifications,
       leader: this._sessionSummary(LEADER),
-      follower: { id: FOLLOWER, label: this.cfg.accounts.follower?.label, ...this._sessionSummary(FOLLOWER) },
+      follower: { id: FOLLOWER, label: fCfg.label, ...this._sessionSummary(FOLLOWER) },
       recentEvents: this.runtime.recentEvents,
       mirroredOrders: Object.keys(this.runtime.mirroredOrders).length,
     };

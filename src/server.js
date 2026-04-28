@@ -2,11 +2,15 @@ import http from 'node:http';
 import { config, requireKiteCredentials } from './config.js';
 import { TradeCopier } from './tradeCopier.js';
 
+process.on('uncaughtException', (err) => {
+  console.error('[UNCAUGHT EXCEPTION]', err);
+});
+process.on('unhandledRejection', (err) => {
+  console.error('[UNHANDLED REJECTION]', err);
+});
+
 const copier = new TradeCopier({ config });
 await copier.resume();
-process.on('unhandledRejection', (err) => {
-  console.error('Unhandled rejection:', err);
-});
 
 const knownAccounts = new Set(['leader', 'follower']);
 

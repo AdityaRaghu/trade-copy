@@ -152,6 +152,29 @@ export function buildFollowerOrder(sourceOrder, cfg, { traceId } = {}) {
   return order;
 }
 
+function comparableOrderShape(order) {
+  return {
+    transaction_type: upper(order.transaction_type),
+    order_type: upper(order.order_type),
+    quantity: Math.trunc(num(order.quantity)),
+    price: num(order.price),
+    trigger_price: num(order.trigger_price),
+    validity: upper(order.validity || 'DAY'),
+    disclosed_quantity: Math.trunc(num(order.disclosed_quantity)),
+  };
+}
+
+function sameOrderShape(a, b) {
+  if (!a || !b) return false;
+  return a.transaction_type === b.transaction_type
+    && a.order_type === b.order_type
+    && a.quantity === b.quantity
+    && a.price === b.price
+    && a.trigger_price === b.trigger_price
+    && a.validity === b.validity
+    && a.disclosed_quantity === b.disclosed_quantity;
+}
+
 // ── TradeCopier ───────────────────────────────────────────────────────────────
 export class TradeCopier {
   constructor({ config, logger = console }) {
@@ -244,6 +267,7 @@ export class TradeCopier {
       follower: { id: FOLLOWER, label: fCfg.label, ...this._sessionSummary(FOLLOWER) },
       recentEvents: this.runtime.recentEvents,
       mirroredOrders: Object.keys(this.runtime.mirroredOrders).length,
+      lockedSymbols: Array.from(this.lockedSymbols),
     };
   }
 
@@ -400,13 +424,18 @@ export class TradeCopier {
     if (status === 'CANCELLED' && this.cfg.replicateCancellations && anyPlaced) {
       await this._replicateCancellation(order, followerState); return;
     }
-    if (status === 'MODIFIED' && this.cfg.replicateModifications && anyPlaced) {
-      await this._replicateModification(order, followerState); return;
-    }
 
-    if (this.lockedSymbols.has(order.tradingsymbol)) {
-      this._log('mirror.locked', `Skipping ${order.tradingsymbol} - locked due to insufficient funds`, { orderId: order.order_id, symbol: order.tradingsymbol });
-      return;
+    if (anyPlaced && this.cfg.replicateModifications) {
+      const MODIFIABLE = new Set(['OPEN', 'UPDATE', 'MODIFIED', 'TRIGGER PENDING']);
+      if (MODIFIABLE.has(status)) {
+        const cfg = { ...this.cfg, ...this._acctCfg(FOLLOWER) };
+        const nextFo = buildFollowerOrder(order, cfg);
+        const nextShape = comparableOrderShape(nextFo);
+        if (!sameOrderShape(followerState.lastFollowerOrder, nextShape)) {
+          await this._replicateModification(order, followerState, nextFo);
+        }
+        return;
+      }
     }
 
     if (followerState.mirrorStatus && followerState.mirrorStatus !== 'error') return;
@@ -433,7 +462,7 @@ export class TradeCopier {
   // ── private ───────────────────────────────────────────────────────────────
   async _mirrorToFollower(order, status) {
     const cfg = { ...this.cfg, ...this._acctCfg(FOLLOWER) };
-    const fo = buildFollowerOrder(order, cfg);
+    let fo = buildFollowerOrder(order, cfg);
     const policy = validateOrderAgainstPolicy(fo, cfg);
 
     if (!policy.ok) {
@@ -472,6 +501,22 @@ export class TradeCopier {
       this._log('mirror.token_expired', `${FOLLOWER} token expired – cannot place order`, { orderId: order.order_id, followerId: FOLLOWER });
       return;
     }
+    const exitGuard = await this._guardOptionSellingExit(session.accessToken, order, fo, status);
+    if (exitGuard.skip) {
+      this._saveFollower(order.order_id, {
+        sourceOrderId: order.order_id,
+        sourceStatus: status,
+        mirrorStatus: 'skipped',
+        blockedReasons: [exitGuard.reason],
+      });
+      this._log('mirror.skipped_squareoff', exitGuard.reason, {
+        orderId: order.order_id, followerId: FOLLOWER, symbol: fo.tradingsymbol,
+      });
+      return;
+    }
+    if (exitGuard.adjusted) {
+      fo = { ...fo, quantity: exitGuard.order.quantity };
+    }
 
     let lastErr;
     for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
@@ -481,7 +526,16 @@ export class TradeCopier {
           await sleep(RETRY_MS * attempt);
         }
         const placed = await this._client(FOLLOWER).placeOrder(session.accessToken, fo);
-        this._saveFollower(order.order_id, { sourceOrderId: order.order_id, sourceStatus: status, mirrorStatus: 'placed', followerOrderId: placed.order_id, followerVariety: fo.variety });
+        this._saveFollower(order.order_id, {
+          sourceOrderId: order.order_id,
+          sourceStatus: status,
+          mirrorStatus: 'placed',
+          followerOrderId: placed.order_id,
+          followerVariety: fo.variety,
+          lastFollowerOrder: comparableOrderShape(fo),
+          tradingsymbol: fo.tradingsymbol,
+          transactionType: upper(fo.transaction_type),
+        });
         this._log('mirror.placed', 'Follower order placed', { sourceOrderId: order.order_id, followerId: FOLLOWER, followerOrderId: placed.order_id, attempt: attempt + 1 });
         return placed;
       } catch (err) {
@@ -512,27 +566,146 @@ export class TradeCopier {
     }
   }
 
-  async _replicateModification(sourceOrder, followerState) {
-    if (this.cfg.dryRun) { this._log('modify.dry_run', 'Dry-run modification prepared', { sourceOrderId: sourceOrder.order_id }); return; }
+  async _replicateModification(sourceOrder, followerState, nextFollowerOrder) {
+    if (this.cfg.dryRun) {
+      this._log('modify.dry_run', 'Dry-run modification prepared', { sourceOrderId: sourceOrder.order_id });
+      return;
+    }
     if (!followerState?.followerOrderId) return;
+
     try {
       const sess = this._requireSession(FOLLOWER);
-      if (tokenExpired(sess)) { this._log('modify.error', `${FOLLOWER} token expired – cannot modify`, { sourceOrderId: sourceOrder.order_id }); return; }
-      const cfg = this._acctCfg(FOLLOWER);
-      let modQty = Math.floor(num(sourceOrder.quantity) * cfg.quantityMultiplier);
-      if (cfg.lotSize > 0) modQty = Math.floor(modQty / cfg.lotSize) * cfg.lotSize;
-      if (cfg.maxLots > 0 && cfg.lotSize > 0) modQty = Math.min(modQty, cfg.maxLots * cfg.lotSize);
+      if (tokenExpired(sess)) {
+        this._log('modify.error', `${FOLLOWER} token expired – cannot modify`, { sourceOrderId: sourceOrder.order_id });
+        return;
+      }
+
+      const cfg = { ...this.cfg, ...this._acctCfg(FOLLOWER) };
+      let fo = nextFollowerOrder ?? buildFollowerOrder(sourceOrder, cfg);
+      const policy = validateOrderAgainstPolicy(fo, cfg);
+
+      if (!policy.ok) {
+        this._saveFollower(sourceOrder.order_id, {
+          sourceStatus: normalizeOrderStatus(sourceOrder.status),
+          mirrorStatus: 'blocked',
+          blockedReasons: policy.reasons,
+        });
+        this._log('modify.blocked', 'Follower modification blocked by policy', {
+          sourceOrderId: sourceOrder.order_id, followerId: FOLLOWER, reasons: policy.reasons,
+        });
+        return;
+      }
+
+      const exitGuard = await this._guardOptionSellingExit(sess.accessToken, sourceOrder, fo, normalizeOrderStatus(sourceOrder.status));
+      if (exitGuard.skip) {
+        this._saveFollower(sourceOrder.order_id, {
+          sourceStatus: normalizeOrderStatus(sourceOrder.status),
+          mirrorStatus: 'skipped',
+          blockedReasons: [exitGuard.reason],
+        });
+        this._log('modify.skipped_squareoff', exitGuard.reason, {
+          sourceOrderId: sourceOrder.order_id, followerId: FOLLOWER, symbol: fo.tradingsymbol,
+        });
+        return;
+      }
+      if (exitGuard.adjusted) {
+        fo = { ...fo, quantity: exitGuard.order.quantity };
+      }
+
       await this._client(FOLLOWER).modifyOrder(sess.accessToken, {
-        variety: followerState.followerVariety, order_id: followerState.followerOrderId,
-        quantity: modQty,
-        price: num(sourceOrder.price), trigger_price: num(sourceOrder.trigger_price),
-        order_type: upper(sourceOrder.order_type), validity: upper(sourceOrder.validity || 'DAY'),
-        disclosed_quantity: Math.trunc(num(sourceOrder.disclosed_quantity)),
+        variety: followerState.followerVariety,
+        order_id: followerState.followerOrderId,
+        quantity: fo.quantity,
+        price: fo.price,
+        trigger_price: fo.trigger_price,
+        order_type: fo.order_type,
+        validity: fo.validity,
+        disclosed_quantity: fo.disclosed_quantity,
       });
-      this._saveFollower(sourceOrder.order_id, { mirrorStatus: 'modified' });
-      this._log('modify.live', 'Follower modification sent', { sourceOrderId: sourceOrder.order_id, followerId: FOLLOWER });
+
+      this._saveFollower(sourceOrder.order_id, {
+        sourceStatus: normalizeOrderStatus(sourceOrder.status),
+        mirrorStatus: 'modified',
+        lastFollowerOrder: comparableOrderShape(fo),
+      });
+      this._log('modify.live', 'Follower modification sent', {
+        sourceOrderId: sourceOrder.order_id, followerId: FOLLOWER,
+      });
     } catch (err) {
-      this._log('modify.error', 'Follower modification failed', { sourceOrderId: sourceOrder.order_id, followerId: FOLLOWER, message: err.message });
+      this._log('modify.error', 'Follower modification failed', {
+        sourceOrderId: sourceOrder.order_id, followerId: FOLLOWER, message: err.message,
+      });
+    }
+  }
+  async _guardOptionSellingExit(accessToken, sourceOrder, followerOrder, status) {
+    const symbol = followerOrder.tradingsymbol;
+    const isNfo = upper(followerOrder.exchange) === 'NFO';
+    const isBuy = upper(followerOrder.transaction_type) === 'BUY';
+
+    if (!isNfo || !isBuy || !symbol) {
+      return { order: followerOrder };
+    }
+
+    let followerNetQty;
+    try {
+      followerNetQty = await this._getFollowerNetQuantity(accessToken, symbol);
+    } catch (err) {
+      this._log('guard.position_error', `Failed to fetch follower position for ${symbol}, blocking BUY for safety`, {
+        symbol, message: err.message,
+      });
+      return { skip: true, reason: `Position lookup failed for ${symbol} – blocking BUY for safety: ${err.message}` };
+    }
+
+    if (followerNetQty >= 0) {
+      await this._cancelPendingSellsForSymbol(accessToken, symbol);
+      return {
+        skip: true,
+        reason: `Skipped BUY for ${symbol}: follower has no short position (net=${followerNetQty}). Cancelled any pending SELLs.`,
+      };
+    }
+
+    const maxExitQty = Math.abs(followerNetQty);
+    if (followerOrder.quantity > maxExitQty) {
+      await this._cancelPendingSellsForSymbol(accessToken, symbol);
+      return {
+        order: { ...followerOrder, quantity: maxExitQty },
+        adjusted: true,
+      };
+    }
+
+    return { order: followerOrder };
+  }
+
+  async _getFollowerNetQuantity(accessToken, symbol) {
+    const positions = await this._client(FOLLOWER).getPositions(accessToken);
+    let qty = 0;
+    for (const pos of Array.isArray(positions?.net) ? positions.net : []) {
+      if (String(pos?.tradingsymbol ?? '').trim() !== symbol) continue;
+      qty += Math.trunc(num(pos?.quantity ?? pos?.net_quantity, 0));
+    }
+    return qty;
+  }
+
+  async _cancelPendingSellsForSymbol(accessToken, symbol) {
+    for (const [sourceId, entry] of Object.entries(this.runtime.mirroredOrders)) {
+      if (entry.mirrorStatus !== 'placed' || !entry.followerOrderId) continue;
+      if (entry.tradingsymbol !== symbol) continue;
+      if (entry.transactionType !== 'SELL') continue;
+
+      try {
+        await this._client(FOLLOWER).cancelOrder(accessToken, {
+          variety: entry.followerVariety,
+          orderId: entry.followerOrderId,
+        });
+        this._saveFollower(sourceId, { mirrorStatus: 'cancelled' });
+        this._log('guard.cancel_pending_sell', `Cancelled pending SELL for ${symbol} — leader already exiting`, {
+          sourceOrderId: sourceId, followerId: FOLLOWER, followerOrderId: entry.followerOrderId,
+        });
+      } catch (err) {
+        this._log('guard.cancel_pending_sell_error', `Failed to cancel pending SELL for ${symbol}`, {
+          sourceOrderId: sourceId, followerOrderId: entry.followerOrderId, message: err.message,
+        });
+      }
     }
   }
 

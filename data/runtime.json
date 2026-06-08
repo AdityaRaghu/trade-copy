@@ -1,326 +1,450 @@
 {
   "mirroredOrders": {
-    "260427150618948": {
-      "sourceOrderId": "260427150618948",
+    "260608150196164": {
+      "sourceOrderId": "260608150196164",
       "followerId": "follower",
-      "updatedAt": "2026-04-27T05:12:46.338Z",
+      "updatedAt": "2026-06-08T03:53:29.522Z",
       "sourceStatus": "COMPLETE",
       "mirrorStatus": "placed",
-      "followerOrderId": "260427190533784",
+      "followerOrderId": "260608190149775",
       "followerVariety": "regular"
     },
-    "260427150620762": {
-      "sourceOrderId": "260427150620762",
+    "260608150247852": {
+      "sourceOrderId": "260608150247852",
       "followerId": "follower",
-      "updatedAt": "2026-04-27T05:13:17.440Z",
+      "updatedAt": "2026-06-08T03:57:36.820Z",
+      "sourceStatus": "OPEN",
+      "mirrorStatus": "placed",
+      "followerOrderId": "260608190189356",
+      "followerVariety": "regular"
+    },
+    "260608150453988": {
+      "sourceOrderId": "260608150453988",
+      "followerId": "follower",
+      "updatedAt": "2026-06-08T04:21:36.595Z",
       "sourceStatus": "COMPLETE",
       "mirrorStatus": "placed",
-      "followerOrderId": "260427190535636",
+      "followerOrderId": "260608190363207",
       "followerVariety": "regular"
     },
-    "260427150645622": {
-      "sourceOrderId": "260427150645622",
+    "260608150510343": {
+      "sourceOrderId": "260608150510343",
       "followerId": "follower",
-      "updatedAt": "2026-04-27T05:19:24.325Z",
-      "sourceStatus": "COMPLETE",
-      "mirrorStatus": "placed",
-      "followerOrderId": "260427190559538",
-      "followerVariety": "regular"
-    },
-    "260427150663689": {
-      "sourceOrderId": "260427150663689",
-      "followerId": "follower",
-      "updatedAt": "2026-04-27T05:29:18.801Z",
+      "updatedAt": "2026-06-08T04:33:44.379Z",
       "sourceStatus": "OPEN",
       "mirrorStatus": "cancelled",
-      "followerOrderId": "260427190577251",
+      "followerOrderId": "260608190413264",
       "followerVariety": "regular"
     },
-    "260427150683301": {
-      "sourceOrderId": "260427150683301",
+    "260608150587666": {
+      "sourceOrderId": "260608150587666",
       "followerId": "follower",
-      "updatedAt": "2026-04-27T05:29:56.555Z",
-      "sourceStatus": "COMPLETE",
-      "mirrorStatus": "placed",
-      "followerOrderId": "260427190595484",
-      "followerVariety": "regular"
-    },
-    "260427150740959": {
-      "sourceOrderId": "260427150740959",
-      "followerId": "follower",
-      "updatedAt": "2026-04-27T05:46:14.628Z",
-      "sourceStatus": "COMPLETE",
-      "mirrorStatus": "placed",
-      "followerOrderId": "260427190650717",
-      "followerVariety": "regular"
-    },
-    "260427150752032": {
-      "sourceOrderId": "260427150752032",
-      "followerId": "follower",
-      "updatedAt": "2026-04-27T05:49:45.487Z",
-      "sourceStatus": "COMPLETE",
-      "mirrorStatus": "placed",
-      "followerOrderId": "260427190661148",
-      "followerVariety": "regular"
-    },
-    "260427151275958": {
-      "sourceOrderId": "260427151275958",
-      "followerId": "follower",
-      "updatedAt": "2026-04-27T09:35:56.758Z",
+      "updatedAt": "2026-06-08T04:57:29.015Z",
       "sourceStatus": "OPEN",
       "mirrorStatus": "cancelled",
-      "followerOrderId": "260427191175085",
+      "followerOrderId": "260608190482052",
       "followerVariety": "regular"
     },
-    "260428150456032": {
-      "sourceOrderId": "260428150456032",
+    "260608150783082": {
+      "sourceOrderId": "260608150783082",
       "followerId": "follower",
-      "updatedAt": "2026-04-28T04:29:07.979Z",
-      "sourceStatus": "COMPLETE",
-      "mirrorStatus": "placed",
-      "followerOrderId": "260428190390217",
+      "updatedAt": "2026-06-08T06:39:06.794Z",
+      "sourceStatus": "OPEN",
+      "mirrorStatus": "cancelled",
+      "followerOrderId": "260608190661834",
       "followerVariety": "regular"
     },
-    "260428150497633": {
-      "sourceOrderId": "260428150497633",
+    "260608151182266": {
+      "sourceOrderId": "260608151182266",
       "followerId": "follower",
-      "updatedAt": "2026-04-28T04:35:37.200Z",
+      "updatedAt": "2026-06-08T08:02:47.841Z",
       "sourceStatus": "COMPLETE",
       "mirrorStatus": "placed",
-      "followerOrderId": "260428190428057",
+      "followerOrderId": "260608191045935",
       "followerVariety": "regular"
     },
-    "260428150994737": {
-      "sourceOrderId": "260428150994737",
+    "260608151197164": {
+      "sourceOrderId": "260608151197164",
       "followerId": "follower",
-      "updatedAt": "2026-04-28T06:27:24.050Z",
-      "sourceStatus": "COMPLETE",
-      "mirrorStatus": "placed",
-      "followerOrderId": "260428190901276",
+      "updatedAt": "2026-06-08T08:18:03.816Z",
+      "sourceStatus": "OPEN",
+      "mirrorStatus": "cancelled",
+      "followerOrderId": "260608191060257",
       "followerVariety": "regular"
     },
-    "260428150998287": {
-      "sourceOrderId": "260428150998287",
+    "260608151245872": {
+      "sourceOrderId": "260608151245872",
       "followerId": "follower",
-      "updatedAt": "2026-04-28T06:28:26.293Z",
-      "sourceStatus": "COMPLETE",
-      "mirrorStatus": "placed",
-      "followerOrderId": "260428190904876",
+      "updatedAt": "2026-06-08T08:22:33.287Z",
+      "sourceStatus": "OPEN",
+      "mirrorStatus": "cancelled",
+      "followerOrderId": "260608191105705",
+      "followerVariety": "regular"
+    },
+    "260608151262193": {
+      "sourceOrderId": "260608151262193",
+      "followerId": "follower",
+      "updatedAt": "2026-06-08T08:47:56.697Z",
+      "sourceStatus": "OPEN",
+      "mirrorStatus": "cancelled",
+      "followerOrderId": "260608191120769",
+      "followerVariety": "regular"
+    },
+    "260608151440634": {
+      "sourceOrderId": "260608151440634",
+      "followerId": "follower",
+      "updatedAt": "2026-06-08T09:44:25.684Z",
+      "sourceStatus": "OPEN",
+      "mirrorStatus": "cancelled",
+      "followerOrderId": "260608191289769",
       "followerVariety": "regular"
     }
   },
   "recentEvents": [
     {
-      "at": "2026-04-28T06:33:47.576Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
+      "at": "2026-06-08T09:44:25.692Z",
+      "type": "cancel.error",
+      "summary": "Follower cancellation failed",
       "detail": {
-        "userId": "FEK088"
+        "sourceOrderId": "260608151440634",
+        "followerId": "follower",
+        "message": "Order cannot be cancelled as it is being processed. Try later."
       }
     },
     {
-      "at": "2026-04-28T06:33:47.468Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
+      "at": "2026-06-08T09:44:25.684Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
       "detail": {
-        "userId": "FEK088"
+        "sourceOrderId": "260608151440634",
+        "followerId": "follower",
+        "followerOrderId": "260608191289769"
       }
     },
     {
-      "at": "2026-04-28T06:28:26.294Z",
+      "at": "2026-06-08T09:19:59.206Z",
       "type": "mirror.placed",
       "summary": "Follower order placed",
       "detail": {
-        "sourceOrderId": "260428150998287",
+        "sourceOrderId": "260608151440634",
         "followerId": "follower",
-        "followerOrderId": "260428190904876",
+        "followerOrderId": "260608191289769",
         "attempt": 1
       }
     },
     {
-      "at": "2026-04-28T06:28:26.249Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
+      "at": "2026-06-08T08:47:56.703Z",
+      "type": "cancel.error",
+      "summary": "Follower cancellation failed",
       "detail": {
-        "orderId": "260428150998287",
-        "status": "OPEN"
+        "sourceOrderId": "260608151262193",
+        "followerId": "follower",
+        "message": "Order cannot be cancelled as it is being processed. Try later."
       }
     },
     {
-      "at": "2026-04-28T06:27:24.050Z",
+      "at": "2026-06-08T08:47:56.697Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
+      "detail": {
+        "sourceOrderId": "260608151262193",
+        "followerId": "follower",
+        "followerOrderId": "260608191120769"
+      }
+    },
+    {
+      "at": "2026-06-08T08:24:57.299Z",
       "type": "mirror.placed",
       "summary": "Follower order placed",
       "detail": {
-        "sourceOrderId": "260428150994737",
+        "sourceOrderId": "260608151262193",
         "followerId": "follower",
-        "followerOrderId": "260428190901276",
+        "followerOrderId": "260608191120769",
         "attempt": 1
       }
     },
     {
-      "at": "2026-04-28T06:27:23.955Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
+      "at": "2026-06-08T08:22:33.302Z",
+      "type": "cancel.error",
+      "summary": "Follower cancellation failed",
       "detail": {
-        "orderId": "260428150994737",
-        "status": "UPDATE"
+        "sourceOrderId": "260608151245872",
+        "followerId": "follower",
+        "message": "Order cannot be cancelled as it is being processed. Try later."
       }
     },
     {
-      "at": "2026-04-28T06:27:23.955Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
+      "at": "2026-06-08T08:22:33.287Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
       "detail": {
-        "orderId": "260428150994737",
-        "status": "UPDATE"
+        "sourceOrderId": "260608151245872",
+        "followerId": "follower",
+        "followerOrderId": "260608191105705"
       }
     },
     {
-      "at": "2026-04-28T06:27:23.954Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260428150994737",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-28T06:27:23.953Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260428150994737",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-28T04:35:37.201Z",
+      "at": "2026-06-08T08:20:02.636Z",
       "type": "mirror.placed",
       "summary": "Follower order placed",
       "detail": {
-        "sourceOrderId": "260428150497633",
+        "sourceOrderId": "260608151245872",
         "followerId": "follower",
-        "followerOrderId": "260428190428057",
+        "followerOrderId": "260608191105705",
         "attempt": 1
       }
     },
     {
-      "at": "2026-04-28T04:35:37.147Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
+      "at": "2026-06-08T08:18:03.819Z",
+      "type": "cancel.error",
+      "summary": "Follower cancellation failed",
       "detail": {
-        "orderId": "260428150497633",
-        "status": "UPDATE"
+        "sourceOrderId": "260608151197164",
+        "followerId": "follower",
+        "message": "Order cannot be cancelled as it is being processed. Try later."
       }
     },
     {
-      "at": "2026-04-28T04:35:37.146Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
+      "at": "2026-06-08T08:18:03.817Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
       "detail": {
-        "orderId": "260428150497633",
-        "status": "UPDATE"
+        "sourceOrderId": "260608151197164",
+        "followerId": "follower",
+        "followerOrderId": "260608191060257"
       }
     },
     {
-      "at": "2026-04-28T04:35:37.146Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260428150497633",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-28T04:29:07.980Z",
+      "at": "2026-06-08T08:08:43.533Z",
       "type": "mirror.placed",
       "summary": "Follower order placed",
       "detail": {
-        "sourceOrderId": "260428150456032",
+        "sourceOrderId": "260608151197164",
         "followerId": "follower",
-        "followerOrderId": "260428190390217",
+        "followerOrderId": "260608191060257",
         "attempt": 1
       }
     },
     {
-      "at": "2026-04-28T04:29:07.901Z",
+      "at": "2026-06-08T08:02:47.842Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260608151182266",
+        "followerId": "follower",
+        "followerOrderId": "260608191045935",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-08T08:02:47.788Z",
       "type": "mirror.waiting",
       "summary": "Source order not actionable yet",
       "detail": {
-        "orderId": "260428150456032",
+        "orderId": "260608151182266",
         "status": "UPDATE"
       }
     },
     {
-      "at": "2026-04-28T04:29:07.901Z",
+      "at": "2026-06-08T08:02:47.787Z",
       "type": "mirror.waiting",
       "summary": "Source order not actionable yet",
       "detail": {
-        "orderId": "260428150456032",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-28T04:29:07.900Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260428150456032",
+        "orderId": "260608151182266",
         "status": "OPEN"
       }
     },
     {
-      "at": "2026-04-28T03:39:36.423Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
+      "at": "2026-06-08T06:39:06.806Z",
+      "type": "cancel.error",
+      "summary": "Follower cancellation failed",
       "detail": {
-        "userId": "FEK088"
+        "sourceOrderId": "260608150783082",
+        "followerId": "follower",
+        "message": "Order cannot be cancelled as it is being processed. Try later."
       }
     },
     {
-      "at": "2026-04-28T03:39:36.399Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
+      "at": "2026-06-08T06:39:06.794Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
       "detail": {
-        "userId": "FEK088"
+        "sourceOrderId": "260608150783082",
+        "followerId": "follower",
+        "followerOrderId": "260608190661834"
       }
     },
     {
-      "at": "2026-04-28T03:39:36.398Z",
-      "type": "auth.success",
-      "summary": "leader account authenticated",
+      "at": "2026-06-08T05:38:21.229Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
       "detail": {
-        "account": "leader",
-        "userId": "FEK088"
+        "sourceOrderId": "260608150783082",
+        "followerId": "follower",
+        "followerOrderId": "260608190661834",
+        "attempt": 1
       }
     },
     {
-      "at": "2026-04-28T03:39:18.517Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
+      "at": "2026-06-08T04:57:29.016Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
       "detail": {
-        "userId": "FEK088"
+        "sourceOrderId": "260608150587666",
+        "followerId": "follower",
+        "followerOrderId": "260608190482052"
       }
     },
     {
-      "at": "2026-04-28T03:39:18.449Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
+      "at": "2026-06-08T04:57:29.014Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
       "detail": {
-        "userId": "FEK088"
+        "sourceOrderId": "260608150587666",
+        "followerId": "follower",
+        "followerOrderId": "260608190482052"
       }
     },
     {
-      "at": "2026-04-28T03:39:18.449Z",
-      "type": "auth.success",
-      "summary": "leader account authenticated",
+      "at": "2026-06-08T04:45:47.804Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
       "detail": {
-        "account": "leader",
-        "userId": "FEK088"
+        "sourceOrderId": "260608150587666",
+        "followerId": "follower",
+        "followerOrderId": "260608190482052",
+        "attempt": 1
       }
     },
     {
-      "at": "2026-04-28T03:35:38.064Z",
+      "at": "2026-06-08T04:33:44.381Z",
+      "type": "cancel.error",
+      "summary": "Follower cancellation failed",
+      "detail": {
+        "sourceOrderId": "260608150510343",
+        "followerId": "follower",
+        "message": "Order cannot be cancelled as it is being processed. Try later."
+      }
+    },
+    {
+      "at": "2026-06-08T04:33:44.379Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
+      "detail": {
+        "sourceOrderId": "260608150510343",
+        "followerId": "follower",
+        "followerOrderId": "260608190413264"
+      }
+    },
+    {
+      "at": "2026-06-08T04:30:07.694Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260608150510343",
+        "followerId": "follower",
+        "followerOrderId": "260608190413264",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-08T04:21:36.596Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260608150453988",
+        "followerId": "follower",
+        "followerOrderId": "260608190363207",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-08T04:21:36.536Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260608150453988",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-08T04:21:36.535Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260608150453988",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-08T04:21:36.535Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260608150453988",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-08T04:21:36.534Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260608150453988",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-08T04:21:36.533Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260608150453988",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-06-08T03:57:36.820Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260608150247852",
+        "followerId": "follower",
+        "followerOrderId": "260608190189356",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-08T03:53:29.523Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260608150196164",
+        "followerId": "follower",
+        "followerOrderId": "260608190149775",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-08T03:53:29.470Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260608150196164",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-08T03:53:29.469Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260608150196164",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-06-08T03:32:28.031Z",
       "type": "auth.success",
       "summary": "follower account authenticated",
       "detail": {
@@ -329,7 +453,567 @@
       }
     },
     {
-      "at": "2026-04-28T01:36:21.962Z",
+      "at": "2026-06-08T02:53:27.881Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-06-08T02:53:27.726Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-06-08T02:53:27.725Z",
+      "type": "auth.success",
+      "summary": "leader account authenticated",
+      "detail": {
+        "account": "leader",
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-06-04T01:36:18.277Z",
+      "type": "stream.token_expired",
+      "summary": "Leader token expired (22h 25m). Re-authenticate.",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-06-04T01:36:16.276Z",
+      "type": "stream.reconnect_scheduled",
+      "summary": "Reconnecting in 2s (attempt 1)"
+    },
+    {
+      "at": "2026-06-04T01:36:16.275Z",
+      "type": "stream.closed",
+      "summary": "Leader order stream closed",
+      "detail": {
+        "code": 1006,
+        "reason": "No reason provided"
+      }
+    },
+    {
+      "at": "2026-06-03T10:04:07.960Z",
+      "type": "cancel.error",
+      "summary": "Follower cancellation failed",
+      "detail": {
+        "sourceOrderId": "260603151288909",
+        "followerId": "follower",
+        "message": "Order cannot be cancelled as it is being processed. Try later."
+      }
+    },
+    {
+      "at": "2026-06-03T08:11:32.966Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260603151288909",
+        "followerId": "follower",
+        "followerOrderId": "260603191175016",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-03T07:31:51.276Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260603151167974",
+        "followerId": "follower",
+        "followerOrderId": "260603191049517",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-03T07:25:50.559Z",
+      "type": "cancel.error",
+      "summary": "Follower cancellation failed",
+      "detail": {
+        "sourceOrderId": "260603151118098",
+        "followerId": "follower",
+        "message": "Order cannot be cancelled as it is being processed. Try later."
+      }
+    },
+    {
+      "at": "2026-06-03T07:25:50.554Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
+      "detail": {
+        "sourceOrderId": "260603151118098",
+        "followerId": "follower",
+        "followerOrderId": "260603191000357"
+      }
+    },
+    {
+      "at": "2026-06-03T07:19:08.904Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260603151118098",
+        "followerId": "follower",
+        "followerOrderId": "260603191000357",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-03T07:15:53.593Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
+      "detail": {
+        "sourceOrderId": "260603151061343",
+        "followerId": "follower",
+        "followerOrderId": "260603190946458"
+      }
+    },
+    {
+      "at": "2026-06-03T07:15:53.590Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
+      "detail": {
+        "sourceOrderId": "260603151061343",
+        "followerId": "follower",
+        "followerOrderId": "260603190946458"
+      }
+    },
+    {
+      "at": "2026-06-03T07:07:27.868Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260603151061343",
+        "followerId": "follower",
+        "followerOrderId": "260603190946458",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-03T06:00:37.682Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260603150812953",
+        "followerId": "follower",
+        "followerOrderId": "260603190712256",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-03T06:00:37.640Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150812953",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T06:00:37.639Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150812953",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T06:00:37.638Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150812953",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T06:00:37.637Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150812953",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T06:00:37.636Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150812953",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-06-03T05:58:56.784Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260603150807067",
+        "followerId": "follower",
+        "followerOrderId": "260603190706461",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-03T05:19:42.132Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-06-03T05:19:42.064Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-06-03T04:56:07.929Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260603150577474",
+        "followerId": "follower",
+        "followerOrderId": "260603190492632",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-03T04:56:07.871Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150577474",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-06-03T04:55:29.628Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260603150574954",
+        "followerId": "follower",
+        "followerOrderId": "260603190490283",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-03T04:55:29.567Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150574954",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T04:55:29.566Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150574954",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T04:55:29.566Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150574954",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-06-03T04:02:59.981Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260603150261626",
+        "followerId": "follower",
+        "followerOrderId": "260603190214905",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-03T04:02:59.929Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150261626",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T04:02:59.928Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150261626",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T04:02:59.928Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150261626",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T04:02:59.927Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150261626",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T04:02:59.927Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150261626",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T04:02:59.926Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150261626",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T04:02:59.925Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150261626",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T04:02:59.924Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150261626",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-06-03T04:01:35.746Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260603150249303",
+        "followerId": "follower",
+        "followerOrderId": "260603190204436",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-03T04:01:35.708Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150249303",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T04:01:35.708Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150249303",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T04:01:35.707Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150249303",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T04:01:35.707Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150249303",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T04:01:35.706Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150249303",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-06-03T04:00:05.503Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
+      "detail": {
+        "sourceOrderId": "260603150204473",
+        "followerId": "follower",
+        "followerOrderId": "260603190164809"
+      }
+    },
+    {
+      "at": "2026-06-03T04:00:05.502Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
+      "detail": {
+        "sourceOrderId": "260603150204473",
+        "followerId": "follower",
+        "followerOrderId": "260603190164809"
+      }
+    },
+    {
+      "at": "2026-06-03T03:57:17.720Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260603150204473",
+        "followerId": "follower",
+        "followerOrderId": "260603190164809",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-03T03:45:05.277Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260603150049142",
+        "followerId": "follower",
+        "followerOrderId": "260603190042510",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-03T03:45:05.235Z",
+      "type": "mirror.ignored",
+      "summary": "Skipped duplicate source order while in-flight",
+      "detail": {
+        "orderId": "260603150049142",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T03:45:05.233Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150049142",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T03:45:05.232Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150049142",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T03:45:05.232Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150049142",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T03:45:05.231Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150049142",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T03:45:05.230Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150049142",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-03T03:45:05.230Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260603150049142",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-06-03T03:10:59.865Z",
+      "type": "stream.connected",
+      "summary": "Leader order stream connected",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-06-03T03:10:59.813Z",
+      "type": "stream.connecting",
+      "summary": "Connecting to leader order stream",
+      "detail": {
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-06-03T03:10:59.813Z",
+      "type": "auth.success",
+      "summary": "leader account authenticated",
+      "detail": {
+        "account": "leader",
+        "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-06-03T02:21:55.123Z",
+      "type": "auth.success",
+      "summary": "follower account authenticated",
+      "detail": {
+        "account": "follower",
+        "userId": "AUY168"
+      }
+    },
+    {
+      "at": "2026-06-03T01:36:21.504Z",
       "type": "stream.token_expired",
       "summary": "Leader token expired (22h 0m). Re-authenticate.",
       "detail": {
@@ -337,12 +1021,12 @@
       }
     },
     {
-      "at": "2026-04-28T01:36:19.962Z",
+      "at": "2026-06-03T01:36:19.503Z",
       "type": "stream.reconnect_scheduled",
       "summary": "Reconnecting in 2s (attempt 1)"
     },
     {
-      "at": "2026-04-28T01:36:19.961Z",
+      "at": "2026-06-03T01:36:19.502Z",
       "type": "stream.closed",
       "summary": "Leader order stream closed",
       "detail": {
@@ -351,1534 +1035,593 @@
       }
     },
     {
-      "at": "2026-04-27T09:35:56.759Z",
-      "type": "cancel.live",
-      "summary": "Follower cancellation sent",
-      "detail": {
-        "sourceOrderId": "260427151275958",
-        "followerId": "follower",
-        "followerOrderId": "260427191175085"
-      }
-    },
-    {
-      "at": "2026-04-27T09:35:56.758Z",
-      "type": "cancel.live",
-      "summary": "Follower cancellation sent",
-      "detail": {
-        "sourceOrderId": "260427151275958",
-        "followerId": "follower",
-        "followerOrderId": "260427191175085"
-      }
-    },
-    {
-      "at": "2026-04-27T09:00:46.327Z",
+      "at": "2026-06-02T09:49:18.537Z",
       "type": "mirror.placed",
       "summary": "Follower order placed",
       "detail": {
-        "sourceOrderId": "260427151275958",
+        "sourceOrderId": "260602152090416",
         "followerId": "follower",
-        "followerOrderId": "260427191175085",
+        "followerOrderId": "260602192037012",
         "attempt": 1
       }
     },
     {
-      "at": "2026-04-27T05:49:45.487Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260427150752032",
-        "followerId": "follower",
-        "followerOrderId": "260427190661148",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-27T05:49:45.443Z",
+      "at": "2026-06-02T09:49:18.489Z",
       "type": "mirror.waiting",
       "summary": "Source order not actionable yet",
       "detail": {
-        "orderId": "260427150752032",
+        "orderId": "260602152090416",
         "status": "UPDATE"
       }
     },
     {
-      "at": "2026-04-27T05:49:45.442Z",
+      "at": "2026-06-02T09:49:18.488Z",
       "type": "mirror.waiting",
       "summary": "Source order not actionable yet",
       "detail": {
-        "orderId": "260427150752032",
+        "orderId": "260602152090416",
         "status": "UPDATE"
       }
     },
     {
-      "at": "2026-04-27T05:49:45.442Z",
+      "at": "2026-06-02T09:49:18.487Z",
       "type": "mirror.waiting",
       "summary": "Source order not actionable yet",
       "detail": {
-        "orderId": "260427150752032",
+        "orderId": "260602152090416",
         "status": "UPDATE"
       }
     },
     {
-      "at": "2026-04-27T05:49:45.441Z",
+      "at": "2026-06-02T09:49:18.487Z",
       "type": "mirror.waiting",
       "summary": "Source order not actionable yet",
       "detail": {
-        "orderId": "260427150752032",
+        "orderId": "260602152090416",
         "status": "UPDATE"
       }
     },
     {
-      "at": "2026-04-27T05:49:45.440Z",
+      "at": "2026-06-02T09:49:18.486Z",
       "type": "mirror.waiting",
       "summary": "Source order not actionable yet",
       "detail": {
-        "orderId": "260427150752032",
+        "orderId": "260602152090416",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-02T09:49:18.485Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602152090416",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-02T09:49:18.485Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602152090416",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-02T09:49:18.484Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602152090416",
         "status": "OPEN"
       }
     },
     {
-      "at": "2026-04-27T05:46:14.628Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260427150740959",
-        "followerId": "follower",
-        "followerOrderId": "260427190650717",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-27T05:46:14.303Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260427150740959",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-27T05:46:14.303Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260427150740959",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-27T05:46:14.302Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260427150740959",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-27T05:29:56.556Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260427150683301",
-        "followerId": "follower",
-        "followerOrderId": "260427190595484",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-27T05:29:56.514Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260427150683301",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-27T05:29:56.513Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260427150683301",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-27T05:29:18.806Z",
+      "at": "2026-06-02T09:01:40.567Z",
       "type": "cancel.error",
       "summary": "Follower cancellation failed",
       "detail": {
-        "sourceOrderId": "260427150663689",
+        "sourceOrderId": "260602151799786",
         "followerId": "follower",
         "message": "Order cannot be cancelled as it is being processed. Try later."
       }
     },
     {
-      "at": "2026-04-27T05:29:18.801Z",
+      "at": "2026-06-02T09:01:40.544Z",
       "type": "cancel.live",
       "summary": "Follower cancellation sent",
       "detail": {
-        "sourceOrderId": "260427150663689",
+        "sourceOrderId": "260602151799786",
         "followerId": "follower",
-        "followerOrderId": "260427190577251"
+        "followerOrderId": "260602191736784"
       }
     },
     {
-      "at": "2026-04-27T05:24:02.294Z",
+      "at": "2026-06-02T09:00:20.663Z",
       "type": "mirror.placed",
       "summary": "Follower order placed",
       "detail": {
-        "sourceOrderId": "260427150663689",
+        "sourceOrderId": "260602151799786",
         "followerId": "follower",
-        "followerOrderId": "260427190577251",
+        "followerOrderId": "260602191736784",
         "attempt": 1
       }
     },
     {
-      "at": "2026-04-27T05:19:24.325Z",
+      "at": "2026-06-02T08:55:25.244Z",
       "type": "mirror.placed",
       "summary": "Follower order placed",
       "detail": {
-        "sourceOrderId": "260427150645622",
+        "sourceOrderId": "260602151775003",
         "followerId": "follower",
-        "followerOrderId": "260427190559538",
+        "followerOrderId": "260602191709923",
         "attempt": 1
       }
     },
     {
-      "at": "2026-04-27T05:19:24.274Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260427150645622",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-27T05:19:24.273Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260427150645622",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-27T05:19:24.272Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260427150645622",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-27T05:13:17.440Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260427150620762",
-        "followerId": "follower",
-        "followerOrderId": "260427190535636",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-27T05:13:17.382Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260427150620762",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-27T05:13:17.382Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260427150620762",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-27T05:12:46.338Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260427150618948",
-        "followerId": "follower",
-        "followerOrderId": "260427190533784",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-27T05:12:46.286Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260427150618948",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-27T05:12:46.286Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260427150618948",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-27T05:12:46.285Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260427150618948",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-27T05:12:46.284Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260427150618948",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-27T05:12:46.284Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260427150618948",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-27T03:35:48.636Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-27T03:35:48.575Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-27T03:35:48.574Z",
-      "type": "auth.success",
-      "summary": "leader account authenticated",
-      "detail": {
-        "account": "leader",
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-27T02:32:39.513Z",
-      "type": "auth.success",
-      "summary": "follower account authenticated",
-      "detail": {
-        "account": "follower",
-        "userId": "AUY168"
-      }
-    },
-    {
-      "at": "2026-04-27T01:36:25.436Z",
-      "type": "stream.token_expired",
-      "summary": "Leader token expired (70h 4m). Re-authenticate.",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-27T01:36:23.435Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-27T01:36:23.434Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1006,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-24T03:32:21.195Z",
-      "type": "auth.success",
-      "summary": "follower account authenticated",
-      "detail": {
-        "account": "follower",
-        "userId": "AUY168"
-      }
-    },
-    {
-      "at": "2026-04-24T03:32:17.016Z",
-      "type": "stream.connected",
-      "summary": "Leader order stream connected",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-24T03:32:16.957Z",
-      "type": "stream.connecting",
-      "summary": "Connecting to leader order stream",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-24T03:32:16.957Z",
-      "type": "auth.success",
-      "summary": "leader account authenticated",
-      "detail": {
-        "account": "leader",
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-24T01:36:24.165Z",
-      "type": "stream.token_expired",
-      "summary": "Leader token expired (22h 14m). Re-authenticate.",
-      "detail": {
-        "userId": "FEK088"
-      }
-    },
-    {
-      "at": "2026-04-24T01:36:22.164Z",
-      "type": "stream.reconnect_scheduled",
-      "summary": "Reconnecting in 2s (attempt 1)"
-    },
-    {
-      "at": "2026-04-24T01:36:22.164Z",
-      "type": "stream.closed",
-      "summary": "Leader order stream closed",
-      "detail": {
-        "code": 1006,
-        "reason": "No reason provided"
-      }
-    },
-    {
-      "at": "2026-04-23T09:31:17.392Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260423151699231",
-        "followerId": "follower",
-        "followerOrderId": "260423191588110",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-23T09:31:17.342Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151699231",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T09:31:17.342Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151699231",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T09:31:17.341Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151699231",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T09:31:17.340Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151699231",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T09:31:17.340Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151699231",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T09:31:17.339Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151699231",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T09:31:17.338Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151699231",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-23T09:03:00.847Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260423151557666",
-        "followerId": "follower",
-        "followerOrderId": "260423191450367",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-23T09:03:00.659Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151557666",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T09:03:00.658Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151557666",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T09:03:00.657Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151557666",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T09:03:00.657Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151557666",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T09:03:00.656Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151557666",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T09:03:00.656Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151557666",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T09:03:00.655Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151557666",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T09:03:00.654Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151557666",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-23T08:11:21.207Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260423151344476",
-        "followerId": "follower",
-        "followerOrderId": "260423191238835",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-23T08:11:21.157Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151344476",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T08:11:21.157Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151344476",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T08:11:21.156Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151344476",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T08:11:21.155Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151344476",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T08:11:21.154Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151344476",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T08:11:21.154Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151344476",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T08:11:21.153Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151344476",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-23T07:27:33.870Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260423151167733",
-        "followerId": "follower",
-        "followerOrderId": "260423191062086",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-23T07:10:21.038Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260423151113824",
-        "followerId": "follower",
-        "followerOrderId": "260423191008221",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-23T07:10:20.993Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151113824",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T07:10:20.992Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151113824",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T07:10:20.992Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151113824",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T07:10:20.991Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151113824",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T07:10:20.991Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151113824",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T07:10:20.990Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151113824",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T07:10:20.989Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151113824",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T07:10:20.988Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151113824",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-23T07:09:04.720Z",
-      "type": "cancel.live",
-      "summary": "Follower cancellation sent",
-      "detail": {
-        "sourceOrderId": "260423151069154",
-        "followerId": "follower",
-        "followerOrderId": "260423190963190"
-      }
-    },
-    {
-      "at": "2026-04-23T07:09:04.717Z",
-      "type": "cancel.live",
-      "summary": "Follower cancellation sent",
-      "detail": {
-        "sourceOrderId": "260423151069154",
-        "followerId": "follower",
-        "followerOrderId": "260423190963190"
-      }
-    },
-    {
-      "at": "2026-04-23T06:59:39.238Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260423151069154",
-        "followerId": "follower",
-        "followerOrderId": "260423190963190",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-23T06:55:16.017Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260423151049039",
-        "followerId": "follower",
-        "followerOrderId": "260423190942450",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-23T06:55:15.964Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151049039",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T06:55:15.963Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151049039",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T06:55:15.963Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151049039",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T06:55:15.962Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151049039",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T06:55:15.961Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151049039",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T06:55:15.960Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423151049039",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-23T06:32:01.625Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260423150977887",
-        "followerId": "follower",
-        "followerOrderId": "260423190871563",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-23T06:32:01.586Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150977887",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T06:32:01.585Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150977887",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T06:32:01.584Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150977887",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-23T06:31:48.935Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260423150977215",
-        "followerId": "follower",
-        "followerOrderId": "260423190870923",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-23T06:31:48.847Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150977215",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T06:31:48.844Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150977215",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T06:31:48.844Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150977215",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T06:31:48.843Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150977215",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-23T05:28:33.510Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260423150761826",
-        "followerId": "follower",
-        "followerOrderId": "260423190663395",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-23T05:28:33.452Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150761826",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T05:28:33.452Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150761826",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T05:28:33.451Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150761826",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T05:28:33.450Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150761826",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T05:28:33.449Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150761826",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T05:28:33.448Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150761826",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-23T05:26:03.838Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260423150752405",
-        "followerId": "follower",
-        "followerOrderId": "260423190654611",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-23T05:26:03.762Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150752405",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T05:26:03.761Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150752405",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T05:26:03.760Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150752405",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T05:26:03.760Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150752405",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T05:26:03.759Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150752405",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T05:26:03.758Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150752405",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T05:26:03.757Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150752405",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-23T04:05:36.606Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260423150298581",
-        "followerId": "follower",
-        "followerOrderId": "260423190236452",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-23T04:05:36.556Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150298581",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T04:05:36.555Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150298581",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T04:05:36.555Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150298581",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T04:05:36.554Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150298581",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T04:05:36.553Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150298581",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-23T04:04:46.359Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260423150292099",
-        "followerId": "follower",
-        "followerOrderId": "260423190231159",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-23T04:04:46.315Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150292099",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T04:04:46.315Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150292099",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T04:04:46.314Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150292099",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T04:04:46.313Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150292099",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-23T04:03:59.448Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260423150284815",
-        "followerId": "follower",
-        "followerOrderId": "260423190224723",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-23T04:03:59.230Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150284815",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T04:03:59.229Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150284815",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T04:03:59.226Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150284815",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T04:03:59.226Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150284815",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T04:03:59.225Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150284815",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T04:03:59.224Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150284815",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-23T03:57:07.542Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260423150216744",
-        "followerId": "follower",
-        "followerOrderId": "260423190167028",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-23T03:57:07.499Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150216744",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T03:57:07.498Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150216744",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T03:57:07.497Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150216744",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T03:57:07.496Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150216744",
-        "status": "OPEN"
-      }
-    },
-    {
-      "at": "2026-04-23T03:55:47.277Z",
-      "type": "mirror.placed",
-      "summary": "Follower order placed",
-      "detail": {
-        "sourceOrderId": "260423150202832",
-        "followerId": "follower",
-        "followerOrderId": "260423190155159",
-        "attempt": 1
-      }
-    },
-    {
-      "at": "2026-04-23T03:55:47.235Z",
+      "at": "2026-06-02T08:55:25.148Z",
       "type": "mirror.ignored",
       "summary": "Skipped duplicate source order while in-flight",
       "detail": {
-        "orderId": "260423150202832",
+        "orderId": "260602151775003",
         "status": "UPDATE"
       }
     },
     {
-      "at": "2026-04-23T03:55:47.235Z",
-      "type": "mirror.ignored",
-      "summary": "Skipped duplicate source order while in-flight",
-      "detail": {
-        "orderId": "260423150202832",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T03:55:47.233Z",
+      "at": "2026-06-02T08:55:25.145Z",
       "type": "mirror.waiting",
       "summary": "Source order not actionable yet",
       "detail": {
-        "orderId": "260423150202832",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T03:55:47.232Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150202832",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T03:55:47.232Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150202832",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T03:55:47.231Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150202832",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T03:55:47.228Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150202832",
+        "orderId": "260602151775003",
         "status": "OPEN"
       }
     },
     {
-      "at": "2026-04-23T03:55:35.249Z",
+      "at": "2026-06-02T08:52:34.852Z",
       "type": "mirror.placed",
       "summary": "Follower order placed",
       "detail": {
-        "sourceOrderId": "260423150200986",
+        "sourceOrderId": "260602151754485",
         "followerId": "follower",
-        "followerOrderId": "260423190153625",
+        "followerOrderId": "260602191689705",
         "attempt": 1
       }
     },
     {
-      "at": "2026-04-23T03:55:35.194Z",
+      "at": "2026-06-02T08:52:34.797Z",
       "type": "mirror.waiting",
       "summary": "Source order not actionable yet",
       "detail": {
-        "orderId": "260423150200986",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T03:55:35.193Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150200986",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T03:55:35.192Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150200986",
+        "orderId": "260602151754485",
         "status": "OPEN"
       }
     },
     {
-      "at": "2026-04-23T03:48:42.351Z",
-      "type": "auth.success",
-      "summary": "follower account authenticated",
+      "at": "2026-06-02T08:26:24.356Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
       "detail": {
-        "account": "follower",
-        "userId": "AUY168"
+        "sourceOrderId": "260602151642347",
+        "followerId": "follower",
+        "followerOrderId": "260602191573913",
+        "attempt": 1
       }
     },
     {
-      "at": "2026-04-23T03:45:46.423Z",
-      "type": "mirror.token_expired",
-      "summary": "follower token expired – cannot place order",
+      "at": "2026-06-02T08:26:24.311Z",
+      "type": "mirror.ignored",
+      "summary": "Skipped duplicate source order while in-flight",
       "detail": {
-        "orderId": "260423150068853",
-        "followerId": "follower"
-      }
-    },
-    {
-      "at": "2026-04-23T03:45:46.421Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150068853",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T03:45:46.420Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150068853",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T03:45:46.419Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150068853",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T03:45:46.419Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150068853",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T03:45:46.418Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150068853",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T03:45:46.417Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150068853",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T03:45:46.416Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150068853",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T03:45:46.415Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150068853",
+        "orderId": "260602151642347",
         "status": "OPEN"
       }
     },
     {
-      "at": "2026-04-23T03:45:28.266Z",
-      "type": "mirror.token_expired",
-      "summary": "follower token expired – cannot place order",
+      "at": "2026-06-02T08:17:02.731Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
       "detail": {
-        "orderId": "260423150062669",
-        "followerId": "follower"
+        "sourceOrderId": "260602151603413",
+        "followerId": "follower",
+        "followerOrderId": "260602191532579",
+        "attempt": 1
       }
     },
     {
-      "at": "2026-04-23T03:45:28.264Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
+      "at": "2026-06-02T08:09:15.557Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
       "detail": {
-        "orderId": "260423150062669",
+        "sourceOrderId": "260602151569428",
+        "followerId": "follower",
+        "followerOrderId": "260602191497754",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-02T08:09:15.519Z",
+      "type": "mirror.ignored",
+      "summary": "Skipped duplicate source order while in-flight",
+      "detail": {
+        "orderId": "260602151569428",
         "status": "UPDATE"
       }
     },
     {
-      "at": "2026-04-23T03:45:28.263Z",
+      "at": "2026-06-02T08:09:15.517Z",
       "type": "mirror.waiting",
       "summary": "Source order not actionable yet",
       "detail": {
-        "orderId": "260423150062669",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T03:45:28.262Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150062669",
-        "status": "UPDATE"
-      }
-    },
-    {
-      "at": "2026-04-23T03:45:28.261Z",
-      "type": "mirror.waiting",
-      "summary": "Source order not actionable yet",
-      "detail": {
-        "orderId": "260423150062669",
+        "orderId": "260602151569428",
         "status": "OPEN"
       }
     },
     {
-      "at": "2026-04-23T03:22:05.855Z",
+      "at": "2026-06-02T08:06:07.920Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260602151556300",
+        "followerId": "follower",
+        "followerOrderId": "260602191485050",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-02T08:06:07.870Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602151556300",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-06-02T07:50:34.384Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260602151478777",
+        "followerId": "follower",
+        "followerOrderId": "260602191406073",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-02T07:50:34.339Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602151478777",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-02T07:50:34.338Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602151478777",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-02T07:50:34.337Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602151478777",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-06-02T07:41:40.675Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260602151435633",
+        "followerId": "follower",
+        "followerOrderId": "260602191361259",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-02T06:44:33.862Z",
+      "type": "cancel.error",
+      "summary": "Follower cancellation failed",
+      "detail": {
+        "sourceOrderId": "260602151016406",
+        "followerId": "follower",
+        "message": "Order cannot be cancelled as it is being processed. Try later."
+      }
+    },
+    {
+      "at": "2026-06-02T06:44:33.615Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
+      "detail": {
+        "sourceOrderId": "260602151016406",
+        "followerId": "follower",
+        "followerOrderId": "260602190935037"
+      }
+    },
+    {
+      "at": "2026-06-02T06:07:33.306Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260602151016406",
+        "followerId": "follower",
+        "followerOrderId": "260602190935037",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-02T05:52:13.848Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260602150943495",
+        "followerId": "follower",
+        "followerOrderId": "260602190862937",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-02T05:50:13.817Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260602150932973",
+        "followerId": "follower",
+        "followerOrderId": "260602190852308",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-02T05:31:40.148Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
+      "detail": {
+        "sourceOrderId": "260602150844031",
+        "followerId": "follower",
+        "followerOrderId": "260602190765092"
+      }
+    },
+    {
+      "at": "2026-06-02T05:31:40.144Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
+      "detail": {
+        "sourceOrderId": "260602150844031",
+        "followerId": "follower",
+        "followerOrderId": "260602190765092"
+      }
+    },
+    {
+      "at": "2026-06-02T05:28:47.747Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260602150844031",
+        "followerId": "follower",
+        "followerOrderId": "260602190765092",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-02T05:23:12.688Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260602150810044",
+        "followerId": "follower",
+        "followerOrderId": "260602190731479",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-02T05:23:12.641Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602150810044",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-02T05:23:12.641Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602150810044",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-02T05:23:12.640Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602150810044",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-02T05:23:12.640Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602150810044",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-02T05:23:12.639Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602150810044",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-06-02T04:48:49.576Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260602150612304",
+        "followerId": "follower",
+        "followerOrderId": "260602190538948",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-02T04:42:13.751Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260602150569301",
+        "followerId": "follower",
+        "followerOrderId": "260602190497074",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-02T04:42:13.708Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602150569301",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-06-02T04:04:16.706Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260602150305253",
+        "followerId": "follower",
+        "followerOrderId": "260602190256481",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-02T04:04:16.658Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602150305253",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-02T04:04:16.657Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602150305253",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-02T04:04:16.656Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602150305253",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-06-02T03:51:09.529Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260602150162610",
+        "followerId": "follower",
+        "followerOrderId": "260602190134047",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-02T03:50:18.906Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260602150150410",
+        "followerId": "follower",
+        "followerOrderId": "260602190124169",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-02T03:50:18.855Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602150150410",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-02T03:50:18.854Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602150150410",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-02T03:50:18.854Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602150150410",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-02T03:50:18.853Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602150150410",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-02T03:50:18.853Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602150150410",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-02T03:50:18.852Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602150150410",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-02T03:50:18.851Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260602150150410",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-06-02T03:35:38.983Z",
       "type": "stream.connected",
       "summary": "Leader order stream connected",
       "detail": {
@@ -1886,7 +1629,7 @@
       }
     },
     {
-      "at": "2026-04-23T03:22:05.804Z",
+      "at": "2026-06-02T03:35:38.936Z",
       "type": "stream.connecting",
       "summary": "Connecting to leader order stream",
       "detail": {
@@ -1894,7 +1637,7 @@
       }
     },
     {
-      "at": "2026-04-23T03:22:05.803Z",
+      "at": "2026-06-02T03:35:38.936Z",
       "type": "auth.success",
       "summary": "leader account authenticated",
       "detail": {
@@ -1903,20 +1646,29 @@
       }
     },
     {
-      "at": "2026-04-23T01:36:18.070Z",
+      "at": "2026-06-02T03:13:57.863Z",
+      "type": "auth.success",
+      "summary": "follower account authenticated",
+      "detail": {
+        "account": "follower",
+        "userId": "AUY168"
+      }
+    },
+    {
+      "at": "2026-06-02T01:36:23.074Z",
       "type": "stream.token_expired",
-      "summary": "Leader token expired (21h 39m). Re-authenticate.",
+      "summary": "Leader token expired (22h 10m). Re-authenticate.",
       "detail": {
         "userId": "FEK088"
       }
     },
     {
-      "at": "2026-04-23T01:36:16.070Z",
+      "at": "2026-06-02T01:36:21.073Z",
       "type": "stream.reconnect_scheduled",
       "summary": "Reconnecting in 2s (attempt 1)"
     },
     {
-      "at": "2026-04-23T01:36:16.069Z",
+      "at": "2026-06-02T01:36:21.072Z",
       "type": "stream.closed",
       "summary": "Leader order stream closed",
       "detail": {
@@ -1925,7 +1677,198 @@
       }
     },
     {
-      "at": "2026-04-22T18:03:56.996Z",
+      "at": "2026-06-01T08:09:49.937Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
+      "detail": {
+        "sourceOrderId": "260601151048234",
+        "followerId": "follower",
+        "followerOrderId": "260601190941027"
+      }
+    },
+    {
+      "at": "2026-06-01T08:09:49.927Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
+      "detail": {
+        "sourceOrderId": "260601151048234",
+        "followerId": "follower",
+        "followerOrderId": "260601190941027"
+      }
+    },
+    {
+      "at": "2026-06-01T06:55:05.163Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260601151048234",
+        "followerId": "follower",
+        "followerOrderId": "260601190941027",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-01T06:46:36.571Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
+      "detail": {
+        "sourceOrderId": "260601151021019",
+        "followerId": "follower",
+        "followerOrderId": "260601190914021"
+      }
+    },
+    {
+      "at": "2026-06-01T06:46:36.569Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
+      "detail": {
+        "sourceOrderId": "260601151021019",
+        "followerId": "follower",
+        "followerOrderId": "260601190914021"
+      }
+    },
+    {
+      "at": "2026-06-01T06:45:22.593Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260601151021019",
+        "followerId": "follower",
+        "followerOrderId": "260601190914021",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-01T06:08:52.483Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
+      "detail": {
+        "sourceOrderId": "260601150847661",
+        "followerId": "follower",
+        "followerOrderId": "260601190748323"
+      }
+    },
+    {
+      "at": "2026-06-01T06:08:52.480Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
+      "detail": {
+        "sourceOrderId": "260601150847661",
+        "followerId": "follower",
+        "followerOrderId": "260601190748323"
+      }
+    },
+    {
+      "at": "2026-06-01T05:56:00.677Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260601150847661",
+        "followerId": "follower",
+        "followerOrderId": "260601190748323",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-01T05:54:33.484Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260601150842338",
+        "followerId": "follower",
+        "followerOrderId": "260601190743499",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-01T05:54:33.433Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260601150842338",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-01T05:54:33.432Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260601150842338",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-01T05:54:33.431Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260601150842338",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-01T05:54:33.430Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260601150842338",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-01T05:54:33.429Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260601150842338",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-06-01T05:41:27.361Z",
+      "type": "cancel.error",
+      "summary": "Follower cancellation failed",
+      "detail": {
+        "sourceOrderId": "260601150765277",
+        "followerId": "follower",
+        "message": "Order cannot be cancelled as it is being processed. Try later."
+      }
+    },
+    {
+      "at": "2026-06-01T05:41:27.342Z",
+      "type": "cancel.live",
+      "summary": "Follower cancellation sent",
+      "detail": {
+        "sourceOrderId": "260601150765277",
+        "followerId": "follower",
+        "followerOrderId": "260601190670327"
+      }
+    },
+    {
+      "at": "2026-06-01T05:32:43.661Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260601150765277",
+        "followerId": "follower",
+        "followerOrderId": "260601190670327",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-01T04:39:33.158Z",
+      "type": "mirror.placed",
+      "summary": "Follower order placed",
+      "detail": {
+        "sourceOrderId": "260601150534105",
+        "followerId": "follower",
+        "followerOrderId": "260601190457092",
+        "attempt": 1
+      }
+    },
+    {
+      "at": "2026-06-01T04:31:00.082Z",
       "type": "stream.connected",
       "summary": "Leader order stream connected",
       "detail": {
@@ -1933,11 +1876,146 @@
       }
     },
     {
-      "at": "2026-04-22T18:03:56.888Z",
+      "at": "2026-06-01T04:31:00.001Z",
       "type": "stream.connecting",
       "summary": "Connecting to leader order stream",
       "detail": {
         "userId": "FEK088"
+      }
+    },
+    {
+      "at": "2026-06-01T04:30:22.045Z",
+      "type": "mirror.blocked",
+      "summary": "Follower order blocked by policy",
+      "detail": {
+        "orderId": "260601150478279",
+        "followerId": "follower",
+        "reasons": [
+          "Quantity 325 exceeds MAX_QUANTITY_PER_ORDER=260."
+        ]
+      }
+    },
+    {
+      "at": "2026-06-01T04:30:22.044Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260601150478279",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-01T04:30:22.043Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260601150478279",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-01T04:30:22.043Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260601150478279",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-01T04:30:22.042Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260601150478279",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-06-01T04:09:53.390Z",
+      "type": "mirror.blocked",
+      "summary": "Follower order blocked by policy",
+      "detail": {
+        "orderId": "260601150340261",
+        "followerId": "follower",
+        "reasons": [
+          "Quantity 325 exceeds MAX_QUANTITY_PER_ORDER=260."
+        ]
+      }
+    },
+    {
+      "at": "2026-06-01T04:09:53.389Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260601150340261",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-01T04:09:53.388Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260601150340261",
+        "status": "OPEN"
+      }
+    },
+    {
+      "at": "2026-06-01T04:07:22.171Z",
+      "type": "mirror.blocked",
+      "summary": "Follower order blocked by policy",
+      "detail": {
+        "orderId": "260601150317975",
+        "followerId": "follower",
+        "reasons": [
+          "Quantity 325 exceeds MAX_QUANTITY_PER_ORDER=260."
+        ]
+      }
+    },
+    {
+      "at": "2026-06-01T04:07:22.170Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260601150317975",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-01T04:07:22.170Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260601150317975",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-01T04:07:22.169Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260601150317975",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-01T04:07:22.168Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260601150317975",
+        "status": "UPDATE"
+      }
+    },
+    {
+      "at": "2026-06-01T04:07:22.168Z",
+      "type": "mirror.waiting",
+      "summary": "Source order not actionable yet",
+      "detail": {
+        "orderId": "260601150317975",
+        "status": "UPDATE"
       }
     }
   ],
